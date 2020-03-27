@@ -1,0 +1,10 @@
+C:\Users\0121stos\source\repos\Ägg Kartong\Test slut Spel\bin\Debug\Test slut Spel.exe.config
+C:\Users\0121stos\source\repos\Ägg Kartong\Test slut Spel\bin\Debug\Test slut Spel.exe
+C:\Users\0121stos\source\repos\Ägg Kartong\Test slut Spel\bin\Debug\Test slut Spel.pdb
+C:\Users\0121stos\source\repos\Ägg Kartong\Test slut Spel\obj\Debug\Rocky Road.csprojAssemblyReference.cache
+C:\Users\0121stos\source\repos\Ägg Kartong\Test slut Spel\obj\Debug\Test_slut_Spel.Form1.resources
+C:\Users\0121stos\source\repos\Ägg Kartong\Test slut Spel\obj\Debug\Test_slut_Spel.Properties.Resources.resources
+C:\Users\0121stos\source\repos\Ägg Kartong\Test slut Spel\obj\Debug\Rocky Road.csproj.GenerateResource.cache
+C:\Users\0121stos\source\repos\Ägg Kartong\Test slut Spel\obj\Debug\Rocky Road.csproj.CoreCompileInputs.cache
+C:\Users\0121stos\source\repos\Ägg Kartong\Test slut Spel\obj\Debug\Test slut Spel.exe
+C:\Users\0121stos\source\repos\Ägg Kartong\Test slut Spel\obj\Debug\Test slut Spel.pdb
