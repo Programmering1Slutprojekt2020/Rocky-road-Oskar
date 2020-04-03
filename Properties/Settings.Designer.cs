@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Test_slut_Spel.Properties
+namespace RockyRoad.Properties
 {
 
 

@@ -1,4 +1,4 @@
-﻿namespace Test_slut_Spel
+﻿namespace RockyRoad
 {
     partial class Form1
     {
@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblPaused = new System.Windows.Forms.Label();
             this.TidTagning = new System.Windows.Forms.Timer(this.components);
             this.Flytttid = new System.Windows.Forms.Timer(this.components);
             this.lblLiv = new System.Windows.Forms.Label();
             this.lblFörsök = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
-            this.lblPaused = new System.Windows.Forms.Label();
             this.lblPausInfo = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -50,9 +50,19 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
+            // lblPaused
+            // 
+            this.lblPaused.AutoSize = true;
+            this.lblPaused.BackColor = System.Drawing.Color.Transparent;
+            this.lblPaused.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaused.ForeColor = System.Drawing.Color.Red;
+            this.lblPaused.Location = new System.Drawing.Point(220, 160);
+            this.lblPaused.Name = "lblPaused";
+            this.lblPaused.Size = new System.Drawing.Size(0, 31);
+            this.lblPaused.TabIndex = 0;
+            // 
             // TidTagning
             // 
-            this.TidTagning.Enabled = true;
             this.TidTagning.Tick += new System.EventHandler(this.TidTagning_Tick);
             // 
             // Flytttid
@@ -86,16 +96,6 @@
             this.lblTime.TabIndex = 3;
             this.lblTime.Text = "Tid: 0:0:0:0";
             // 
-            // lblPaused
-            // 
-            this.lblPaused.AutoSize = true;
-            this.lblPaused.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaused.ForeColor = System.Drawing.Color.Red;
-            this.lblPaused.Location = new System.Drawing.Point(221, 163);
-            this.lblPaused.Name = "lblPaused";
-            this.lblPaused.Size = new System.Drawing.Size(0, 31);
-            this.lblPaused.TabIndex = 0;
-            // 
             // lblPausInfo
             // 
             this.lblPausInfo.AutoSize = true;
@@ -117,7 +117,7 @@
             this.Controls.Add(this.lblLiv);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Rocky Road";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

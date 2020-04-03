@@ -8,15 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Test_slut_Spel
+namespace RockyRoad
 {
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
-            Bana1();
-            Bana2();
+            Bana1();            
         }
 
         private void Bana1()
@@ -24,122 +23,338 @@ namespace Test_slut_Spel
             if (Bana == 1)
             {
                 panel1.Location = Bana1Point;
-                panel1.Height = 360;
-                panel1.Width = 560;
-
-                x[0] = x[1] = 27;
-                y[0] = y[1] = 17;
-            }
-            
-            Bana1X.Add(7); Bana1Y.Add(7); Bana1Hinder.Add(2);
-
-            Bana1X.Add(8); Bana1Y.Add(7); Bana1Hinder.Add(3);
-            Bana1X.Add(18); Bana1Y.Add(1); Bana1Hinder.Add(3);
-
-            Bana1X.Add(2); Bana1Y.Add(7); Bana1Hinder.Add(4);
-
-            Bana1X.Add(26); Bana1Y.Add(1); Bana1Hinder.Add(7);
-
-            Bana1X.Add(0); Bana1Y.Add(2); Bana1Hinder.Add(1);
-            Bana1X.Add(0); Bana1Y.Add(10); Bana1Hinder.Add(1);
-            Bana1X.Add(1); Bana1Y.Add(6); Bana1Hinder.Add(1);
-            Bana1X.Add(1); Bana1Y.Add(7); Bana1Hinder.Add(1);
-            Bana1X.Add(1); Bana1Y.Add(8); Bana1Hinder.Add(1);
-            Bana1X.Add(1); Bana1Y.Add(15); Bana1Hinder.Add(1);
-            Bana1X.Add(3); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(4); Bana1Y.Add(5); Bana1Hinder.Add(1);
-            Bana1X.Add(5); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(5); Bana1Y.Add(6); Bana1Hinder.Add(1);
-            Bana1X.Add(6); Bana1Y.Add(16); Bana1Hinder.Add(1);
-            Bana1X.Add(7); Bana1Y.Add(8); Bana1Hinder.Add(1);
-            Bana1X.Add(8); Bana1Y.Add(4); Bana1Hinder.Add(1);
-            Bana1X.Add(8); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(9); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(9); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(9); Bana1Y.Add(13); Bana1Hinder.Add(1);
-            Bana1X.Add(9); Bana1Y.Add(15); Bana1Hinder.Add(1);
-            Bana1X.Add(10); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(10); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(11); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(11); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(11); Bana1Y.Add(12); Bana1Hinder.Add(1);
-            Bana1X.Add(12); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(12); Bana1Y.Add(13); Bana1Hinder.Add(1);
-            Bana1X.Add(12); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(13); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(13); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(13); Bana1Y.Add(13); Bana1Hinder.Add(1);
-            Bana1X.Add(13); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(14); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(14); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(15); Bana1Y.Add(4); Bana1Hinder.Add(1);
-            Bana1X.Add(15); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(15); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(15); Bana1Y.Add(12); Bana1Hinder.Add(1);
-            Bana1X.Add(15); Bana1Y.Add(13); Bana1Hinder.Add(1);
-            Bana1X.Add(16); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(17); Bana1Y.Add(4); Bana1Hinder.Add(1);
-            Bana1X.Add(17); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(17); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(17); Bana1Y.Add(13); Bana1Hinder.Add(1);
-            Bana1X.Add(17); Bana1Y.Add(16); Bana1Hinder.Add(1);
-            Bana1X.Add(18); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(18); Bana1Y.Add(14); Bana1Hinder.Add(1);
-            Bana1X.Add(18); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(19); Bana1Y.Add(7); Bana1Hinder.Add(1);
-            Bana1X.Add(20); Bana1Y.Add(16); Bana1Hinder.Add(1);
-            Bana1X.Add(21); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(21); Bana1Y.Add(3); Bana1Hinder.Add(1);
-            Bana1X.Add(22); Bana1Y.Add(8); Bana1Hinder.Add(1);
-            Bana1X.Add(22); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(22); Bana1Y.Add(12); Bana1Hinder.Add(1);
-            Bana1X.Add(22); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(23); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(23); Bana1Y.Add(4); Bana1Hinder.Add(1);
-            Bana1X.Add(24); Bana1Y.Add(2); Bana1Hinder.Add(1);
-            Bana1X.Add(24); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(24); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(24); Bana1Y.Add(15); Bana1Hinder.Add(1);
-            Bana1X.Add(25); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(26); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(26); Bana1Y.Add(2); Bana1Hinder.Add(1);
-            Bana1X.Add(26); Bana1Y.Add(4); Bana1Hinder.Add(1);
-            Bana1X.Add(26); Bana1Y.Add(7); Bana1Hinder.Add(1);
-            Bana1X.Add(27); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(27); Bana1Y.Add(1); Bana1Hinder.Add(1);
-            Bana1X.Add(27); Bana1Y.Add(2); Bana1Hinder.Add(1);
-        }
-
-        private void Bana2()
-        {
-            if(Bana == 2)
-            {
-                panel1.Location = Bana2Point;
                 panel1.Height = 140;
                 panel1.Width = 140;
+
+                lblPaused.Location = Pause1;
 
                 x[0] = x[1] = 0;
                 y[0] = y[1] = 6;
             }
 
-            Bana2X.Add(3); Bana2Y.Add(3); Bana2Hinder.Add(7);
+            Bana1X.Clear(); Bana1Y.Clear(); Bana1Hinder.Clear();
 
-            Bana2X.Add(1); Bana2Y.Add(1); Bana2Hinder.Add(9);
-            Bana2X.Add(4); Bana2Y.Add(2); Bana2Hinder.Add(8);
+            //mål
+            Bana1X.Add(3); Bana1Y.Add(3); Bana1Hinder.Add(5);
 
-            Bana2X.Add(1); Bana2Y.Add(6); Bana2Hinder.Add(5);
-            Bana2X.Add(4); Bana2Y.Add(1); Bana2Hinder.Add(5);
-            Bana2X.Add(5); Bana2Y.Add(5); Bana2Hinder.Add(5);
+            //knapp
+            Bana1X.Add(1); Bana1Y.Add(1); Bana1Hinder.Add(4.12);
+            Bana1X.Add(4); Bana1Y.Add(2); Bana1Hinder.Add(4.22);
 
-            Bana2X.Add(2); Bana2Y.Add(2); Bana2Hinder.Add(10);            
+            //ofylda
+            Bana1X.Add(1); Bana1Y.Add(6); Bana1Hinder.Add(3.1);
+            Bana1X.Add(4); Bana1Y.Add(1); Bana1Hinder.Add(3.1);
+            Bana1X.Add(5); Bana1Y.Add(5); Bana1Hinder.Add(3.1);                        
+            Bana1X.Add(2); Bana1Y.Add(2); Bana1Hinder.Add(3.3);
 
-            Bana2X.Add(0); Bana2Y.Add(1); Bana2Hinder.Add(1);
-            Bana2X.Add(5); Bana2Y.Add(0); Bana2Hinder.Add(1);
-            Bana2X.Add(6); Bana2Y.Add(6); Bana2Hinder.Add(1);
+            //vanliga
+            Bana1X.Add(0); Bana1Y.Add(1); Bana1Hinder.Add(1);
+            Bana1X.Add(5); Bana1Y.Add(0); Bana1Hinder.Add(1);
+            Bana1X.Add(6); Bana1Y.Add(6); Bana1Hinder.Add(1);
+
+            
         }
 
+        private void Bana2()
+        {
+            if (Bana == 2)
+            {
+                panel1.Location = Bana2Point;
+                panel1.Height = 360;
+                panel1.Width = 560;
+
+                lblPaused.Location = Pause2;
+
+                x[0] = x[1] = 27;
+                y[0] = y[1] = 17;
+            }
+
+            Bana2X.Clear(); Bana2Y.Clear(); Bana2Hinder.Clear();
+
+            //döda
+            Bana2X.Add(7); Bana2Y.Add(7); Bana2Hinder.Add(2.21);
+
+            //fylda
+            Bana2X.Add(8); Bana2Y.Add(7); Bana2Hinder.Add(2.1);
+            Bana2X.Add(18); Bana2Y.Add(1); Bana2Hinder.Add(2.1);
+
+            //knapp
+            Bana2X.Add(2); Bana2Y.Add(7); Bana2Hinder.Add(4.41);
+            Bana2X.Add(2); Bana2Y.Add(7); Bana2Hinder.Add(4.11);
+
+            //Mål
+            Bana2X.Add(26); Bana2Y.Add(1); Bana2Hinder.Add(5);
+
+            //vanliga
+            Bana2X.Add(0); Bana2Y.Add(2); Bana2Hinder.Add(1);
+            Bana2X.Add(0); Bana2Y.Add(10); Bana2Hinder.Add(1);
+            Bana2X.Add(1); Bana2Y.Add(6); Bana2Hinder.Add(1);
+            Bana2X.Add(1); Bana2Y.Add(7); Bana2Hinder.Add(1);
+            Bana2X.Add(1); Bana2Y.Add(8); Bana2Hinder.Add(1);
+            Bana2X.Add(1); Bana2Y.Add(15); Bana2Hinder.Add(1);
+            Bana2X.Add(3); Bana2Y.Add(17); Bana2Hinder.Add(1);
+            Bana2X.Add(4); Bana2Y.Add(5); Bana2Hinder.Add(1);
+            Bana2X.Add(5); Bana2Y.Add(0); Bana2Hinder.Add(1);
+            Bana2X.Add(5); Bana2Y.Add(6); Bana2Hinder.Add(1);
+            Bana2X.Add(6); Bana2Y.Add(16); Bana2Hinder.Add(1);
+            Bana2X.Add(7); Bana2Y.Add(8); Bana2Hinder.Add(1);
+            Bana2X.Add(8); Bana2Y.Add(4); Bana2Hinder.Add(1);
+            Bana2X.Add(8); Bana2Y.Add(17); Bana2Hinder.Add(1);
+            Bana2X.Add(9); Bana2Y.Add(9); Bana2Hinder.Add(1);
+            Bana2X.Add(9); Bana2Y.Add(11); Bana2Hinder.Add(1);
+            Bana2X.Add(9); Bana2Y.Add(13); Bana2Hinder.Add(1);
+            Bana2X.Add(9); Bana2Y.Add(15); Bana2Hinder.Add(1);
+            Bana2X.Add(10); Bana2Y.Add(9); Bana2Hinder.Add(1);
+            Bana2X.Add(10); Bana2Y.Add(17); Bana2Hinder.Add(1);
+            Bana2X.Add(11); Bana2Y.Add(9); Bana2Hinder.Add(1);
+            Bana2X.Add(11); Bana2Y.Add(11); Bana2Hinder.Add(1);
+            Bana2X.Add(11); Bana2Y.Add(12); Bana2Hinder.Add(1);
+            Bana2X.Add(12); Bana2Y.Add(9); Bana2Hinder.Add(1);
+            Bana2X.Add(12); Bana2Y.Add(13); Bana2Hinder.Add(1);
+            Bana2X.Add(12); Bana2Y.Add(17); Bana2Hinder.Add(1);
+            Bana2X.Add(13); Bana2Y.Add(0); Bana2Hinder.Add(1);
+            Bana2X.Add(13); Bana2Y.Add(11); Bana2Hinder.Add(1);
+            Bana2X.Add(13); Bana2Y.Add(13); Bana2Hinder.Add(1);
+            Bana2X.Add(13); Bana2Y.Add(17); Bana2Hinder.Add(1);
+            Bana2X.Add(14); Bana2Y.Add(9); Bana2Hinder.Add(1);
+            Bana2X.Add(14); Bana2Y.Add(11); Bana2Hinder.Add(1);
+            Bana2X.Add(15); Bana2Y.Add(4); Bana2Hinder.Add(1);
+            Bana2X.Add(15); Bana2Y.Add(9); Bana2Hinder.Add(1);
+            Bana2X.Add(15); Bana2Y.Add(11); Bana2Hinder.Add(1);
+            Bana2X.Add(15); Bana2Y.Add(12); Bana2Hinder.Add(1);
+            Bana2X.Add(15); Bana2Y.Add(13); Bana2Hinder.Add(1);
+            Bana2X.Add(16); Bana2Y.Add(0); Bana2Hinder.Add(1);
+            Bana2X.Add(17); Bana2Y.Add(4); Bana2Hinder.Add(1);
+            Bana2X.Add(17); Bana2Y.Add(9); Bana2Hinder.Add(1);
+            Bana2X.Add(17); Bana2Y.Add(11); Bana2Hinder.Add(1);
+            Bana2X.Add(17); Bana2Y.Add(13); Bana2Hinder.Add(1);
+            Bana2X.Add(17); Bana2Y.Add(16); Bana2Hinder.Add(1);
+            Bana2X.Add(18); Bana2Y.Add(0); Bana2Hinder.Add(1);
+            Bana2X.Add(18); Bana2Y.Add(14); Bana2Hinder.Add(1);
+            Bana2X.Add(18); Bana2Y.Add(17); Bana2Hinder.Add(1);
+            Bana2X.Add(19); Bana2Y.Add(7); Bana2Hinder.Add(1);
+            Bana2X.Add(20); Bana2Y.Add(16); Bana2Hinder.Add(1);
+            Bana2X.Add(21); Bana2Y.Add(0); Bana2Hinder.Add(1);
+            Bana2X.Add(21); Bana2Y.Add(3); Bana2Hinder.Add(1);
+            Bana2X.Add(22); Bana2Y.Add(8); Bana2Hinder.Add(1);
+            Bana2X.Add(22); Bana2Y.Add(11); Bana2Hinder.Add(1);
+            Bana2X.Add(22); Bana2Y.Add(12); Bana2Hinder.Add(1);
+            Bana2X.Add(22); Bana2Y.Add(17); Bana2Hinder.Add(1);
+            Bana2X.Add(23); Bana2Y.Add(0); Bana2Hinder.Add(1);
+            Bana2X.Add(23); Bana2Y.Add(4); Bana2Hinder.Add(1);
+            Bana2X.Add(24); Bana2Y.Add(2); Bana2Hinder.Add(1);
+            Bana2X.Add(24); Bana2Y.Add(9); Bana2Hinder.Add(1);
+            Bana2X.Add(24); Bana2Y.Add(11); Bana2Hinder.Add(1);
+            Bana2X.Add(24); Bana2Y.Add(15); Bana2Hinder.Add(1);
+            Bana2X.Add(25); Bana2Y.Add(17); Bana2Hinder.Add(1);
+            Bana2X.Add(26); Bana2Y.Add(0); Bana2Hinder.Add(1);
+            Bana2X.Add(26); Bana2Y.Add(2); Bana2Hinder.Add(1);
+            Bana2X.Add(26); Bana2Y.Add(4); Bana2Hinder.Add(1);
+            Bana2X.Add(26); Bana2Y.Add(7); Bana2Hinder.Add(1);
+            Bana2X.Add(27); Bana2Y.Add(0); Bana2Hinder.Add(1);
+            Bana2X.Add(27); Bana2Y.Add(1); Bana2Hinder.Add(1);
+            Bana2X.Add(27); Bana2Y.Add(2); Bana2Hinder.Add(1);
+        }
+
+        private void Bana3()
+        {
+            if(Bana == 3)
+            {
+                panel1.Location = Bana3Point;
+                panel1.Height = 140;
+                panel1.Width = 300;
+
+                lblPaused.Location = Pause3;
+
+                TPX.Clear(); TPY.Clear(); TPI.Clear();
+                
+
+                x[0] = x[1] = 0;
+                y[0] = y[1] = 6;
+            }
+
+            Bana3X.Clear(); Bana3Y.Clear(); Bana3Hinder.Clear();
+
+            //Mål
+            Bana3X.Add(12); Bana3Y.Add(6); Bana3Hinder.Add(5);
+
+            //teleport
+            Bana3X.Add(3); TPX.Add(3); Bana3Y.Add(3); TPY.Add(3); Bana3Hinder.Add(6.1); TPI.Add(1);
+            Bana3X.Add(11); TPX.Add(11); Bana3Y.Add(3); TPY.Add(3); Bana3Hinder.Add(6.1); TPI.Add(0);
+
+            Bana3X.Add(4); TPX.Add(4); Bana3Y.Add(1); TPY.Add(1); Bana3Hinder.Add(6.2); TPI.Add(3);
+            Bana3X.Add(1); TPX.Add(1); Bana3Y.Add(5); TPY.Add(5); Bana3Hinder.Add(6.2); TPI.Add(2);
+
+            Bana3X.Add(1); TPX.Add(1); Bana3Y.Add(3); TPY.Add(3); Bana3Hinder.Add(6.3); TPI.Add(5);
+            Bana3X.Add(6); TPX.Add(6); Bana3Y.Add(2); TPY.Add(2); Bana3Hinder.Add(6.3); TPI.Add(4);
+
+            Bana3X.Add(8); TPX.Add(8); Bana3Y.Add(6); TPY.Add(6); Bana3Hinder.Add(6.4); TPI.Add(7);
+            Bana3X.Add(14); TPX.Add(14); Bana3Y.Add(3); TPY.Add(3); Bana3Hinder.Add(6.4); TPI.Add(6);
+
+            //vanliga
+            Bana3X.Add(0); Bana3Y.Add(0); Bana3Hinder.Add(1);
+            Bana3X.Add(2); Bana3Y.Add(2); Bana3Hinder.Add(1);
+            Bana3X.Add(2); Bana3Y.Add(4); Bana3Hinder.Add(1);
+            Bana3X.Add(4); Bana3Y.Add(2); Bana3Hinder.Add(1);
+            Bana3X.Add(4); Bana3Y.Add(4); Bana3Hinder.Add(1);
+            Bana3X.Add(4); Bana3Y.Add(6); Bana3Hinder.Add(1);
+            Bana3X.Add(5); Bana3Y.Add(1); Bana3Hinder.Add(1);
+            Bana3X.Add(6); Bana3Y.Add(5); Bana3Hinder.Add(1);
+            Bana3X.Add(7); Bana3Y.Add(0); Bana3Hinder.Add(1);
+            Bana3X.Add(7); Bana3Y.Add(1); Bana3Hinder.Add(1);
+            Bana3X.Add(7); Bana3Y.Add(2); Bana3Hinder.Add(1);
+            Bana3X.Add(7); Bana3Y.Add(3); Bana3Hinder.Add(1);
+            Bana3X.Add(7); Bana3Y.Add(4); Bana3Hinder.Add(1);
+            Bana3X.Add(7); Bana3Y.Add(5); Bana3Hinder.Add(1);
+            Bana3X.Add(7); Bana3Y.Add(6); Bana3Hinder.Add(1);
+            Bana3X.Add(8); Bana3Y.Add(0); Bana3Hinder.Add(1);
+            Bana3X.Add(8); Bana3Y.Add(5); Bana3Hinder.Add(1);
+            Bana3X.Add(11); Bana3Y.Add(0); Bana3Hinder.Add(1);
+            Bana3X.Add(13); Bana3Y.Add(6); Bana3Hinder.Add(1);
+            Bana3X.Add(14); Bana3Y.Add(1); Bana3Hinder.Add(1);
+        }
+
+        private void Bana4()
+        {
+            if (Bana == 4)
+            {
+                panel1.Location = Bana4Point;
+                panel1.Height = 200;
+                panel1.Width = 400;
+
+                lblPaused.Location = Pause4;
+
+                TPX.Clear(); TPY.Clear(); TPI.Clear();
+
+                x[0] = x[1] = 0;
+                y[0] = y[1] = 0;
+            }
+
+            Bana4X.Clear(); Bana4Y.Clear(); Bana4Hinder.Clear(); 
+
+            //Mål
+            Bana4X.Add(0); Bana4Y.Add(4); Bana4Hinder.Add(5);
+
+            //knapp            
+            Bana4X.Add(2); Bana4Y.Add(4); Bana4Hinder.Add(4.22);
+            Bana4X.Add(2); Bana4Y.Add(4); Bana4Hinder.Add(4.11);
+            Bana4X.Add(1); Bana4Y.Add(6); Bana4Hinder.Add(4.32);
+            Bana4X.Add(1); Bana4Y.Add(6); Bana4Hinder.Add(4.21);
+
+            //Fylda
+            Bana4X.Add(0); Bana4Y.Add(3); Bana4Hinder.Add(2.3);
+            Bana4X.Add(1); Bana4Y.Add(3); Bana4Hinder.Add(2.3);
+            Bana4X.Add(1); Bana4Y.Add(4); Bana4Hinder.Add(2.3);
+            Bana4X.Add(9); Bana4Y.Add(1); Bana4Hinder.Add(2.3);
+            Bana4X.Add(9); Bana4Y.Add(7); Bana4Hinder.Add(2.3);
+            Bana4X.Add(9); Bana4Y.Add(4); Bana4Hinder.Add(2.1);
+
+            //ofylda
+            Bana4X.Add(0); Bana4Y.Add(1); Bana4Hinder.Add(3.4);
+            Bana4X.Add(1); Bana4Y.Add(8); Bana4Hinder.Add(3.4);
+            Bana4X.Add(10); Bana4Y.Add(0); Bana4Hinder.Add(3.4);
+            Bana4X.Add(18); Bana4Y.Add(3); Bana4Hinder.Add(3.4);
+            Bana4X.Add(18); Bana4Y.Add(9); Bana4Hinder.Add(3.4);
+
+            //teleport
+            Bana4X.Add(8); TPX.Add(8); Bana4Y.Add(6); TPY.Add(6); Bana4Hinder.Add(6.1); TPI.Add(1);
+            Bana4X.Add(10); TPX.Add(10); Bana4Y.Add(9); TPY.Add(9); Bana4Hinder.Add(6.1); TPI.Add(0);
+
+            //vanliga
+            Bana4X.Add(0); Bana4Y.Add(5); Bana4Hinder.Add(1);
+            Bana4X.Add(0); Bana4Y.Add(6); Bana4Hinder.Add(1);
+            Bana4X.Add(0); Bana4Y.Add(8); Bana4Hinder.Add(1);
+            Bana4X.Add(1); Bana4Y.Add(5); Bana4Hinder.Add(1);
+            Bana4X.Add(2); Bana4Y.Add(5); Bana4Hinder.Add(1);
+            Bana4X.Add(3); Bana4Y.Add(5); Bana4Hinder.Add(1);
+            Bana4X.Add(4); Bana4Y.Add(5); Bana4Hinder.Add(1);
+            Bana4X.Add(5); Bana4Y.Add(5); Bana4Hinder.Add(1);
+            Bana4X.Add(6); Bana4Y.Add(5); Bana4Hinder.Add(1);
+            Bana4X.Add(7); Bana4Y.Add(5); Bana4Hinder.Add(1);
+            Bana4X.Add(8); Bana4Y.Add(5); Bana4Hinder.Add(1);
+            Bana4X.Add(8); Bana4Y.Add(9); Bana4Hinder.Add(1);
+            Bana4X.Add(9); Bana4Y.Add(0); Bana4Hinder.Add(1);
+            Bana4X.Add(9); Bana4Y.Add(2); Bana4Hinder.Add(1);
+            Bana4X.Add(9); Bana4Y.Add(3); Bana4Hinder.Add(1);
+            Bana4X.Add(9); Bana4Y.Add(5); Bana4Hinder.Add(1);
+            Bana4X.Add(9); Bana4Y.Add(6); Bana4Hinder.Add(1);
+            Bana4X.Add(9); Bana4Y.Add(8); Bana4Hinder.Add(1);
+            Bana4X.Add(9); Bana4Y.Add(9); Bana4Hinder.Add(1);
+            Bana4X.Add(18); Bana4Y.Add(0); Bana4Hinder.Add(1);
+            Bana4X.Add(19); Bana4Y.Add(4); Bana4Hinder.Add(1);
+            Bana4X.Add(19); Bana4Y.Add(7); Bana4Hinder.Add(1);
+        }
+
+        private void Bana5()
+        {
+            if (Bana == 5)
+            {
+                panel1.Location = Bana5Point;
+                panel1.Height = 200;
+                panel1.Width = 300;
+
+                lblPaused.Location = Pause5;
+
+                TPX.Clear(); TPY.Clear(); TPI.Clear();
+
+
+                x[0] = x[1] = 0;
+                y[0] = y[1] = 9;
+            }
+
+            Bana5X.Clear(); Bana5Y.Clear(); Bana5Hinder.Clear();
+
+            //Mål
+            Bana5X.Add(2); Bana5Y.Add(0); Bana5Hinder.Add(5);
+            
+            //Döda
+            Bana5X.Add(0); Bana5Y.Add(0); Bana5Hinder.Add(2.2);
+            Bana5X.Add(5); Bana5Y.Add(1); Bana5Hinder.Add(2.21);
+            Bana5X.Add(13); Bana5Y.Add(0); Bana5Hinder.Add(2.2);
+            Bana5X.Add(14); Bana5Y.Add(2); Bana5Hinder.Add(2.2);
+            Bana5X.Add(14); Bana5Y.Add(3); Bana5Hinder.Add(2.2);
+
+            //kanpp
+            Bana5X.Add(0); Bana5Y.Add(5); Bana5Hinder.Add(4.41);
+            Bana5X.Add(0); Bana5Y.Add(5); Bana5Hinder.Add(4.11);
+            Bana5X.Add(7); Bana5Y.Add(4); Bana5Hinder.Add(4.11);
+            Bana5X.Add(13); Bana5Y.Add(6); Bana5Hinder.Add(4.42);
+            Bana5X.Add(13); Bana5Y.Add(6); Bana5Hinder.Add(4.12);
+
+            //ofylda
+            Bana5X.Add(13); Bana5Y.Add(2); Bana5Hinder.Add(3.1);
+            Bana5X.Add(13); Bana5Y.Add(8); Bana5Hinder.Add(3.22);
+
+            //teleport
+            Bana5X.Add(7); TPX.Add(7); Bana5Y.Add(5); TPY.Add(5); Bana5Hinder.Add(6.1); TPI.Add(1);
+            Bana5X.Add(14); TPX.Add(14); Bana5Y.Add(0); TPY.Add(0); Bana5Hinder.Add(6.1); TPI.Add(0);
+
+            Bana5X.Add(1); TPX.Add(1); Bana5Y.Add(5); TPY.Add(5); Bana5Hinder.Add(6.2); TPI.Add(3);
+            Bana5X.Add(14); TPX.Add(14); Bana5Y.Add(1); TPY.Add(1); Bana5Hinder.Add(6.2); TPI.Add(2);
+
+            Bana5X.Add(1); TPX.Add(1); Bana5Y.Add(8); TPY.Add(8); Bana5Hinder.Add(6.3); TPI.Add(5);
+            Bana5X.Add(12); TPX.Add(12); Bana5Y.Add(3); TPY.Add(3); Bana5Hinder.Add(6.3); TPI.Add(4);
+
+            Bana5X.Add(7); TPX.Add(7); Bana5Y.Add(3); TPY.Add(3); Bana5Hinder.Add(6.4); TPI.Add(7);
+            Bana5X.Add(11); TPX.Add(11); Bana5Y.Add(2); TPY.Add(2); Bana5Hinder.Add(6.4); TPI.Add(6);
+
+            //Riktning
+            Bana5X.Add(0); Bana5Y.Add(1); Bana5Hinder.Add(7.4);
+            Bana5X.Add(4); Bana5Y.Add(5); Bana5Hinder.Add(7.1);
+            Bana5X.Add(4); Bana5Y.Add(8); Bana5Hinder.Add(7.4);
+            Bana5X.Add(12); Bana5Y.Add(8); Bana5Hinder.Add(7.2);
+            Bana5X.Add(11); Bana5Y.Add(0); Bana5Hinder.Add(7.3);
+
+            //vanliga 
+            Bana5X.Add(14); Bana5Y.Add(9); Bana5Hinder.Add(1);
+            Bana5X.Add(12); Bana5Y.Add(2); Bana5Hinder.Add(1);
+        }
+        
+        bool PauseFT = false;
         bool TotalReset = false;
         bool Flytta = true;
+        int TestX = 0;
+        int TestY = 0;
         int Riktning = 0;
         int[] x = new int[2] {0,0};// Position, start position
         int[] y = new int[2] {0,0};// Position, start position
@@ -155,59 +370,103 @@ namespace Test_slut_Spel
         int Bana = 1;
         int Pause = 0;
 
-        Point Bana2Point = new Point(210, 110);
-        Point Bana1Point = new Point(12, 30);
+        Point Pause1 = new Point(12, 55);
+        Point Pause2 = new Point(220, 160);
+        Point Pause3 = new Point(97, 55);
+        Point Pause4 = new Point(147, 85);
+        Point Pause5 = new Point(97, 85);
+
+        Point GameOver1 = new Point(0, 55);
+        Point GameOver2 = new Point(118, 160);
+        Point GameOver3 = new Point(74, 55);
+        Point GameOver4 = new Point(124, 85);
+        Point GameOver5 = new Point(74, 85);
         Point point1 = new Point(445, 9);
         Point start = new Point(0, 0);
 
+        Point Bana1Point = new Point(210, 110);
+        Point Bana2Point = new Point(12, 30);
+        Point Bana3Point = new Point(130, 110);
+        Point Bana4Point = new Point(80, 80);
+        Point Bana5Point = new Point(130, 80);
+
+        Point Pil1 = new Point(0,0);
+        Point Pil2 = new Point(0,0);
+        Point Pil3 = new Point(0,0);
+
+        List<int> TPX = new List<int>();
+        List<int> TPY = new List<int>();
+        List<int> TPI = new List<int>();
+
         List<int> BanaX = new List<int>();
         List<int> BanaY = new List<int>();
-        List<int> BanaHinder = new List<int>();
+        List<double> BanaHinder = new List<double>();
         //Bana 1
-        List<int> Bana1X = new List<int>();
-        List<int> Bana1Y = new List<int>();
-        List<int> Bana1Hinder = new List<int>();
-        //bana 2
         List<int> Bana2X = new List<int>();
         List<int> Bana2Y = new List<int>();
-        List<int> Bana2Hinder = new List<int>();
+        List<double> Bana2Hinder = new List<double>();
+        //bana 2
+        List<int> Bana1X = new List<int>();
+        List<int> Bana1Y = new List<int>();
+        List<double> Bana1Hinder = new List<double>();
         //Bana 3
         List<int> Bana3X = new List<int>();
         List<int> Bana3Y = new List<int>();
-        List<int> Bana3Hinder = new List<int>();
+        List<double> Bana3Hinder = new List<double>();
         //Bana 4
+        List<int> Bana4X = new List<int>();
+        List<int> Bana4Y = new List<int>();
+        List<double> Bana4Hinder = new List<double>();
+        //Bana 5
+        List<int> Bana5X = new List<int>();
+        List<int> Bana5Y = new List<int>();
+        List<double> Bana5Hinder = new List<double>();
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (Flytta)
             {
-                if (e.KeyData == Keys.Up) { Riktning = 1; Flytttid.Start(); }
-                if (e.KeyData == Keys.Down) { Riktning = 2; Flytttid.Start(); }
-                if (e.KeyData == Keys.Right) { Riktning = 3; Flytttid.Start(); }
-                if (e.KeyData == Keys.Left) { Riktning = 4; Flytttid.Start(); }                
+                if (e.KeyData == Keys.Up) { Riktning = 1; Flytttid.Start(); TidTagning.Start(); }
+                if (e.KeyData == Keys.Down) { Riktning = 2; Flytttid.Start(); TidTagning.Start(); }
+                if (e.KeyData == Keys.Right) { Riktning = 3; Flytttid.Start(); TidTagning.Start(); }
+                if (e.KeyData == Keys.Left) { Riktning = 4; Flytttid.Start(); TidTagning.Start(); }                
             }
 
             //pause
             if (e.KeyData == Keys.P)
             {
+                Flytttid.Start(); 
                 Flytttid.Stop();
+
+                TidTagning.Start();
                 TidTagning.Stop();
+
+                PauseFT = true;
                 Pause = Bana; 
                 Bana = 0;
+
                 lblPausInfo.Text = "Tryck På S För Att Starta";
                 lblPaused.Text = "Paused";
+
                 panel1.Invalidate();
             }
 
             //Start
-            if (e.KeyData == Keys.S)
+            if (e.KeyData == Keys.S && PauseFT)
             {
-                Flytttid.Start();
-                TidTagning.Start();
+                if (Riktning != 0)
+                {
+                    Flytttid.Start();
+                    TidTagning.Start();
+                }
+                
+                PauseFT = false;
                 Bana = Pause;
                 Pause = 0;
+
                 lblPausInfo.Text = "Tryck På P För Att Pausa";
                 lblPaused.Text = "";
+
                 panel1.Invalidate();
             }
 
@@ -221,22 +480,31 @@ namespace Test_slut_Spel
             if (TotalReset)
             {
                 Liv = 3;
-                försök = 0;
-                
-                TidTagning.Start();
+                försök = 0;                                
 
                 Bana = 1;
+
+                Timme = 0;
+                Minut = 0;
+                Secund = 0;
+                Tick = 0;
+                lblTime.Text = "Tid: " + Timme + ":" + Minut + ":" + Secund + ":" + Tick;
 
                 lblPausInfo.Location = start;
                 lblPausInfo.Text = "Tryck På P För Att Pausa";
                 lblPaused.Text = "";
 
+
+                Riktning = 0;
                 Flytta = true;
                 TotalReset = false;
             }
             else
             {
                 Flytttid.Stop();
+                TidTagning.Stop();
+
+                Riktning = 0;
 
                 Flytta = true;
 
@@ -248,6 +516,9 @@ namespace Test_slut_Spel
 
             Bana1();
             Bana2();
+            Bana3();
+            Bana4();
+            Bana5();
 
             panel1.Invalidate();
         }
@@ -256,6 +527,14 @@ namespace Test_slut_Spel
         {
             TotalReset = true;
             Flytta = false;
+
+            if (Bana == 1) lblPaused.Location = GameOver1;
+            if (Bana == 2) lblPaused.Location = GameOver2;
+            if (Bana == 3) lblPaused.Location = GameOver3;
+            if (Bana == 4) lblPaused.Location = GameOver4;
+            if (Bana == 5) lblPaused.Location = GameOver5;
+
+            TidTagning.Stop();
 
             lblPaused.Text = "Game Over";
 
@@ -271,15 +550,18 @@ namespace Test_slut_Spel
 
             SolidBrush BorsteBlå = new SolidBrush(Color.Blue);   //Pjäs
 
-            SolidBrush BorsteLjusBlå = new SolidBrush(Color.LightBlue); //hinder 8
-            SolidBrush BorsteVit = new SolidBrush(Color.White);  //Hinder 1            
-            SolidBrush BorsteRöd = new SolidBrush(Color.Red);    //Hinde 2
-            SolidBrush Borstegrön = new SolidBrush(Color.Green); //Hinder 3 & Hinder 4 & Hinder 9
-            SolidBrush BorsteMål = new SolidBrush(Color.Gold);   //Hinder 7
+            SolidBrush BorsteLjusBlå = new SolidBrush(Color.LightBlue); 
+            SolidBrush BorsteVit = new SolidBrush(Color.White);              
+            SolidBrush BorsteRöd = new SolidBrush(Color.Red);    
+            SolidBrush Borstegrön = new SolidBrush(Color.Green); 
+            SolidBrush BorsteMål = new SolidBrush(Color.Gold);
 
-            Pen PennaLjusBlå = new Pen(Color.LightBlue);         //Hinder 10
-            Pen PennaGrön = new Pen(Color.Green);                //Hinder 5
-            Pen PennaRöd = new Pen(Color.Red);                   //Hinder 6
+            
+
+            Pen PennaBlå = new Pen(Color.Blue);
+            Pen PennaLjusBlå = new Pen(Color.LightBlue);         
+            Pen PennaGrön = new Pen(Color.Green);                
+            Pen PennaRöd = new Pen(Color.Red);                   
 
             lblLiv.Text = "Liv: " + Liv;
             lblFörsök.Text = "Försök: " + försök;
@@ -293,60 +575,193 @@ namespace Test_slut_Spel
 
             // Måla Banan
             for (int i = 0; i < BanaX.Count; i++)
-            {                
+            {         
+                //Vanliga
                 if (BanaHinder[i] == 1)
                 {
                     g.FillRectangle(BorsteVit, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
                 }
+                                                
+                //fylda
+                if((int)BanaHinder[i] == 2)
+                {
+                    if (BanaHinder[i] == 2.1)
+                    {
+                        g.FillRectangle(Borstegrön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                    }
+
+                    //döda
+                    if (BanaHinder[i] == 2.2 || BanaHinder[i] == 2.21)
+                    {
+                        g.FillRectangle(BorsteRöd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                    }
+
+                    if (BanaHinder[i] == 2.3)
+                    {
+                        g.FillRectangle(BorsteLjusBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                    }
+
+                    if (BanaHinder[i] == 2.4)
+                    {
+                        g.FillRectangle(BorsteBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                    }
+                }
+
+                //ofylda
+                if ((int)BanaHinder[i] == 3)
+                {
+                    if (BanaHinder[i] == 3.1)
+                    {
+                        g.DrawRectangle(PennaGrön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek - 1, Storlek - 1);
+                    }
+
+                    if (BanaHinder[i] == 3.22|| BanaHinder[i] == 3.21)
+                    {
+                        g.DrawRectangle(PennaRöd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek - 1, Storlek - 1);
+                    }
+
+                    if (BanaHinder[i] == 3.3)
+                    {
+                        g.DrawRectangle(PennaLjusBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                    }
+
+                    if (BanaHinder[i] == 3.4)
+                    {
+                        g.DrawRectangle(PennaBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                    }
+                }
+
+                //knapp
+                if ((int)BanaHinder[i] == 4)
+                {
+                    if(BanaHinder[i] == 4.11 /*fyld till ofyld*/ || BanaHinder[i] == 4.12 /*ofyld till fyld*/)
+                    {
+                        g.FillEllipse(Borstegrön, BanaX[i] * Storlek-1, BanaY[i] * Storlek-1, Storlek+1, Storlek+1);
+                    }
+
+                    if (BanaHinder[i] == 4.21 /*fyld till ofyld*/ || BanaHinder[i] == 4.22 /*ofyld till fyld*/)
+                    {
+                        g.FillEllipse(BorsteLjusBlå, BanaX[i] * Storlek-1, BanaY[i] * Storlek-1, Storlek+1, Storlek+1);
+                    }
+
+                    if (BanaHinder[i] == 4.31 /*fyld till ofyld*/ || BanaHinder[i] == 4.32 /*ofyld till fyld*/)
+                    {
+                        g.FillEllipse(BorsteBlå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
+                    }
+
+                    if (BanaHinder[i] == 4.41 /*fyld till ofyld*/ || BanaHinder[i] == 4.42 /*ofyld till fyld*/)
+                    {
+                        g.FillEllipse(BorsteRöd, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
+                    }
+                }                
                 
-                if (BanaHinder[i] == 2)
-                {
-                    g.FillRectangle(BorsteRöd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                }
-
-                if (BanaHinder[i] == 3)
-                {
-                    g.FillRectangle(Borstegrön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                }
-
-                if (BanaHinder[i] == 4 || BanaHinder[i] == 9)
-                {
-                    g.FillEllipse(Borstegrön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                }
-
+                //Mål
                 if (BanaHinder[i] == 5)
                 {
-                    g.DrawRectangle(PennaGrön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek-1, Storlek-1);
-                }
-
-                if (BanaHinder[i] == 6)
-                {
-                    g.DrawRectangle(PennaRöd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek - 1, Storlek - 1);
-                }
-
-                if (BanaHinder[i] == 7)
-                {
                     g.FillRectangle(BorsteMål, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                }
-
-                if (BanaHinder[i] == 8)
+                }                
+                
+                //Teleport
+                if ((int)BanaHinder[i] == 6)
                 {
-                    g.FillEllipse(BorsteLjusBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                    if (BanaHinder[i] == 6.1)
+                    {
+                        g.FillRectangle(BorsteBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+
+                        g.FillEllipse(BorsteLjusBlå, BanaX[i] * Storlek-1, BanaY[i] * Storlek-1, Storlek+1, Storlek+1);
+                    }
+
+                    if (BanaHinder[i] == 6.2)
+                    {
+                        g.FillRectangle(Borstegrön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+
+                        g.FillEllipse(BorsteLjusBlå, BanaX[i] * Storlek-1, BanaY[i] * Storlek-1, Storlek+1, Storlek+1);
+                    }
+
+                    if (BanaHinder[i] == 6.3)
+                    {
+                        g.FillRectangle(BorsteRöd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+
+                        g.FillEllipse(BorsteLjusBlå, BanaX[i] * Storlek-1, BanaY[i] * Storlek-1, Storlek+1, Storlek+1);
+                    }
+
+                    if (BanaHinder[i] == 6.4)
+                    {
+                        g.FillRectangle(BorsteRöd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+
+                        g.FillEllipse(Borstegrön, BanaX[i] * Storlek-1, BanaY[i] * Storlek-1, Storlek+1, Storlek+1);
+                    }
                 }
 
-                if(BanaHinder[i] == 11)
+                //riktning
+                if ((int)BanaHinder[i] == 7)
                 {
-                    g.FillRectangle(BorsteLjusBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                }
+                    //ner
+                    if (BanaHinder[i] == 7.2)
+                    {
+                        Pil1.X = ((BanaX[i] * Storlek));
+                        Pil1.Y = ((BanaY[i] * Storlek) + ((Storlek / 2)));
 
-                if (BanaHinder[i] == 10)
-                {
-                    g.DrawRectangle(PennaLjusBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                }
+                        Pil2.X = ((BanaX[i] * Storlek) + Storlek);
+                        Pil2.Y = (BanaY[i] * Storlek + (Storlek / 2));
 
+                        Pil3.X = (BanaX[i] * Storlek) + (Storlek / 2);
+                        Pil3.Y = (BanaY[i] * Storlek) + Storlek;
+
+                        g.FillRectangle(BorsteBlå, (BanaX[i] * Storlek) + ((Storlek / 4)), BanaY[i] * Storlek, (Storlek / 2), Storlek / 2);
+                    }
+
+                    //upp
+                    if (BanaHinder[i] == 7.1)
+                    {
+                        Pil1.X = ((BanaX[i] * Storlek) - 2);
+                        Pil1.Y = ((BanaY[i] * Storlek) + ((Storlek / 2)) );
+
+                        Pil2.X = ((BanaX[i] * Storlek) + Storlek);
+                        Pil2.Y = (BanaY[i] * Storlek + (Storlek / 2));
+
+                        Pil3.X = (BanaX[i] * Storlek) + (Storlek / 2);
+                        Pil3.Y = (BanaY[i] * Storlek) - 1;
+
+                        g.FillRectangle(BorsteBlå, (BanaX[i] * Storlek) + ((Storlek / 4 )), BanaY[i] * Storlek + (Storlek / 2), (Storlek / 2), Storlek / 2);
+                    }
+
+                    //vänster
+                    if (BanaHinder[i] == 7.4)
+                    {
+                        Pil1.X = ((BanaX[i] * Storlek) + ((Storlek / 2)));
+                        Pil1.Y = ((BanaY[i] * Storlek) - 2);
+
+                        Pil2.X = ((BanaX[i] * Storlek) + ((Storlek / 2)));
+                        Pil2.Y = (BanaY[i] * Storlek + Storlek);
+
+                        Pil3.X = (BanaX[i] * Storlek) - 1;
+                        Pil3.Y = (BanaY[i] * Storlek + (Storlek / 2));
+
+                        g.FillRectangle(BorsteBlå, (BanaX[i] * Storlek) + (Storlek/2), BanaY[i] * Storlek + ((Storlek / 2) - (Storlek / 4)), Storlek / 2, Storlek / 2);
+                    }
+
+                    //höger
+                    if (BanaHinder[i] == 7.3)
+                    {
+                        Pil1.X = ((BanaX[i] * Storlek) + (Storlek / 2));
+                        Pil1.Y = ((BanaY[i] * Storlek) - 1);
+
+                        Pil2.X = ((BanaX[i] * Storlek) + (Storlek / 2));
+                        Pil2.Y = (BanaY[i] * Storlek + Storlek);
+
+                        Pil3.X = ((BanaX[i] * Storlek) + Storlek);
+                        Pil3.Y = (BanaY[i] * Storlek + (Storlek / 2));
+
+                        g.FillRectangle(BorsteBlå, BanaX[i] * Storlek, BanaY[i] * Storlek + ((Storlek / 2) - (Storlek / 4)), Storlek / 2, Storlek / 2);
+                    }
+                                        
+                    g.FillPolygon(BorsteBlå, new Point[] { Pil1, Pil2, Pil3 });
+                }
             }
+
             // Måla pjäs
-            g.FillEllipse(BorsteBlå, x[0] * Storlek, y[0] * Storlek, Storlek, Storlek);
+            g.FillEllipse(BorsteBlå, x[0] * Storlek-1, y[0] * Storlek-1, Storlek+1, Storlek+1);
         }
         
         /// <summary>
@@ -358,139 +773,226 @@ namespace Test_slut_Spel
         {            
             BanaX = new List<int>();
             BanaY = new List<int>();
-            BanaHinder = new List<int>();
+            BanaHinder = new List<double>();
 
             if (Bana == 1) { BanaX = Bana1X; BanaY = Bana1Y; BanaHinder = Bana1Hinder; }
             if (Bana == 2) { BanaX = Bana2X; BanaY = Bana2Y; BanaHinder = Bana2Hinder; }
             if (Bana == 3) { BanaX = Bana3X; BanaY = Bana3Y; BanaHinder = Bana3Hinder; }
-
-            /*
-            
             if (Bana == 4) { BanaX = Bana4X; BanaY = Bana4Y; BanaHinder = Bana4Hinder; }
-            if (Bana == 5) { BanaX = Bana5X; BanaY = Bana5Y; BanaHinder = Bana5Hinder; }
-            */
+            if (Bana == 5) { BanaX = Bana5X; BanaY = Bana5Y; BanaHinder = Bana5Hinder; }                        
+        }
+
+        private void FlyttaEttSteg()
+        {
+            //neråt
+            if (Riktning == 1)
+            {
+                TestY--;
+            }
+
+            //uppåt
+            if (Riktning == 2)
+            {
+                TestY++;
+            }
+
+            //vänster
+            if (Riktning == 3)
+            {
+                TestX++;
+            }
+
+            //höger
+            if (Riktning == 4)
+            {
+                TestX--;
+            }                        
         }
 
         private void Flytttid_Tick(object sender, EventArgs e)
         {
             Flytta = false;
 
-            int TestX = x[0];
-            int TestY = y[0];
-            //neråt
-            if (Riktning == 1)
-            {
-                TestY--;
-            }
-            //uppåt
-            if (Riktning == 2)
-            {
-                TestY++;
-            }
-            //vänster
-            if (Riktning == 3)
-            {
-                TestX++;
-            }
-            //höger
-            if (Riktning == 4)
-            {
-                TestX--;
-            }
+            TestX = x[0];
+            TestY = y[0];
+
+            FlyttaEttSteg();
 
             BanaTyp();
+            
             //Händelser
             for (int i = 0; i < BanaX.Count; i++)
             {
-                //Knapp/Hinder 4
-                if (BanaX[i] == x[0] && BanaY[i] == y[0] && BanaHinder[i] == 4)
+                //Sväva ovan
+                if(BanaX[i] == x[0] && BanaY[i] == y[0])
                 {
-                    while (BanaHinder.Contains(3))
+                    //knapp
+                    if ((int)BanaHinder[i] == 4)
+                    {                        
+                        if (BanaHinder[i] == 4.11)
+                        {
+                            while (BanaHinder.Contains(2.1))
+                            {
+                                BanaHinder[BanaHinder.IndexOf(2.1)] = 3.1;
+                            }                            
+                        }
+                        
+                        if (BanaHinder[i] == 4.12)
+                        {
+                            while (BanaHinder.Contains(3.1))
+                            {
+                                BanaHinder[BanaHinder.IndexOf(3.1)] = 2.1;
+                            }
+                        }                        
+
+                        if (BanaHinder[i] == 4.21)
+                        {
+                            while (BanaHinder.Contains(2.3))
+                            {
+                                BanaHinder[BanaHinder.IndexOf(2.3)] = 3.3;
+                            }
+                        }
+
+                        if (BanaHinder[i] == 4.22)
+                        {
+                            while (BanaHinder.Contains(3.3))
+                            {
+                                BanaHinder[BanaHinder.IndexOf(3.3)] = 2.3;
+                            }
+                        }
+
+                        if (BanaHinder[i] == 4.31)
+                        {
+                            while (BanaHinder.Contains(2.4))
+                            {
+                                BanaHinder[BanaHinder.IndexOf(2.4)] = 3.4;
+                            }
+                        }
+
+                        if (BanaHinder[i] == 4.32)
+                        {
+                            while (BanaHinder.Contains(3.4))
+                            {
+                                BanaHinder[BanaHinder.IndexOf(3.4)] = 2.4;
+                            }
+                        }
+
+                        if (BanaHinder[i] == 4.41)
+                        {
+                            while (BanaHinder.Contains(2.21))
+                            {
+                                BanaHinder[BanaHinder.IndexOf(2.21)] = 3.22;
+                            }
+                        }                        
+
+                        if (BanaHinder[i] == 4.42)
+                        {
+                            while (BanaHinder.Contains(3.22))
+                            {
+                                BanaHinder[BanaHinder.IndexOf(3.22)] = 2.21;
+                            }
+                        }
+
+
+                    }
+                    
+                    //Mål
+                    if (BanaHinder[i] == 5)
                     {
-                        BanaHinder[BanaHinder.IndexOf(3)] = 5;
+                        Mål();
+                        Flytta = true;
+                        TestX = x[0];
+                        TestY = y[0];
                     }
 
-                    while(BanaHinder.Contains(2) && Bana == 1)                    
-                    {                                                
-                        BanaHinder[BanaHinder.IndexOf(2)] = 6;                        
-                    }                                        
-                }
-
-                //Kanpp/hinder 9
-                if(BanaX[i] == x[0] && BanaY[i] == y[0] && BanaHinder[i] == 9)
-                {
-                    while (BanaHinder.Contains(5))
+                    //teleport
+                    if ((int)BanaHinder[i] == 6)
                     {
-                        BanaHinder[BanaHinder.IndexOf(5)] = 3;
+                        for (int t = 0; t < TPX.Count; t++)
+                        {
+                            if (TPX[t] == x[0] && TPY[t] == y[0])
+                            {
+                                TestX = TPX[TPI[t]];
+                                TestY = TPY[TPI[t]];
+
+                                FlyttaEttSteg();
+                                
+                                continue;
+                            }
+                        }
+                    }
+                    
+                    //Riktning
+                    if((int)BanaHinder[i] == 7)
+                    {
+                        //ner
+                        if (BanaHinder[i] == 7.1)
+                        {
+                            Riktning = 2;
+                        }
+
+                        //up
+                        if (BanaHinder[i] == 7.2)
+                        {
+                            Riktning = 1;
+                        }
+
+                        //vänster
+                        if (BanaHinder[i] == 7.3)
+                        {
+                            Riktning = 4;
+                        }
+
+                        //höger
+                        if (BanaHinder[i] == 7.4)
+                        {
+                            Riktning = 3;
+                        }
+                        return;
                     }
                 }
-
-                //Kanpp/hinder 8
-                if (BanaX[i] == x[0] && BanaY[i] == y[0] && BanaHinder[i] == 8)
-                {
-                    while (BanaHinder.Contains(10))
-                    {
-                        BanaHinder[BanaHinder.IndexOf(10)] = 11;
-                    }
-                }
-
+                                
                 //out of bounds
                 if (x[0] > (panel1.Width / Storlek) || x[0] < 0 || y[0] < 0 || y[0] > (panel1.Height / Storlek))
                 {
-                    Flytttid.Stop();
-
-                    Flytta = true;
-
-                    x[0] = x[1];
-                    y[0] = y[1];
-                    försök++;
+                    Reset();
+                    
                     Liv--;
-
+                    
                     panel1.Invalidate();
 
                     return;
                 }
-
-                //Mål
-                if (BanaX[i] == x[0] && BanaY[i] == y[0] && BanaHinder[i] == 7)
-                {
-                    Mål();
-                }
-
+                
                 //Kolition
                 if (BanaX[i] == TestX && BanaY[i] == TestY)
                 {
                     //Vanliga block
-                    if (BanaHinder[i] == 1 || BanaHinder[i] == 3 || BanaHinder[i] == 11)
+                    if (BanaHinder[i] == 1 || (int)BanaHinder[i] == 2)
                     {
-                        Flytttid.Stop();
+                        //Döda block
+                        if (BanaHinder[i] == 2.2|| BanaHinder[i] == 2.21)
+                        {
+                            Reset();
 
-                        Flytta = true;                        
+                            TestX = x[1];
+                            TestY = y[1];
+                            
+                            Liv--;
+                        }
+                        else
+                        {
+                            Flytttid.Stop();
 
-                        return;
-                    }
+                            Flytta = true;
 
-                    //Döda block
-                    if (BanaHinder[i] == 2)
-                    {
-                        Flytttid.Stop();
-
-                        Flytta = true;
-                        
-                        TestX = x[1];
-                        TestY = y[1];
-                        försök++;
-                        Liv--;
-                    }
-
-                    if(BanaHinder[i] == 5)
-                    {
-                        
-                    }   
+                            return;
+                        }                        
+                    }                                         
                 }
                 panel1.Invalidate();
-            }
-            
+            }            
+
             x[0] = TestX;
             y[0] = TestY;
             panel1.Invalidate();
@@ -502,6 +1004,11 @@ namespace Test_slut_Spel
 
             Bana1();
             Bana2();
+            Bana3();
+            Bana4();
+            Bana5();
+
+            Riktning = 0;
 
             TidTagning.Stop();
             Flytttid.Stop();
