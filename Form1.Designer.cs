@@ -37,7 +37,14 @@
             this.lblFörsök = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblPausInfo = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnLevelMaker = new System.Windows.Forms.Button();
+            this.btnHighScore = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -105,12 +112,72 @@
             this.lblPausInfo.TabIndex = 4;
             this.lblPausInfo.Text = "Tryck På P För Att Pausa";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.btnLevelMaker);
+            this.panel2.Controls.Add(this.btnHighScore);
+            this.panel2.Controls.Add(this.btnStart);
+            this.panel2.Location = new System.Drawing.Point(612, 10);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(560, 380);
+            this.panel2.TabIndex = 5;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel2_Paint);
+            // 
+            // btnLevelMaker
+            // 
+            this.btnLevelMaker.Enabled = false;
+            this.btnLevelMaker.Location = new System.Drawing.Point(240, 300);
+            this.btnLevelMaker.Name = "btnLevelMaker";
+            this.btnLevelMaker.Size = new System.Drawing.Size(80, 20);
+            this.btnLevelMaker.TabIndex = 2;
+            this.btnLevelMaker.Text = "Level Maker";
+            this.btnLevelMaker.UseVisualStyleBackColor = true;
+            // 
+            // btnHighScore
+            // 
+            this.btnHighScore.Enabled = false;
+            this.btnHighScore.Location = new System.Drawing.Point(240, 260);
+            this.btnHighScore.Name = "btnHighScore";
+            this.btnHighScore.Size = new System.Drawing.Size(80, 20);
+            this.btnHighScore.TabIndex = 1;
+            this.btnHighScore.Text = "High Score";
+            this.btnHighScore.UseVisualStyleBackColor = true;
+            // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(240, 220);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(80, 20);
+            this.btnStart.TabIndex = 0;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Location = new System.Drawing.Point(12, 396);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(560, 380);
+            this.panel3.TabIndex = 6;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Black;
+            this.panel4.Location = new System.Drawing.Point(612, 396);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(560, 380);
+            this.panel4.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(584, 401);
+            this.ClientSize = new System.Drawing.Size(1184, 749);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblPausInfo);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblFörsök);
@@ -121,6 +188,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,6 +204,12 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblPaused;
         private System.Windows.Forms.Label lblPausInfo;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnLevelMaker;
+        private System.Windows.Forms.Button btnHighScore;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
     }
 }
 
