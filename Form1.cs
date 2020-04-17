@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +17,25 @@ namespace RockyRoad
         {
             InitializeComponent();
             Meny();
-            Bana1();            
+            Bana1();
+
+            cbxHinder.Items.Add("Block");
+            cbxHinder.Items.Add("Döda");
+            cbxHinder.Items.Add("Apearing Hinder");
+            cbxHinder.Items.Add("Mål");
+            cbxHinder.Items.Add("Start");
+            cbxHinder.Items.Add("Disapearing Hinder");
+
+            cbxNamn.Items.Add("BanaCostum1");
+            cbxNamn.Items.Add("BanaCostum2");
+            cbxNamn.Items.Add("BanaCostum3");
         }
 
         private void Meny()
         {
             Width = 600;
             Height = 440;
-            panel2.Location = Meny1;
+            pnlStartMeny.Location = Meny1;
 
             //R
             MenyX.Add(2); MenyY.Add(2); MenyHinder.Add(1);
@@ -151,9 +163,9 @@ namespace RockyRoad
         {
             if (Bana == 1)
             {
-                panel1.Location = Bana1Point;
-                panel1.Height = 140;
-                panel1.Width = 140;
+                pnlBana.Location = Bana1Point;
+                pnlBana.Height = 140;
+                pnlBana.Width = 140;
 
                 lblPaused.Location = Pause1;
 
@@ -186,9 +198,9 @@ namespace RockyRoad
         {
             if (Bana == 2)
             {
-                panel1.Location = Bana2Point;
-                panel1.Height = 360;
-                panel1.Width = 560;
+                pnlBana.Location = Bana2Point;
+                pnlBana.Height = 360;
+                pnlBana.Width = 560;
 
                 lblPaused.Location = Pause2;
 
@@ -287,9 +299,9 @@ namespace RockyRoad
         {
             if(Bana == 3)
             {
-                panel1.Location = Bana3Point;
-                panel1.Height = 140;
-                panel1.Width = 300;
+                pnlBana.Location = Bana3Point;
+                pnlBana.Height = 140;
+                pnlBana.Width = 300;
 
                 lblPaused.Location = Pause3;
 
@@ -345,9 +357,9 @@ namespace RockyRoad
         {
             if (Bana == 4)
             {
-                panel1.Location = Bana4Point;
-                panel1.Height = 200;
-                panel1.Width = 400;
+                pnlBana.Location = Bana4Point;
+                pnlBana.Height = 200;
+                pnlBana.Width = 400;
 
                 lblPaused.Location = Pause4;
 
@@ -416,9 +428,9 @@ namespace RockyRoad
         {
             if (Bana == 5)
             {
-                panel1.Location = Bana5Point;
-                panel1.Height = 200;
-                panel1.Width = 300;
+                pnlBana.Location = Bana5Point;
+                pnlBana.Height = 200;
+                pnlBana.Width = 300;
 
                 lblPaused.Location = Pause5;
 
@@ -480,22 +492,22 @@ namespace RockyRoad
             Bana5X.Add(14); Bana5Y.Add(9); Bana5Hinder.Add(1);
             Bana5X.Add(12); Bana5Y.Add(2); Bana5Hinder.Add(1);
         }
-
-        bool Start = false;
+        
         bool PauseFT = false;
         bool TotalReset = false;
+
         bool Flytta = true;
         int TestX = 0;
         int TestY = 0;
         int Riktning = 0;
-        int[] x = new int[2] {0,0};// Position, start position
-        int[] y = new int[2] {0,0};// Position, start position
-
+        int[] x = new int[2] {0,0};// {Position,start position}
+        int[] y = new int[2] {0,0};// {Position,start position}
+        //tidtagning
         int Timme = 0;
         int Minut = 0;
         int Secund = 0;
         int Tick = 0;
-
+        //spel Relaterat
         int Liv = 3;
         int försök = 0;
         int Storlek = 20;
@@ -587,7 +599,7 @@ namespace RockyRoad
                 lblPausInfo.Text = "Tryck På S För Att Starta";
                 lblPaused.Text = "Paused";
 
-                panel1.Invalidate();
+                pnlBana.Invalidate();
             }
 
             //Start
@@ -606,7 +618,7 @@ namespace RockyRoad
                 lblPausInfo.Text = "Tryck På P För Att Pausa";
                 lblPaused.Text = "";
 
-                panel1.Invalidate();
+                pnlBana.Invalidate();
             }
 
             if (e.KeyData == Keys.R) { Reset(); }
@@ -659,7 +671,7 @@ namespace RockyRoad
             Bana4();
             Bana5();
 
-            panel1.Invalidate();
+            pnlBana.Invalidate();
         }
 
         private void GameOver()
@@ -698,12 +710,7 @@ namespace RockyRoad
             Pen PennaBlå = new Pen(Color.Blue);
             Pen PennaLjusBlå = new Pen(Color.LightBlue);         
             Pen PennaGrön = new Pen(Color.Green);                
-            Pen PennaRöd = new Pen(Color.Red);
-
-            if (Start)
-            {
-                return;
-            }
+            Pen PennaRöd = new Pen(Color.Red);            
 
             lblLiv.Text = "Liv: " + Liv;
             lblFörsök.Text = "Försök: " + försök;
@@ -1074,13 +1081,13 @@ namespace RockyRoad
                 }
                                 
                 //out of bounds
-                if (x[0] > (panel1.Width / Storlek) || x[0] < 0 || y[0] < 0 || y[0] > (panel1.Height / Storlek))
+                if (x[0] > (pnlBana.Width / Storlek) || x[0] < 0 || y[0] < 0 || y[0] > (pnlBana.Height / Storlek))
                 {
                     Reset();
                     
                     Liv--;
                     
-                    panel1.Invalidate();
+                    pnlBana.Invalidate();
 
                     return;
                 }
@@ -1140,12 +1147,12 @@ namespace RockyRoad
                         }                        
                     }                                         
                 }
-                panel1.Invalidate();
+                pnlBana.Invalidate();
             }            
 
             x[0] = TestX;
             y[0] = TestY;
-            panel1.Invalidate();
+            pnlBana.Invalidate();
         }
 
         private void Mål()
@@ -1163,7 +1170,7 @@ namespace RockyRoad
             TidTagning.Stop();
             Flytttid.Stop();
 
-            panel1.Invalidate();
+            pnlBana.Invalidate();
         }
 
         private void TidTagning_Tick(object sender, EventArgs e)
@@ -1241,6 +1248,223 @@ namespace RockyRoad
                     }                    
                 }
             }
+        }
+
+        private void BtnStart_Click(object sender, EventArgs e)
+        {           
+            pnlBana.Enabled = true;
+            pnlStartMeny.Location = Meny2;
+            pnlStartMeny.Enabled = false;
+            pnlBana.Invalidate();            
+        }
+
+        private void BtnHighScore_Click(object sender, EventArgs e)
+        {
+            pnlHighScore.Enabled = true;
+            pnlStartMeny.Location = Meny2;
+            pnlHighScore.Location = Meny1;
+            pnlStartMeny.Enabled = false;
+            pnlHighScore.Invalidate();
+        }
+
+        private void BtnLevelMaker_Click(object sender, EventArgs e)
+        {
+            pnlLevelMaker.Enabled = true;
+            pnlStartMeny.Location = Meny2;
+            pnlLevelMaker.Location = Meny1;
+            pnlStartMeny.Enabled = false;
+            pnlLevelMaker.Invalidate();
+        }
+
+        List<double> Hindertyp = new List<double>();
+        List<int> xList = new List<int>();
+        List<int> yList = new List<int>();
+        int StorlekX = 20;
+        int StorlekY = 20;
+        double Hinder = 1;
+
+        string sökväg = @"BanaCostum1.txt";
+
+        private void PnlLevelMakerPaint_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            Pen PVit = new Pen(Color.White);
+
+            SolidBrush Vit = new SolidBrush(Color.White);
+            SolidBrush Blå = new SolidBrush(Color.Blue);
+            SolidBrush Red = new SolidBrush(Color.Red);
+            SolidBrush Gul = new SolidBrush(Color.Yellow);
+            SolidBrush Grön = new SolidBrush(Color.Green);
+            SolidBrush Ljusblå = new SolidBrush(Color.LightBlue);
+
+            for (int x = 0; x < pnlLevelMakerPaint.Width; x += StorlekX)
+            {
+                g.DrawLine(PVit, x, 0, x, pnlLevelMakerPaint.Height);
+            }
+
+            for (int y = 0; y < pnlLevelMakerPaint.Height; y += StorlekY)
+            {
+                g.DrawLine(PVit, 0, y, pnlLevelMakerPaint.Width, y);
+            }
+
+            for (int i = 0; i < xList.Count; i++)
+            {
+                if (Hindertyp[i] == 1)
+                {
+                    g.FillRectangle(Vit, xList[i] * StorlekX, yList[i] * StorlekY, StorlekX, StorlekY);
+                }
+                if (Hindertyp[i] == 2.2)
+                {
+                    g.FillRectangle(Red, xList[i] * StorlekX, yList[i] * StorlekY, StorlekX, StorlekY);
+                }
+                if (Hindertyp[i] == 2.4)
+                {
+                    g.FillRectangle(Blå, xList[i] * StorlekX, yList[i] * StorlekY, StorlekX, StorlekY);
+                }
+                if (Hindertyp[i] == 2.3)
+                {
+                    g.FillRectangle(Ljusblå, xList[i] * StorlekX, yList[i] * StorlekY, StorlekX, StorlekY);
+                }
+                if (Hindertyp[i] == 2.5 || Hindertyp[i] == 5)
+                {
+                    g.FillRectangle(Gul, xList[i] * StorlekX, yList[i] * StorlekY, StorlekX, StorlekY);
+                }
+                if (Hindertyp[i] == 2.1)
+                {
+                    g.FillRectangle(Grön, xList[i] * StorlekX, yList[i] * StorlekY, StorlekX, StorlekY);
+                }
+            }
+        }
+
+        private void PnlLevelMakerPaint_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (xList.Count != 0)
+            {
+                for (int i = 0; i < xList.Count; i++)
+                {
+                    if ((xList[i] == (e.X / StorlekX)) == true && (yList[i] == (e.Y / StorlekY)) == true)
+                    {
+                        Hindertyp.RemoveAt(i);
+                        xList.RemoveAt(i);
+                        yList.RemoveAt(i);
+                        break;
+                    }
+                    else
+                    {
+                        Hindertyp.Add(Hinder);
+                        xList.Add(e.X / StorlekX);
+                        yList.Add(e.Y / StorlekY);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Hindertyp.Add(Hinder);
+                xList.Add(e.X / StorlekX);
+                yList.Add(e.Y / StorlekY);
+            }
+
+            pnlLevelMakerPaint.Invalidate();
+        }
+
+        private void BtnRänsa_Click(object sender, EventArgs e)
+        {
+            xList.Clear();
+            yList.Clear();
+            pnlLevelMakerPaint.Invalidate();
+        }
+
+        private void CbxFärg_TextChanged(object sender, EventArgs e)
+        {
+            if ("Vit" == this.cbxFärg.SelectedItem.ToString()) { }
+            if ("Röd" == this.cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.2; if ((int)Hinder == 3) Hinder = 3.2; }
+            if ("Blå" == this.cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.4; if ((int)Hinder == 3) Hinder = 3.4; }
+            if ("Gul" == this.cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.5; if ((int)Hinder == 3) Hinder = 3.5; }
+            if ("Ljusblå" == this.cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.3; if ((int)Hinder == 3) Hinder = 3.3; }
+            if ("Grön" == this.cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.1; if ((int)Hinder == 3) Hinder = 3.1; }
+        }
+
+        private void CbxHinder_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ("Block" == this.cbxHinder.SelectedItem.ToString())
+            {
+                Hinder = 1;
+                cbxFärg.Enabled = false;
+                cbxFärg.Items.Clear();
+                cbxFärg.Items.Add("Vit");
+                cbxFärg.SelectedItem = "Vit";
+            }
+
+            if ("Döda" == this.cbxHinder.SelectedItem.ToString())
+            {
+                Hinder = 2.2;
+                cbxFärg.Enabled = false;
+                cbxFärg.Items.Add("Röd");
+                cbxFärg.SelectedItem = "Röd";
+            }
+
+            if ("Apearing Hinder" == this.cbxHinder.SelectedItem.ToString())
+            {
+                Hinder = 2;
+                cbxFärg.Enabled = true;
+                cbxFärg.Items.Clear();
+                cbxFärg.Items.Add("Grön");
+                cbxFärg.Items.Add("Blå");
+                cbxFärg.Items.Add("Röd");
+                cbxFärg.Items.Add("Gul");
+                cbxFärg.Items.Add("Ljusblå");
+                cbxFärg.SelectedItem = "Grön";
+            }
+
+            if ("Mål" == this.cbxHinder.SelectedItem.ToString())
+            {
+                Hinder = 5;
+                cbxFärg.Enabled = false;
+                cbxFärg.Items.Clear();
+                cbxFärg.Items.Add("Gul");
+                cbxFärg.SelectedItem = "Gul";
+            }
+
+            if ("Start" == this.cbxHinder.SelectedItem.ToString())
+            {
+                Hinder = 0;
+                cbxFärg.Enabled = false;
+                cbxFärg.Text = "Blå";
+            }
+
+            if ("Disapearing Hinder" == this.cbxHinder.SelectedItem.ToString())
+            {
+                Hinder = 3;
+                cbxFärg.Enabled = true;
+                cbxFärg.Items.Clear();
+                cbxFärg.Items.Add("Grön");
+                cbxFärg.Items.Add("Blå");
+                cbxFärg.Items.Add("Röd");
+                cbxFärg.Items.Add("Gul");
+                cbxFärg.Items.Add("Ljusblå");
+                cbxFärg.SelectedItem = "Grön";
+            }
+        }
+
+        private void BtnBekräfta_Click(object sender, EventArgs e)
+        {
+            if (int.Parse(tbxX.Text) > 28) { tbxX.Text = "28"; }
+            if (int.Parse(tbxY.Text) > 18) { tbxY.Text = "18"; }
+            StorlekX = 400 / int.Parse(tbxX.Text);
+            StorlekY = 300 / int.Parse(tbxY.Text);
+            pnlLevelMakerPaint.Width = StorlekX * int.Parse(tbxX.Text);
+            pnlLevelMakerPaint.Height = StorlekY * int.Parse(tbxY.Text);
+
+            pnlLevelMakerPaint.Invalidate();
+        }
+
+        private void CbxNamn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ("BanaCostum1" == this.cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum1.txt"; }
+            if ("BanaCostum2" == this.cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum2.txt"; }
+            if ("BanaCostum3" == this.cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum3.txt"; }
         }
     }
 }
