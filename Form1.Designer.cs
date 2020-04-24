@@ -43,6 +43,7 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.pnlHighScore = new System.Windows.Forms.Panel();
             this.pnlLevelMaker = new System.Windows.Forms.Panel();
+            this.btnMeny = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.cbxNamn = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,7 +53,7 @@
             this.tbxY = new System.Windows.Forms.TextBox();
             this.tbxX = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblFärg = new System.Windows.Forms.Label();
             this.cbxHinder = new System.Windows.Forms.ComboBox();
             this.cbxFärg = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.btnLäsa = new System.Windows.Forms.Button();
             this.btnSpara = new System.Windows.Forms.Button();
             this.pnlLevelMakerPaint = new System.Windows.Forms.Panel();
-            this.btnMeny = new System.Windows.Forms.Button();
             this.pnlBana.SuspendLayout();
             this.pnlStartMeny.SuspendLayout();
             this.pnlLevelMaker.SuspendLayout();
@@ -127,7 +127,7 @@
             // lblPausInfo
             // 
             this.lblPausInfo.AutoSize = true;
-            this.lblPausInfo.Location = new System.Drawing.Point(452, 9);
+            this.lblPausInfo.Location = new System.Drawing.Point(445, 9);
             this.lblPausInfo.Name = "lblPausInfo";
             this.lblPausInfo.Size = new System.Drawing.Size(127, 13);
             this.lblPausInfo.TabIndex = 4;
@@ -147,7 +147,6 @@
             // 
             // btnLevelMaker
             // 
-            this.btnLevelMaker.Enabled = false;
             this.btnLevelMaker.Location = new System.Drawing.Point(240, 300);
             this.btnLevelMaker.Name = "btnLevelMaker";
             this.btnLevelMaker.Size = new System.Drawing.Size(80, 20);
@@ -199,7 +198,7 @@
             this.pnlLevelMaker.Controls.Add(this.tbxY);
             this.pnlLevelMaker.Controls.Add(this.tbxX);
             this.pnlLevelMaker.Controls.Add(this.label3);
-            this.pnlLevelMaker.Controls.Add(this.label2);
+            this.pnlLevelMaker.Controls.Add(this.lblFärg);
             this.pnlLevelMaker.Controls.Add(this.cbxHinder);
             this.pnlLevelMaker.Controls.Add(this.cbxFärg);
             this.pnlLevelMaker.Controls.Add(this.label1);
@@ -212,6 +211,16 @@
             this.pnlLevelMaker.Name = "pnlLevelMaker";
             this.pnlLevelMaker.Size = new System.Drawing.Size(560, 400);
             this.pnlLevelMaker.TabIndex = 7;
+            // 
+            // btnMeny
+            // 
+            this.btnMeny.Location = new System.Drawing.Point(20, 348);
+            this.btnMeny.Name = "btnMeny";
+            this.btnMeny.Size = new System.Drawing.Size(75, 23);
+            this.btnMeny.TabIndex = 35;
+            this.btnMeny.Text = "Meny";
+            this.btnMeny.UseVisualStyleBackColor = true;
+            this.btnMeny.Click += new System.EventHandler(this.BtnMeny_Click);
             // 
             // label7
             // 
@@ -294,14 +303,14 @@
             this.label3.TabIndex = 26;
             this.label3.Text = "Hinder";
             // 
-            // label2
+            // lblFärg
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(440, 101);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Färg";
+            this.lblFärg.AutoSize = true;
+            this.lblFärg.Location = new System.Drawing.Point(440, 101);
+            this.lblFärg.Name = "lblFärg";
+            this.lblFärg.Size = new System.Drawing.Size(28, 13);
+            this.lblFärg.TabIndex = 25;
+            this.lblFärg.Text = "Färg";
             // 
             // cbxHinder
             // 
@@ -329,9 +338,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(21, 332);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 22;
-            this.label1.Text = "label1";
+            this.label1.Text = "Fil Status:";
             // 
             // btnRänsa
             // 
@@ -351,15 +360,18 @@
             this.btnLäsa.TabIndex = 20;
             this.btnLäsa.Text = "Läsa";
             this.btnLäsa.UseVisualStyleBackColor = true;
+            this.btnLäsa.Click += new System.EventHandler(this.BtnLäsa_Click);
             // 
             // btnSpara
             // 
+            this.btnSpara.Enabled = false;
             this.btnSpara.Location = new System.Drawing.Point(440, 228);
             this.btnSpara.Name = "btnSpara";
             this.btnSpara.Size = new System.Drawing.Size(100, 20);
             this.btnSpara.TabIndex = 19;
             this.btnSpara.Text = "Spara";
             this.btnSpara.UseVisualStyleBackColor = true;
+            this.btnSpara.Click += new System.EventHandler(this.BtnSpara_Click);
             // 
             // pnlLevelMakerPaint
             // 
@@ -370,15 +382,6 @@
             this.pnlLevelMakerPaint.TabIndex = 18;
             this.pnlLevelMakerPaint.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlLevelMakerPaint_Paint);
             this.pnlLevelMakerPaint.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PnlLevelMakerPaint_MouseClick);
-            // 
-            // btnMeny
-            // 
-            this.btnMeny.Location = new System.Drawing.Point(20, 348);
-            this.btnMeny.Name = "btnMeny";
-            this.btnMeny.Size = new System.Drawing.Size(75, 23);
-            this.btnMeny.TabIndex = 35;
-            this.btnMeny.Text = "Meny";
-            this.btnMeny.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -432,7 +435,7 @@
         private System.Windows.Forms.TextBox tbxY;
         private System.Windows.Forms.TextBox tbxX;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblFärg;
         private System.Windows.Forms.ComboBox cbxHinder;
         private System.Windows.Forms.ComboBox cbxFärg;
         private System.Windows.Forms.Label label1;
