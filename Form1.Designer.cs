@@ -61,9 +61,25 @@
             this.btnLäsa = new System.Windows.Forms.Button();
             this.btnSpara = new System.Windows.Forms.Button();
             this.pnlLevelMakerPaint = new System.Windows.Forms.Panel();
+            this.pnlInfo = new System.Windows.Forms.Panel();
+            this.pnlInfo2 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnStart2 = new System.Windows.Forms.Button();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.pnlBana.SuspendLayout();
             this.pnlStartMeny.SuspendLayout();
             this.pnlLevelMaker.SuspendLayout();
+            this.pnlInfo.SuspendLayout();
+            this.pnlInfo2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBana
@@ -139,7 +155,7 @@
             this.pnlStartMeny.Controls.Add(this.btnLevelMaker);
             this.pnlStartMeny.Controls.Add(this.btnHighScore);
             this.pnlStartMeny.Controls.Add(this.btnStart);
-            this.pnlStartMeny.Location = new System.Drawing.Point(612, 10);
+            this.pnlStartMeny.Location = new System.Drawing.Point(849, 9);
             this.pnlStartMeny.Name = "pnlStartMeny";
             this.pnlStartMeny.Size = new System.Drawing.Size(560, 380);
             this.pnlStartMeny.TabIndex = 5;
@@ -188,6 +204,7 @@
             // pnlLevelMaker
             // 
             this.pnlLevelMaker.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlLevelMaker.Controls.Add(this.lblInfo);
             this.pnlLevelMaker.Controls.Add(this.btnMeny);
             this.pnlLevelMaker.Controls.Add(this.label7);
             this.pnlLevelMaker.Controls.Add(this.cbxNamn);
@@ -207,7 +224,7 @@
             this.pnlLevelMaker.Controls.Add(this.btnSpara);
             this.pnlLevelMaker.Controls.Add(this.pnlLevelMakerPaint);
             this.pnlLevelMaker.Enabled = false;
-            this.pnlLevelMaker.Location = new System.Drawing.Point(587, 337);
+            this.pnlLevelMaker.Location = new System.Drawing.Point(578, 283);
             this.pnlLevelMaker.Name = "pnlLevelMaker";
             this.pnlLevelMaker.Size = new System.Drawing.Size(560, 400);
             this.pnlLevelMaker.TabIndex = 7;
@@ -371,7 +388,7 @@
             this.btnSpara.TabIndex = 19;
             this.btnSpara.Text = "Spara";
             this.btnSpara.UseVisualStyleBackColor = true;
-            this.btnSpara.Click += new System.EventHandler(this.BtnSpara_Click);
+            this.btnSpara.MouseHover += new System.EventHandler(this.BtnSpara_MouseHover);
             // 
             // pnlLevelMakerPaint
             // 
@@ -383,6 +400,154 @@
             this.pnlLevelMakerPaint.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlLevelMakerPaint_Paint);
             this.pnlLevelMakerPaint.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PnlLevelMakerPaint_MouseClick);
             // 
+            // pnlInfo
+            // 
+            this.pnlInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlInfo.Controls.Add(this.pnlInfo2);
+            this.pnlInfo.Controls.Add(this.btnStart2);
+            this.pnlInfo.Enabled = false;
+            this.pnlInfo.Location = new System.Drawing.Point(603, 42);
+            this.pnlInfo.Name = "pnlInfo";
+            this.pnlInfo.Size = new System.Drawing.Size(200, 340);
+            this.pnlInfo.TabIndex = 8;
+            // 
+            // pnlInfo2
+            // 
+            this.pnlInfo2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pnlInfo2.Controls.Add(this.label16);
+            this.pnlInfo2.Controls.Add(this.label15);
+            this.pnlInfo2.Controls.Add(this.label14);
+            this.pnlInfo2.Controls.Add(this.label13);
+            this.pnlInfo2.Controls.Add(this.label12);
+            this.pnlInfo2.Controls.Add(this.label11);
+            this.pnlInfo2.Controls.Add(this.label10);
+            this.pnlInfo2.Controls.Add(this.label9);
+            this.pnlInfo2.Controls.Add(this.label8);
+            this.pnlInfo2.Controls.Add(this.label2);
+            this.pnlInfo2.Location = new System.Drawing.Point(20, 20);
+            this.pnlInfo2.Name = "pnlInfo2";
+            this.pnlInfo2.Size = new System.Drawing.Size(160, 260);
+            this.pnlInfo2.TabIndex = 1;
+            this.pnlInfo2.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlInfo2_Paint);
+            // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label16.ForeColor = System.Drawing.SystemColors.Control;
+            this.label16.Location = new System.Drawing.Point(20, 220);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(130, 30);
+            this.label16.TabIndex = 9;
+            this.label16.Text = "Använd Piltangenterna För Att Välja Riktning";
+            // 
+            // label15
+            // 
+            this.label15.ForeColor = System.Drawing.SystemColors.Control;
+            this.label15.Location = new System.Drawing.Point(45, 180);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(97, 27);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "Riktnings Bytande Hinder";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.SystemColors.Control;
+            this.label14.Location = new System.Drawing.Point(45, 80);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(85, 13);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Dödande Hinder";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.SystemColors.Control;
+            this.label13.Location = new System.Drawing.Point(45, 60);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Vanliga Hinder";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.SystemColors.Control;
+            this.label12.Location = new System.Drawing.Point(45, 140);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(47, 13);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Knappar";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.SystemColors.Control;
+            this.label11.Location = new System.Drawing.Point(45, 120);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Tömmda Hinder";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.Control;
+            this.label10.Location = new System.Drawing.Point(45, 100);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(66, 13);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Fylda Hinder";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.Control;
+            this.label9.Location = new System.Drawing.Point(45, 160);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(34, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Portal";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.SystemColors.Control;
+            this.label8.Location = new System.Drawing.Point(45, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Spelare";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(45, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Mål";
+            // 
+            // btnStart2
+            // 
+            this.btnStart2.Location = new System.Drawing.Point(65, 300);
+            this.btnStart2.Name = "btnStart2";
+            this.btnStart2.Size = new System.Drawing.Size(70, 23);
+            this.btnStart2.TabIndex = 0;
+            this.btnStart2.Text = "Starta";
+            this.btnStart2.UseVisualStyleBackColor = true;
+            this.btnStart2.Click += new System.EventHandler(this.BtnStart2_Click);
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblInfo.Location = new System.Drawing.Point(440, 307);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(100, 64);
+            this.lblInfo.TabIndex = 36;
+            this.lblInfo.Text = "Hindrar Spelaren Kan Inte Passeras";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,6 +555,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1184, 749);
             this.Controls.Add(this.pnlLevelMaker);
+            this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlHighScore);
             this.Controls.Add(this.pnlStartMeny);
             this.Controls.Add(this.lblPausInfo);
@@ -405,6 +571,9 @@
             this.pnlStartMeny.ResumeLayout(false);
             this.pnlLevelMaker.ResumeLayout(false);
             this.pnlLevelMaker.PerformLayout();
+            this.pnlInfo.ResumeLayout(false);
+            this.pnlInfo2.ResumeLayout(false);
+            this.pnlInfo2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,6 +613,20 @@
         private System.Windows.Forms.Button btnSpara;
         private System.Windows.Forms.Panel pnlLevelMakerPaint;
         private System.Windows.Forms.Button btnMeny;
+        private System.Windows.Forms.Panel pnlInfo;
+        private System.Windows.Forms.Panel pnlInfo2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnStart2;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblInfo;
     }
 }
 

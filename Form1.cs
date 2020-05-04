@@ -23,6 +23,7 @@ namespace RockyRoad
         List<int> MenyX = new List<int>();
         List<int> MenyY = new List<int>();
         List<double> MenyHinder = new List<double>();
+        Point InfoMeny = new Point(189,30);
         Point Meny1 = new Point(12, 9);
         Point Meny2 = new Point(620, 9);
         Point Meny3 = new Point(620, 340);
@@ -206,19 +207,62 @@ namespace RockyRoad
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
-        {           
-            pnlBana.Enabled = true;
+        {
+            pnlInfo.Enabled = true;
+            pnlInfo.Location = InfoMeny;
             pnlStartMeny.Location = Meny2;
             pnlStartMeny.Enabled = false;
+            pnlBana.Visible = false;
+        }
+
+        private void BtnStart2_Click(object sender, EventArgs e)
+        {
+            pnlBana.Enabled = true;            
             pnlBana.Invalidate();
+
+            pnlBana.Visible = true;
+            pnlInfo.Enabled = false;
+            pnlInfo.Location = Meny2;
 
             Bana1();
         }
 
-        List<int> TPX = new List<int>();
-        List<int> TPY = new List<int>();
-        List<int> TPI = new List<int>();
+        private void PnlInfo2_Paint(object sender, PaintEventArgs e)
+        {
+            SolidBrush Vit = new SolidBrush(Color.White);
+            SolidBrush Röd = new SolidBrush(Color.Red);
+            SolidBrush Blå = new SolidBrush(Color.Blue);
+            SolidBrush Gul = new SolidBrush(Color.Yellow);
+            SolidBrush Grön = new SolidBrush(Color.Green);
+            SolidBrush Ljusblå = new SolidBrush(Color.LightBlue);
 
+            Pen PGrön = new Pen(Color.Green);
+
+            Graphics g = e.Graphics;
+
+            g.FillEllipse(Blå, 19, 19, Storlek + 1, Storlek + 1);//Spelare
+            g.FillRectangle(Gul, 20, 40, Storlek, Storlek);//Mål
+            g.FillRectangle(Vit, 20, 60, Storlek, Storlek);//Vanliga Hinder
+            g.FillRectangle(Röd, 20, 80, Storlek, Storlek);//Dödande Hinder
+            g.FillRectangle(Grön, 20, 100, Storlek, Storlek);//Fylda Hinder
+            g.DrawRectangle(PGrön, 20, 120, Storlek, Storlek);//Tömmda Hinder
+            g.FillEllipse(Grön, 19, 139, Storlek + 1, Storlek + 1);//Knappar
+            g.FillRectangle(Grön, 20, 160, Storlek, Storlek);//Portal
+            g.FillEllipse(Ljusblå, 19, 159, Storlek + 1, Storlek + 1);
+            //Riktnings Bytande Hinder
+            Pil1.X = ((20) + (20 / 2));
+            Pil1.Y = ((180) - 1);
+
+            Pil2.X = ((20) + (20 / 2));
+            Pil2.Y = (180 + 20);
+
+            Pil3.X = ((20) + 20);
+            Pil3.Y = (180 + (20 / 2));
+
+            g.FillRectangle(Blå, 20, 180 + ((20 / 2) - (20 / 4)), 20 / 2, 20 / 2);
+            g.FillPolygon(Blå, new Point[] { Pil1, Pil2, Pil3 });
+        }
+        
         Point GOReset = new Point(445, 9);
         Point GOResetS = new Point(0, 0);
 
@@ -392,10 +436,7 @@ namespace RockyRoad
                 pnlBana.Width = 300;
 
                 lblPaused.Location = Pause3;
-
-                TPX.Clear(); TPY.Clear(); TPI.Clear();
-
-
+                
                 x[0] = x[1] = 0;
                 y[0] = y[1] = 6;
             }
@@ -406,17 +447,17 @@ namespace RockyRoad
             Bana3X.Add(12); Bana3Y.Add(6); Bana3Hinder.Add(5);
 
             //teleport
-            Bana3X.Add(3); TPX.Add(3); Bana3Y.Add(3); TPY.Add(3); Bana3Hinder.Add(6.1); TPI.Add(1);
-            Bana3X.Add(11); TPX.Add(11); Bana3Y.Add(3); TPY.Add(3); Bana3Hinder.Add(6.1); TPI.Add(0);
+            Bana3X.Add(3); Bana3Y.Add(3);  Bana3Hinder.Add(6.1);
+            Bana3X.Add(11); Bana3Y.Add(3);  Bana3Hinder.Add(6.1);
 
-            Bana3X.Add(4); TPX.Add(4); Bana3Y.Add(1); TPY.Add(1); Bana3Hinder.Add(6.2); TPI.Add(3);
-            Bana3X.Add(1); TPX.Add(1); Bana3Y.Add(5); TPY.Add(5); Bana3Hinder.Add(6.2); TPI.Add(2);
+            Bana3X.Add(4); Bana3Y.Add(1); Bana3Hinder.Add(6.2);
+            Bana3X.Add(1); Bana3Y.Add(5); Bana3Hinder.Add(6.2);
 
-            Bana3X.Add(1); TPX.Add(1); Bana3Y.Add(3); TPY.Add(3); Bana3Hinder.Add(6.3); TPI.Add(5);
-            Bana3X.Add(6); TPX.Add(6); Bana3Y.Add(2); TPY.Add(2); Bana3Hinder.Add(6.3); TPI.Add(4);
+            Bana3X.Add(1); Bana3Y.Add(3); Bana3Hinder.Add(6.3);
+            Bana3X.Add(6); Bana3Y.Add(2); Bana3Hinder.Add(6.3);
 
-            Bana3X.Add(8); TPX.Add(8); Bana3Y.Add(6); TPY.Add(6); Bana3Hinder.Add(6.4); TPI.Add(7);
-            Bana3X.Add(14); TPX.Add(14); Bana3Y.Add(3); TPY.Add(3); Bana3Hinder.Add(6.4); TPI.Add(6);
+            Bana3X.Add(8); Bana3Y.Add(6); Bana3Hinder.Add(6.4);
+            Bana3X.Add(14); Bana3Y.Add(3); Bana3Hinder.Add(6.4);
 
             //vanliga
             Bana3X.Add(0); Bana3Y.Add(0); Bana3Hinder.Add(1);
@@ -458,8 +499,6 @@ namespace RockyRoad
 
                 lblPaused.Location = Pause4;
 
-                TPX.Clear(); TPY.Clear(); TPI.Clear();
-
                 x[0] = x[1] = 0;
                 y[0] = y[1] = 0;
             }
@@ -491,8 +530,8 @@ namespace RockyRoad
             Bana4X.Add(18); Bana4Y.Add(9); Bana4Hinder.Add(3.4);
 
             //teleport
-            Bana4X.Add(8); TPX.Add(8); Bana4Y.Add(6); TPY.Add(6); Bana4Hinder.Add(6.1); TPI.Add(1);
-            Bana4X.Add(10); TPX.Add(10); Bana4Y.Add(9); TPY.Add(9); Bana4Hinder.Add(6.1); TPI.Add(0);
+            Bana4X.Add(8); Bana4Y.Add(6); Bana4Hinder.Add(6.1);
+            Bana4X.Add(10); Bana4Y.Add(9); Bana4Hinder.Add(6.1);
 
             //vanliga
             Bana4X.Add(0); Bana4Y.Add(5); Bana4Hinder.Add(1);
@@ -535,10 +574,7 @@ namespace RockyRoad
                 pnlBana.Width = 300;
 
                 lblPaused.Location = Pause5;
-
-                TPX.Clear(); TPY.Clear(); TPI.Clear();
-
-
+               
                 x[0] = x[1] = 0;
                 y[0] = y[1] = 9;
             }
@@ -571,17 +607,17 @@ namespace RockyRoad
             Bana5X.Add(13); Bana5Y.Add(8); Bana5Hinder.Add(3.22);
 
             //teleport
-            Bana5X.Add(7); TPX.Add(7); Bana5Y.Add(5); TPY.Add(5); Bana5Hinder.Add(6.1); TPI.Add(1);
-            Bana5X.Add(14); TPX.Add(14); Bana5Y.Add(0); TPY.Add(0); Bana5Hinder.Add(6.1); TPI.Add(0);
+            Bana5X.Add(7); Bana5Y.Add(5); Bana5Hinder.Add(6.1);
+            Bana5X.Add(14); Bana5Y.Add(0); Bana5Hinder.Add(6.1);
 
-            Bana5X.Add(1); TPX.Add(1); Bana5Y.Add(5); TPY.Add(5); Bana5Hinder.Add(6.2); TPI.Add(3);
-            Bana5X.Add(14); TPX.Add(14); Bana5Y.Add(1); TPY.Add(1); Bana5Hinder.Add(6.2); TPI.Add(2);
+            Bana5X.Add(1); Bana5Y.Add(5); Bana5Hinder.Add(6.2);
+            Bana5X.Add(14); Bana5Y.Add(1); Bana5Hinder.Add(6.2);
 
-            Bana5X.Add(1); TPX.Add(1); Bana5Y.Add(8); TPY.Add(8); Bana5Hinder.Add(6.3); TPI.Add(5);
-            Bana5X.Add(12); TPX.Add(12); Bana5Y.Add(3); TPY.Add(3); Bana5Hinder.Add(6.3); TPI.Add(4);
+            Bana5X.Add(1); Bana5Y.Add(8); Bana5Hinder.Add(6.3);
+            Bana5X.Add(12); Bana5Y.Add(3); Bana5Hinder.Add(6.3);
 
-            Bana5X.Add(7); TPX.Add(7); Bana5Y.Add(3); TPY.Add(3); Bana5Hinder.Add(6.4); TPI.Add(7);
-            Bana5X.Add(11); TPX.Add(11); Bana5Y.Add(2); TPY.Add(2); Bana5Hinder.Add(6.4); TPI.Add(6);
+            Bana5X.Add(7); Bana5Y.Add(3); Bana5Hinder.Add(6.4);
+            Bana5X.Add(11); Bana5Y.Add(2); Bana5Hinder.Add(6.4);
 
             //Riktning
             Bana5X.Add(0); Bana5Y.Add(1); Bana5Hinder.Add(7.4);
@@ -757,6 +793,7 @@ namespace RockyRoad
             Pen PennaLjusBlå = new Pen(Color.LightBlue);
             Pen PennaGrön = new Pen(Color.Green);
             Pen PennaRöd = new Pen(Color.Red);
+            Pen PennaGul = new Pen(Color.Yellow);
 
             lblLiv.Text = "Liv: " + Liv;
             lblFörsök.Text = "Försök: " + försök;
@@ -783,33 +820,33 @@ namespace RockyRoad
                     if (BanaHinder[i] == 2.1)
                     {
                         g.FillRectangle(Borstegrön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                    }
+                    }// Grön
 
                     //döda
                     if (BanaHinder[i] == 2.2 || BanaHinder[i] == 2.21)
                     {
                         g.FillRectangle(BorsteRöd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                    }
+                    }//Röd
 
                     if (BanaHinder[i] == 2.3)
                     {
                         g.FillRectangle(BorsteLjusBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                    }
+                    }//Ljusblå
 
                     if (BanaHinder[i] == 2.4)
                     {
                         g.FillRectangle(BorsteBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                    }
+                    }//Blå
 
                     if (BanaHinder[i] == 2.5)
                     {
                         g.FillRectangle(BorsteMål, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                    }
+                    }//Gul/Mål
 
                     if (BanaHinder[i] == 2.6)
                     {
                         g.FillRectangle(BorsteSvart, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                    }
+                    }//Svart
                 }
 
                 //ofylda
@@ -818,22 +855,27 @@ namespace RockyRoad
                     if (BanaHinder[i] == 3.1)
                     {
                         g.DrawRectangle(PennaGrön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek - 1, Storlek - 1);
-                    }
+                    }//Grön
 
                     if (BanaHinder[i] == 3.22 || BanaHinder[i] == 3.21)
                     {
                         g.DrawRectangle(PennaRöd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek - 1, Storlek - 1);
-                    }
+                    }//Röd
 
                     if (BanaHinder[i] == 3.3)
                     {
                         g.DrawRectangle(PennaLjusBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                    }
+                    }//Ljusblå
 
                     if (BanaHinder[i] == 3.4)
                     {
                         g.DrawRectangle(PennaBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
-                    }
+                    }//Blå
+
+                    if (BanaHinder[i] == 3.5)
+                    {
+                        g.DrawRectangle(PennaGul, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                    }//Gul
                 }
 
                 //knapp
@@ -842,22 +884,27 @@ namespace RockyRoad
                     if (BanaHinder[i] == 4.11 /*fyld till ofyld*/ || BanaHinder[i] == 4.12 /*ofyld till fyld*/)
                     {
                         g.FillEllipse(Borstegrön, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
-                    }
+                    }//Grön
 
                     if (BanaHinder[i] == 4.21 /*fyld till ofyld*/ || BanaHinder[i] == 4.22 /*ofyld till fyld*/)
                     {
                         g.FillEllipse(BorsteLjusBlå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
-                    }
+                    }//Ljusblå
 
                     if (BanaHinder[i] == 4.31 /*fyld till ofyld*/ || BanaHinder[i] == 4.32 /*ofyld till fyld*/)
                     {
                         g.FillEllipse(BorsteBlå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
-                    }
+                    }//Blå
 
                     if (BanaHinder[i] == 4.41 /*fyld till ofyld*/ || BanaHinder[i] == 4.42 /*ofyld till fyld*/)
                     {
                         g.FillEllipse(BorsteRöd, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
-                    }
+                    }//Röd
+
+                    if (BanaHinder[i] == 4.51 /*fyld till ofyld*/ || BanaHinder[i] == 4.52 /*ofyld till fyld*/)
+                    {
+                        g.FillEllipse(BorsteMål, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
+                    }//Gul
                 }
 
                 //Mål
@@ -1034,6 +1081,7 @@ namespace RockyRoad
                     //knapp
                     if ((int)BanaHinder[i] == 4)
                     {
+                        //Grön
                         if (BanaHinder[i] == 4.11)
                         {
                             while (BanaHinder.Contains(2.1))
@@ -1049,7 +1097,7 @@ namespace RockyRoad
                                 BanaHinder[BanaHinder.IndexOf(3.1)] = 2.1;
                             }
                         }
-
+                        //Ljusblå
                         if (BanaHinder[i] == 4.21)
                         {
                             while (BanaHinder.Contains(2.3))
@@ -1065,7 +1113,7 @@ namespace RockyRoad
                                 BanaHinder[BanaHinder.IndexOf(3.3)] = 2.3;
                             }
                         }
-
+                        //Blå
                         if (BanaHinder[i] == 4.31)
                         {
                             while (BanaHinder.Contains(2.4))
@@ -1081,7 +1129,7 @@ namespace RockyRoad
                                 BanaHinder[BanaHinder.IndexOf(3.4)] = 2.4;
                             }
                         }
-
+                        //Röd
                         if (BanaHinder[i] == 4.41)
                         {
                             while (BanaHinder.Contains(2.21))
@@ -1095,6 +1143,22 @@ namespace RockyRoad
                             while (BanaHinder.Contains(3.22))
                             {
                                 BanaHinder[BanaHinder.IndexOf(3.22)] = 2.21;
+                            }
+                        }
+                        //Gul
+                        if (BanaHinder[i] == 4.51)
+                        {
+                            while (BanaHinder.Contains(3.5))
+                            {
+                                BanaHinder[BanaHinder.IndexOf(3.5)] = 2.5;
+                            }
+                        }
+
+                        if (BanaHinder[i] == 4.52)
+                        {
+                            while (BanaHinder.Contains(3.5))
+                            {
+                                BanaHinder[BanaHinder.IndexOf(3.5)] = 2.5;
                             }
                         }
                     }
@@ -1111,17 +1175,69 @@ namespace RockyRoad
                     //teleport
                     if ((int)BanaHinder[i] == 6)
                     {
-                        for (int t = 0; t < TPX.Count; t++)
+                        //Blå Portal
+                        if (BanaX[BanaHinder.IndexOf(6.1)] == x[0] && BanaY[BanaHinder.IndexOf(6.1)] == y[0])
                         {
-                            if (TPX[t] == x[0] && TPY[t] == y[0])
-                            {
-                                TestX = TPX[TPI[t]];
-                                TestY = TPY[TPI[t]];
+                            TestX = BanaX[BanaHinder.LastIndexOf(6.1)];
+                            TestY = BanaY[BanaHinder.LastIndexOf(6.1)];
 
-                                FlyttaEttSteg();
+                            FlyttaEttSteg();                            
+                        }
 
-                                continue;
-                            }
+                        if (BanaX[BanaHinder.LastIndexOf(6.1)] == x[0] && BanaY[BanaHinder.LastIndexOf(6.1)] == y[0])
+                        {
+                            TestX = BanaX[BanaHinder.IndexOf(6.1)];
+                            TestY = BanaY[BanaHinder.IndexOf(6.1)];
+
+                            FlyttaEttSteg();                            
+                        }
+                        //Grön Portal
+                        if (BanaX[BanaHinder.IndexOf(6.2)] == x[0] && BanaY[BanaHinder.IndexOf(6.2)] == y[0])
+                        {
+                            TestX = BanaX[BanaHinder.LastIndexOf(6.2)];
+                            TestY = BanaY[BanaHinder.LastIndexOf(6.2)];
+
+                            FlyttaEttSteg();
+                        }
+
+                        if (BanaX[BanaHinder.LastIndexOf(6.2)] == x[0] && BanaY[BanaHinder.LastIndexOf(6.2)] == y[0])
+                        {
+                            TestX = BanaX[BanaHinder.IndexOf(6.2)];
+                            TestY = BanaY[BanaHinder.IndexOf(6.2)];
+
+                            FlyttaEttSteg();
+                        }
+                        //Röd Portal
+                        if (BanaX[BanaHinder.IndexOf(6.3)] == x[0] && BanaY[BanaHinder.IndexOf(6.3)] == y[0])
+                        {
+                            TestX = BanaX[BanaHinder.LastIndexOf(6.3)];
+                            TestY = BanaY[BanaHinder.LastIndexOf(6.3)];
+
+                            FlyttaEttSteg();
+                        }
+
+                        if (BanaX[BanaHinder.LastIndexOf(6.3)] == x[0] && BanaY[BanaHinder.LastIndexOf(6.3)] == y[0])
+                        {
+                            TestX = BanaX[BanaHinder.IndexOf(6.3)];
+                            TestY = BanaY[BanaHinder.IndexOf(6.3)];
+
+                            FlyttaEttSteg();
+                        }
+                        //Gul Portal
+                        if (BanaX[BanaHinder.IndexOf(6.4)] == x[0] && BanaY[BanaHinder.IndexOf(6.4)] == y[0])
+                        {
+                            TestX = BanaX[BanaHinder.LastIndexOf(6.4)];
+                            TestY = BanaY[BanaHinder.LastIndexOf(6.4)];
+
+                            FlyttaEttSteg();
+                        }
+
+                        if (BanaX[BanaHinder.LastIndexOf(6.4)] == x[0] && BanaY[BanaHinder.LastIndexOf(6.4)] == y[0])
+                        {
+                            TestX = BanaX[BanaHinder.IndexOf(6.4)];
+                            TestY = BanaY[BanaHinder.IndexOf(6.4)];
+
+                            FlyttaEttSteg();
                         }
                     }
                 }
@@ -1286,6 +1402,10 @@ namespace RockyRoad
         int StorlekY = 20;
         double Hinder = 1;
 
+        bool StartTillBlock = true;
+        bool MålTillBlock = true;
+        bool TeleportTillBlock = true;
+
         bool TGrön = true;
         bool TGul = true;
         bool TBlå = true;
@@ -1312,17 +1432,16 @@ namespace RockyRoad
             Pen PGul = new Pen(Color.Yellow);
             Pen PGrön = new Pen(Color.Green);
             Pen PLjusblå = new Pen(Color.LightBlue);
-
+            // Rut Nät
             for (int x = 0; x < pnlLevelMakerPaint.Width; x += StorlekX)
             {
                 g.DrawLine(PVit, x, 0, x, pnlLevelMakerPaint.Height);
             }
-
             for (int y = 0; y < pnlLevelMakerPaint.Height; y += StorlekY)
             {
                 g.DrawLine(PVit, 0, y, pnlLevelMakerPaint.Width, y);
             }
-
+            // Måla Bana
             for (int i = 0; i < xList.Count; i++)
             {
                 if (Hindertyp[i] == 0)
@@ -1356,10 +1475,31 @@ namespace RockyRoad
                     g.FillRectangle(Gul, xList[i] * StorlekX, yList[i] * StorlekY, StorlekX, StorlekY);
                 }//gul/Mål
 
-                if((int)Hindertyp[i] == 6)
+                if (Hindertyp[i] == 4.11 || Hindertyp[i] == 4.12)
+                {
+                    g.FillEllipse(Grön, xList[i] * StorlekX, yList[i] * StorlekY, StorlekX, StorlekY);
+                }//Grön
+                if (Hindertyp[i] == 4.21 || Hindertyp[i] == 4.22)
+                {
+                    g.FillEllipse(Ljusblå, xList[i] * StorlekX, yList[i] * StorlekY, StorlekX, StorlekY);
+                }//Ljusblå
+                if (Hindertyp[i] == 4.31 || Hindertyp[i] == 4.32)
+                {
+                    g.FillEllipse(Blå, xList[i] * StorlekX, yList[i] * StorlekY, StorlekX, StorlekY);
+                }//Blå
+                if (Hindertyp[i] == 4.41 || Hindertyp[i] == 4.42)
+                {
+                    g.FillEllipse(Röd, xList[i] * StorlekX, yList[i] * StorlekY, StorlekX, StorlekY);
+                }//Röd
+                if (Hindertyp[i] == 4.51 || Hindertyp[i] == 4.52)
+                {
+                    g.FillEllipse(Gul, xList[i] * StorlekX, yList[i] * StorlekY, StorlekX, StorlekY);
+                }//Gul
+
+                if ((int)Hindertyp[i] == 6)
                 {
                     g.FillEllipse(Ljusblå, xList[i] * StorlekX - 1, yList[i] * StorlekY - 1, StorlekX + 1, StorlekY + 1);
-                }
+                }//Cirkel till portal
 
                 if (Hindertyp[i] == 3.1)
                 {
@@ -1441,236 +1581,266 @@ namespace RockyRoad
             }
 
             cbxHinder.Items.Clear();
+
             cbxHinder.Items.Add("Block");
-            cbxHinder.Items.Add("Döda");            
+
+            cbxHinder.Items.Add("Döda");
+
             if (!Hindertyp.Contains(5))
             {
                 cbxHinder.Items.Add("Mål");
                 btnSpara.Enabled = false;
+                MålTillBlock = true;
             }
-            else { cbxHinder.SelectedItem = "Block"; btnSpara.Enabled = true; }
+            else { if (MålTillBlock) { cbxHinder.SelectedItem = "Block"; } btnSpara.Enabled = true; MålTillBlock = false; }
+
             if (!Hindertyp.Contains(0))
             {
                 cbxHinder.Items.Add("Start");
                 btnSpara.Enabled = false;
+                StartTillBlock = true;
             }
-            else { cbxHinder.SelectedItem = "Block"; btnSpara.Enabled = true; }
-            cbxHinder.Items.Add("Disapearing Hinder");
-            cbxHinder.Items.Add("Apearing Hinder");
+            else { if (StartTillBlock) { cbxHinder.SelectedItem = "Block"; } btnSpara.Enabled = true; StartTillBlock = false; }
+
+            cbxHinder.Items.Add("Knapp");            
+
+            cbxHinder.Items.Add("Fylda Hinder");
+
+            cbxHinder.Items.Add("Tömda Hinder");
+
             if (Teleport)
             {
                 cbxHinder.Items.Add("Teleport");
+                TeleportTillBlock = true;
             }
-            else { cbxHinder.SelectedItem = "Block"; }            
+            else { if (TeleportTillBlock) { cbxHinder.SelectedItem = "Block"; } TeleportTillBlock = false; }
+
             cbxHinder.Items.Add("Riktnigs bytare");
 
-            if (Hindertyp.IndexOf(6.3) != Hindertyp.LastIndexOf(6.3))
+            if (Hindertyp.Count != 0)
             {
-                cbxFärg.Items.Remove("Röd");                
-
-                if (cbxFärg.Items.Contains("Grön"))
+                if ((Hindertyp[Hindertyp.Count - 1] == 6.3))
                 {
-                    cbxFärg.SelectedItem = "Grön";
-                }
+                    if ((Hindertyp.IndexOf(6.3) != Hindertyp.LastIndexOf(6.3)))
+                    {
+                        cbxFärg.Items.Remove("Röd");
 
-                if (cbxFärg.Items.Contains("Gul"))
-                {
-                    cbxFärg.SelectedItem = "Gul";
-                }
+                        if (cbxFärg.Items.Contains("Grön"))
+                        {
+                            cbxFärg.SelectedItem = "Grön";
+                        }
 
-                if (cbxFärg.Items.Contains("Blå"))
-                {
-                    cbxFärg.SelectedItem = "Blå";
-                }
+                        if (cbxFärg.Items.Contains("Gul"))
+                        {
+                            cbxFärg.SelectedItem = "Gul";
+                        }
 
-                if (cbxFärg.Items.Count == 0)
-                {
-                    Teleport = false;
-                    pnlLevelMakerPaint.Invalidate();
-                }
+                        if (cbxFärg.Items.Contains("Blå"))
+                        {
+                            cbxFärg.SelectedItem = "Blå";
+                        }
 
-                if (TRöd)
-                {
-                    cbxHinder.Enabled = true;
-                    cbxFärg.Enabled = true;
-                    btnSpara.Enabled = true;
-                    btnLäsa.Enabled = true;
-                    TRöd = false;
+                        if (cbxFärg.Items.Count == 0)
+                        {
+                            Teleport = false;
+                            pnlLevelMakerPaint.Invalidate();
+                        }
+
+                        if (TRöd)
+                        {
+                            cbxHinder.Enabled = true;
+                            cbxFärg.Enabled = true;
+                            btnSpara.Enabled = true;
+                            btnLäsa.Enabled = true;
+                            TRöd = false;
+                        }
+
+                    }//Röd
+                    else
+                    {
+                        if (Hindertyp.Contains(6.3))
+                        {
+                            cbxHinder.Enabled = false;
+                            cbxFärg.Enabled = false;
+                            btnSpara.Enabled = false;
+                            btnLäsa.Enabled = false;
+                        }
+
+                        if (!cbxFärg.Items.Contains("Röd"))
+                        {
+                            cbxFärg.Items.Insert(0, "Röd");
+                            TRöd = true;
+                            Teleport = true;
+                        }
+                    }                    
                 }
                 
-            }//Röd
-            else
-            {
-                if (Hindertyp.Contains(6.3))
+                if ((Hindertyp[Hindertyp.Count - 1] == 6.1))
                 {
-                    cbxHinder.Enabled = false;
-                    cbxFärg.Enabled = false;
-                    btnSpara.Enabled = false;
-                    btnLäsa.Enabled = false;
-                }
+                    if (Hindertyp.IndexOf(6.1) != Hindertyp.LastIndexOf(6.1))
+                    {
+                        cbxFärg.Items.Remove("Blå");
 
-                if (!cbxFärg.Items.Contains("Röd"))
-                {
-                    cbxFärg.Items.Insert(0, "Röd");
-                    Teleport = true;
-                }                
-            }
+                        if (cbxFärg.Items.Contains("Grön"))
+                        {
+                            cbxFärg.SelectedItem = "Grön";
+                        }
 
-            if (Hindertyp.IndexOf(6.1) != Hindertyp.LastIndexOf(6.1))
-            {
-                cbxFärg.Items.Remove("Blå");
+                        if (cbxFärg.Items.Contains("Gul"))
+                        {
+                            cbxFärg.SelectedItem = "Gul";
+                        }
 
-                if (cbxFärg.Items.Contains("Grön"))
-                {
-                    cbxFärg.SelectedItem = "Grön";
-                }
+                        if (cbxFärg.Items.Contains("Röd"))
+                        {
+                            cbxFärg.SelectedItem = "Röd";
+                        }
 
-                if (cbxFärg.Items.Contains("Gul"))
-                {
-                    cbxFärg.SelectedItem = "Gul";
-                }
+                        if (cbxFärg.Items.Count == 0)
+                        {
+                            Teleport = false;
+                            pnlLevelMakerPaint.Invalidate();
+                        }
 
-                if (cbxFärg.Items.Contains("Röd"))
-                {
-                    cbxFärg.SelectedItem = "Röd";
-                }
+                        if (TBlå)
+                        {
+                            cbxHinder.Enabled = true;
+                            cbxFärg.Enabled = true;
+                            btnSpara.Enabled = true;
+                            btnLäsa.Enabled = true;
+                            TBlå = false;
+                        }
 
-                if (cbxFärg.Items.Count == 0)
-                {
-                    Teleport = false;
-                    pnlLevelMakerPaint.Invalidate();
-                }
+                    }//Blå
+                    else
+                    {
+                        if (Hindertyp.Contains(6.1))
+                        {
+                            cbxHinder.Enabled = false;
+                            cbxFärg.Enabled = false;
+                            btnSpara.Enabled = false;
+                            btnLäsa.Enabled = false;
+                        }
 
-                if (TBlå)
-                {
-                    cbxHinder.Enabled = true;
-                    cbxFärg.Enabled = true;
-                    btnSpara.Enabled = true;
-                    btnLäsa.Enabled = true;
-                    TBlå = false;
+                        if (!cbxFärg.Items.Contains("Blå"))
+                        {
+                            cbxFärg.Items.Insert(0, "Blå");
+                            TBlå = true;
+                            Teleport = true;
+                        }
+                    }
                 }
-                
-            }//Blå
-            else
-            {
-                if (Hindertyp.Contains(6.1))
+                if ((Hindertyp[Hindertyp.Count - 1] == 6.2))
                 {
-                    cbxHinder.Enabled = false;
-                    cbxFärg.Enabled = false;
-                    btnSpara.Enabled = false;
-                    btnLäsa.Enabled = false;
-                }
+                    if (Hindertyp.IndexOf(6.2) != Hindertyp.LastIndexOf(6.2))
+                    {
+                        cbxFärg.Items.Remove("Grön");
 
-                if (!cbxFärg.Items.Contains("Blå"))
-                {
-                    cbxFärg.Items.Insert(0, "Blå");
-                    Teleport = true;
-                }
-            }
+                        if (cbxFärg.Items.Contains("Röd"))
+                        {
+                            cbxFärg.SelectedItem = "Röd";
+                        }
 
-            if (Hindertyp.IndexOf(6.2) != Hindertyp.LastIndexOf(6.2))
-            {
-                cbxFärg.Items.Remove("Grön");
+                        if (cbxFärg.Items.Contains("Gul"))
+                        {
+                            cbxFärg.SelectedItem = "Gul";
+                        }
 
-                if (cbxFärg.Items.Contains("Röd"))
-                {
-                    cbxFärg.SelectedItem = "Röd";
-                }
+                        if (cbxFärg.Items.Contains("Blå"))
+                        {
+                            cbxFärg.SelectedItem = "Blå";
+                        }
 
-                if (cbxFärg.Items.Contains("Gul"))
-                {
-                    cbxFärg.SelectedItem = "Gul";
-                }
+                        if (cbxFärg.Items.Count == 0)
+                        {
+                            Teleport = false;
+                            pnlLevelMakerPaint.Invalidate();
+                        }
 
-                if (cbxFärg.Items.Contains("Blå"))
-                {
-                    cbxFärg.SelectedItem = "Blå";
-                }
+                        if (TGrön)
+                        {
+                            cbxHinder.Enabled = true;
+                            cbxFärg.Enabled = true;
+                            btnSpara.Enabled = true;
+                            btnLäsa.Enabled = true;
+                            TGrön = false;
+                        }
 
-                if (cbxFärg.Items.Count == 0)
-                {
-                    Teleport = false;
-                    pnlLevelMakerPaint.Invalidate();                    
-                }
+                    }//Grön
+                    else
+                    {
+                        if (Hindertyp.Contains(6.2))
+                        {
+                            cbxHinder.Enabled = false;
+                            cbxFärg.Enabled = false;
+                            btnSpara.Enabled = false;
+                            btnLäsa.Enabled = false;
+                        }
 
-                if (TGrön)
-                {
-                    cbxHinder.Enabled = true;
-                    cbxFärg.Enabled = true;
-                    btnSpara.Enabled = true;
-                    btnLäsa.Enabled = true;
-                    TGrön = false;
+                        if (!cbxFärg.Items.Contains("Grön"))
+                        {
+                            cbxFärg.Items.Insert(0, "Grön");
+                            TGrön = true;
+                            Teleport = true;
+                        }
+                    }
                 }
-                
-            }//Grön
-            else
-            {
-                if (Hindertyp.Contains(6.2))
+                if ((Hindertyp[Hindertyp.Count - 1] == 6.4))
                 {
-                    cbxHinder.Enabled = false;
-                    cbxFärg.Enabled = false;
-                    btnSpara.Enabled = false;
-                    btnLäsa.Enabled = false;
-                }
+                    if (Hindertyp.IndexOf(6.4) != Hindertyp.LastIndexOf(6.4))
+                    {
+                        cbxFärg.Items.Remove("Gul");
 
-                if (!cbxFärg.Items.Contains("Grön"))
-                {
-                    cbxFärg.Items.Insert(0, "Grön");
-                    Teleport = true;
-                }
-            }
+                        if (cbxFärg.Items.Contains("Grön"))
+                        {
+                            cbxFärg.SelectedItem = "Grön";
+                        }
 
-            if (Hindertyp.IndexOf(6.4) != Hindertyp.LastIndexOf(6.4))
-            {
-                cbxFärg.Items.Remove("Gul");
+                        if (cbxFärg.Items.Contains("Röd"))
+                        {
+                            cbxFärg.SelectedItem = "Röd";
+                        }
 
-                if (cbxFärg.Items.Contains("Grön"))
-                {
-                    cbxFärg.SelectedItem = "Grön";
-                }
+                        if (cbxFärg.Items.Contains("Blå"))
+                        {
+                            cbxFärg.SelectedItem = "Blå";
+                        }
 
-                if (cbxFärg.Items.Contains("Röd"))
-                {
-                    cbxFärg.SelectedItem = "Röd";
-                }
+                        if (cbxFärg.Items.Count == 0)
+                        {
+                            Teleport = false;
+                            pnlLevelMakerPaint.Invalidate();
+                        }
 
-                if (cbxFärg.Items.Contains("Blå"))
-                {
-                    cbxFärg.SelectedItem = "Blå";
-                }
+                        if (TGul)
+                        {
+                            cbxHinder.Enabled = true;
+                            cbxFärg.Enabled = true;
+                            btnSpara.Enabled = true;
+                            btnLäsa.Enabled = true;
+                            TGul = false;
+                        }
 
-                if (cbxFärg.Items.Count == 0)
-                {
-                    Teleport = false;
-                    pnlLevelMakerPaint.Invalidate();
-                }
+                    }//Gul
+                    else
+                    {
+                        if (Hindertyp.Contains(6.4))
+                        {
+                            cbxHinder.Enabled = false;
+                            cbxFärg.Enabled = false;
+                            btnSpara.Enabled = false;
+                            btnLäsa.Enabled = false;
+                        }
 
-                if (TGul)
-                {
-                    cbxHinder.Enabled = true;
-                    cbxFärg.Enabled = true;
-                    btnSpara.Enabled = true;
-                    btnLäsa.Enabled = true;
-                    TGul = false;
-                }
-                
-            }//Gul
-            else
-            {
-                if (Hindertyp.Contains(6.4))
-                {
-                    cbxHinder.Enabled = false;
-                    cbxFärg.Enabled = false;
-                    btnSpara.Enabled = false;
-                    btnLäsa.Enabled = false;
-                }
-
-                if (!cbxFärg.Items.Contains("Gul"))
-                {
-                    cbxFärg.Items.Insert(0, "Gul");
-                    Teleport = true;
-                }
-            }
+                        if (!cbxFärg.Items.Contains("Gul"))
+                        {
+                            cbxFärg.Items.Insert(0, "Gul");
+                            TGul = true;
+                            Teleport = true;
+                        }
+                    }
+                }                    
+            }            
         }
 
         private void PnlLevelMakerPaint_MouseClick(object sender, MouseEventArgs e)
@@ -1730,84 +1900,128 @@ namespace RockyRoad
             cbxFärg.Enabled = true;
             btnSpara.Enabled = true;
             btnLäsa.Enabled = true;
+            TRöd = true;
+            TGul = true;
+            TGrön = true;
+            TBlå = true;
+            cbxHinder.SelectedItem = "Block";            
 
             pnlLevelMakerPaint.Invalidate();
         }
 
         private void CbxFärg_TextChanged(object sender, EventArgs e)
         {
-            if ("Vit" == this.cbxFärg.SelectedItem.ToString()) { }
-            if ("Röd" == this.cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.2; if ((int)Hinder == 3) Hinder = 3.2; if ((int)Hinder == 6) Hinder = 6.3; }
-            if ("Blå" == this.cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.4; if ((int)Hinder == 3) Hinder = 3.4; if ((int)Hinder == 6) Hinder = 6.1; }
-            if ("Gul" == this.cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.5; if ((int)Hinder == 3) Hinder = 3.5; if ((int)Hinder == 6) Hinder = 6.4; }
-            if ("Ljusblå" == this.cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.3; if ((int)Hinder == 3) Hinder = 3.3; }
-            if ("Grön" == this.cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.1; if ((int)Hinder == 3) Hinder = 3.1; if ((int)Hinder == 6) Hinder = 6.2; }
+            if ("Vit" == cbxFärg.SelectedItem.ToString()) { }
+            if ("Röd" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.2; if ((int)Hinder == 6) Hinder = 6.3; }
+            if ("Blå" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.4; if ((int)Hinder == 3) Hinder = 3.4; if ((int)Hinder == 6) Hinder = 6.1; }
+            if ("Gul" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.5; if ((int)Hinder == 3) Hinder = 3.5; if ((int)Hinder == 6) Hinder = 6.4; }
+            if ("Ljusblå" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.3; if ((int)Hinder == 3) Hinder = 3.3; }
+            if ("Grön" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 2) Hinder = 2.1; if ((int)Hinder == 3) Hinder = 3.1; if ((int)Hinder == 6) Hinder = 6.2; }
+            
+            if ("Fylda Hinder Röd" == cbxFärg.SelectedItem.ToString()) { Hinder = 2.21; }
+            if ("Tömda Hinder Röd" == cbxFärg.SelectedItem.ToString()) { Hinder = 3.22; }
 
-            if ("Ner" == this.cbxFärg.SelectedItem.ToString()) { Hinder = 7.1; }
-            if ("Upp" == this.cbxFärg.SelectedItem.ToString()) { Hinder = 7.2; }
-            if ("Vänster" == this.cbxFärg.SelectedItem.ToString()) { Hinder = 7.3; }
-            if ("Höger" == this.cbxFärg.SelectedItem.ToString()) { Hinder = 7.4; }
+            if ("Tömma Grön" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 4) Hinder = 4.11; }
+            if ("Fylla Grön" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 4) Hinder = 4.12; }
+            if ("Tömma Ljusblå" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 4) Hinder = 4.21; }
+            if ("Fylla Ljusblå" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 4) Hinder = 4.22; }
+            if ("Tömma Blå" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 4) Hinder = 4.31; }
+            if ("Fylla Blå" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 4) Hinder = 4.32; }
+            if ("Tömma Röd" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 4) Hinder = 4.41; }
+            if ("Fylla Röd" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 4) Hinder = 4.42; }
+            if ("Tömma Gul" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 4) Hinder = 4.51; }
+            if ("Fylla Gul" == cbxFärg.SelectedItem.ToString()) { if ((int)Hinder == 4) Hinder = 4.52; }
+
+            if ("Ner" == cbxFärg.SelectedItem.ToString()) { Hinder = 7.1; }
+            if ("Upp" == cbxFärg.SelectedItem.ToString()) { Hinder = 7.2; }
+            if ("Vänster" == cbxFärg.SelectedItem.ToString()) { Hinder = 7.3; }
+            if ("Höger" == cbxFärg.SelectedItem.ToString()) { Hinder = 7.4; }
         }
 
         private void CbxHinder_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ("Start" == this.cbxHinder.SelectedItem.ToString())
+            if ("Start" == cbxHinder.SelectedItem.ToString())
             {
                 Hinder = 0;
                 cbxFärg.Enabled = false;                
                 cbxFärg.Items.Clear();
                 cbxFärg.Items.Add("Blå");
                 cbxFärg.SelectedItem = "Blå";
+                lblInfo.Text = "Bestämer Var Spelaren Startar";
             }
 
-            if ("Block" == this.cbxHinder.SelectedItem.ToString())
+            if ("Block" == cbxHinder.SelectedItem.ToString())
             {
                 Hinder = 1;
                 cbxFärg.Enabled = false;
                 cbxFärg.Items.Clear();
                 cbxFärg.Items.Add("Vit");
                 cbxFärg.SelectedItem = "Vit";
+                lblInfo.Text = "Hindrar Spelaren Kan Inte Passeras";
             }
 
-            if ("Disapearing Hinder" == this.cbxHinder.SelectedItem.ToString())
+            if ("Fylda Hinder" == cbxHinder.SelectedItem.ToString())
             {
                 Hinder = 2;
                 cbxFärg.Enabled = true;
                 lblFärg.Text = "Färg";
                 cbxFärg.Items.Clear();
                 cbxFärg.Items.Add("Grön");
-                cbxFärg.Items.Add("Blå");
-                cbxFärg.Items.Add("Röd");
+                cbxFärg.Items.Add("Blå");                
                 cbxFärg.Items.Add("Gul");
                 cbxFärg.Items.Add("Ljusblå");
                 cbxFärg.SelectedItem = "Grön";
+                lblInfo.Text = "Fylda Hinder Kan Inte Passeras Kan Bli Tömda Hinder Via Knappar";
             }
             
-            if ("Döda" == this.cbxHinder.SelectedItem.ToString())
+            if ("Döda" == cbxHinder.SelectedItem.ToString())
             {
                 Hinder = 2.2;
                 cbxFärg.Enabled = false;
                 lblFärg.Text = "Färg";
                 cbxFärg.Items.Clear();
                 cbxFärg.Items.Add("Röd");
+                cbxFärg.Items.Add("Fylda Hinder Röd");
+                cbxFärg.Items.Add("Tömda Hinder Röd");
                 cbxFärg.SelectedItem = "Röd";
+                lblInfo.Text = "Tömda Hinder Kan Passeras Utan Att Aktivera effekten Av Hindret";
             }
 
-            if ("Apearing Hinder" == this.cbxHinder.SelectedItem.ToString())
+            if ("Tömda Hinder" == cbxHinder.SelectedItem.ToString())
             {
                 Hinder = 3;
                 cbxFärg.Enabled = true;
                 lblFärg.Text = "Färg";
                 cbxFärg.Items.Clear();
                 cbxFärg.Items.Add("Grön");
-                cbxFärg.Items.Add("Blå");
-                cbxFärg.Items.Add("Röd");
+                cbxFärg.Items.Add("Blå");                
                 cbxFärg.Items.Add("Gul");
                 cbxFärg.Items.Add("Ljusblå");
                 cbxFärg.SelectedItem = "Grön";
+                lblInfo.Text = "Tömda Hinder Kan Passeras Kan Bli Fylda Hinder Via Knappar";
             }
 
-            if ("Mål" == this.cbxHinder.SelectedItem.ToString())
+            if ("Knapp" == cbxHinder.SelectedItem.ToString())
+            {
+                Hinder = 4;
+                cbxFärg.Enabled = true;
+                lblFärg.Text = "Färg";
+                cbxFärg.Items.Clear();
+                cbxFärg.Items.Add("Tömma Grön");
+                cbxFärg.Items.Add("Fylla Grön");
+                cbxFärg.Items.Add("Tömma Blå");
+                cbxFärg.Items.Add("Fylla Blå");
+                cbxFärg.Items.Add("Tömma Röd");
+                cbxFärg.Items.Add("Fylla Röd");
+                cbxFärg.Items.Add("Tömma Gul");
+                cbxFärg.Items.Add("Fylla Gul");
+                cbxFärg.Items.Add("Tömma Ljusblå");
+                cbxFärg.Items.Add("Fylla Ljusblå");
+                cbxFärg.SelectedItem = "Tömma Grön";
+                lblInfo.Text = "Kan Ändra Tömda och Fylda Hinder Mellan Varandra";
+            }
+
+            if ("Mål" == cbxHinder.SelectedItem.ToString())
             {
                 Hinder = 5;
                 cbxFärg.Enabled = false;
@@ -1815,22 +2029,55 @@ namespace RockyRoad
                 cbxFärg.Items.Clear();
                 cbxFärg.Items.Add("Gul");
                 cbxFärg.SelectedItem = "Gul";
+                lblInfo.Text = "Mål Punkt För Spelaren";
             }
             
-            if("Teleport" == this.cbxHinder.SelectedItem.ToString())
+            if("Teleport" == cbxHinder.SelectedItem.ToString())
             {
                 Hinder = 6;
                 cbxFärg.Enabled = true;
                 lblFärg.Text = "Färg";
-                cbxFärg.Items.Clear();                                
-                cbxFärg.Items.Add("Röd");                                
-                cbxFärg.Items.Add("Blå");
-                cbxFärg.Items.Add("Grön");
-                cbxFärg.Items.Add("Gul");
-                cbxFärg.SelectedItem = "Röd";                
+                cbxFärg.Items.Clear();
+                lblInfo.Text = "Förflyttar Spelaren Till Sin Tvilling Behåller Rörelse Riktning";
+                if (TRöd)
+                {
+                    cbxFärg.Items.Add("Röd");
+                }
+                if (TBlå)
+                {
+                    cbxFärg.Items.Add("Blå");
+                }
+                if (TGrön)
+                {
+                    cbxFärg.Items.Add("Grön");
+                }
+                if (TGul)
+                {
+                    cbxFärg.Items.Add("Gul");
+                }
+
+                if (cbxFärg.Items.Contains("Grön"))
+                {
+                    cbxFärg.SelectedItem = "Grön";
+                }
+
+                if (cbxFärg.Items.Contains("Gul"))
+                {
+                    cbxFärg.SelectedItem = "Gul";
+                }
+
+                if (cbxFärg.Items.Contains("Blå"))
+                {
+                    cbxFärg.SelectedItem = "Blå";
+                }
+
+                if (cbxFärg.Items.Contains("Röd"))
+                {
+                    cbxFärg.SelectedItem = "Röd";
+                }                                
             }
 
-            if("Riktnigs bytare" == this.cbxHinder.SelectedItem.ToString())
+            if("Riktnigs bytare" == cbxHinder.SelectedItem.ToString())
             {
                 Hinder = 7;
                 cbxFärg.Enabled = true;
@@ -1841,6 +2088,7 @@ namespace RockyRoad
                 cbxFärg.Items.Add("Upp");
                 cbxFärg.Items.Add("Ner");                
                 cbxFärg.SelectedItem = "Höger";
+                lblInfo.Text = "Byter Rörelse Riktning Till Den Som Pilen Visar";
             }
         }
 
@@ -1858,9 +2106,9 @@ namespace RockyRoad
 
         private void CbxNamn_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ("BanaCostum1" == this.cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum1.txt"; }
-            if ("BanaCostum2" == this.cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum2.txt"; }
-            if ("BanaCostum3" == this.cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum3.txt"; }
+            if ("BanaCostum1" == cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum1.txt"; }
+            if ("BanaCostum2" == cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum2.txt"; }
+            if ("BanaCostum3" == cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum3.txt"; }
         }
 
         private void BtnMeny_Click(object sender, EventArgs e)
@@ -1878,17 +2126,19 @@ namespace RockyRoad
             if (File.Exists(sökväg))
             {
                 StreamWriter sr = new StreamWriter(sökväg, false);
-
+                //Banans storlek
                 string s = tbxX.Text + "," + tbxY.Text;
                 sr.WriteLine(s);
-
+                //Start kordinat
                 if (Hindertyp.Contains(0)) { s = xList[Hindertyp.IndexOf(0)] + "," + yList[Hindertyp.IndexOf(0)] + "," + Hindertyp[Hindertyp.IndexOf(0)]; sr.WriteLine(s); xList.RemoveAt(Hindertyp.IndexOf(0)); yList.RemoveAt(Hindertyp.IndexOf(0)); Hindertyp.RemoveAt(Hindertyp.IndexOf(0)); }
 
+                //Banans innehåll
                 for (int i = 0; i < xList.Count; i++)
                 {                    
                     s = xList[i] + "," + yList[i] + "," + Hindertyp[i];
                     sr.WriteLine(s);
-                }
+                }                               
+
                 sr.Close();
 
                 label1.Text = "Fil Status: Sparad";
@@ -1923,14 +2173,20 @@ namespace RockyRoad
                     {
                         if (double.Parse(enRad[3]) >= 0)
                         {
-                            Hindertyp.Add(double.Parse(enRad[2]) + ((double.Parse(enRad[3]) / 10)));
+                            if(double.Parse(enRad[3]) >= 10)
+                            {
+                                Hindertyp.Add(double.Parse(enRad[2]) + ((double.Parse(enRad[3]) / 100)));
+                            }
+                            else
+                            {
+                                Hindertyp.Add(double.Parse(enRad[2]) + ((double.Parse(enRad[3]) / 10)));
+                            }                            
                         }
                     }                    
                     else
                     {
                         Hindertyp.Add(double.Parse(enRad[2]));
-                    }
-                                        
+                    }                                        
                 }                
                 label1.Text = "Fil Status: Inläst";                
                 sr.Close();
@@ -1939,6 +2195,11 @@ namespace RockyRoad
 
             btnBekräfta.PerformClick();
             pnlLevelMakerPaint.Invalidate();
+        }
+
+        private void BtnSpara_MouseHover(object sender, EventArgs e)
+        {
+
         }
     }
 }
