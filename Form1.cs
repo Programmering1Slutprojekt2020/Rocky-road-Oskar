@@ -16,22 +16,42 @@ namespace RockyRoad
         public Form1()
         {
             InitializeComponent();
-            Meny();                        
+            Meny();            
         }
 
+        SolidBrush Blå = new SolidBrush(Color.Blue);
+        SolidBrush Ljusblå = new SolidBrush(Color.LightBlue);
+        SolidBrush Vit = new SolidBrush(Color.White);
+        SolidBrush Röd = new SolidBrush(Color.Red);
+        SolidBrush Grön = new SolidBrush(Color.Green);
+        SolidBrush Gul = new SolidBrush(Color.Yellow);
+        SolidBrush Svart = new SolidBrush(Color.Black);
+
+        Pen PVit = new Pen(Color.White);
+        Pen PBlå = new Pen(Color.Blue);
+        Pen PLjusblå = new Pen(Color.LightBlue);
+        Pen PGrön = new Pen(Color.Green);
+        Pen PRöd = new Pen(Color.Red);
+        Pen PGul = new Pen(Color.Yellow);
+        
         //Meny
         List<int> MenyX = new List<int>();
         List<int> MenyY = new List<int>();
         List<double> MenyHinder = new List<double>();
+
         Point InfoMeny = new Point(189,30);
-        Point Meny1 = new Point(12, 9);
-        Point Meny2 = new Point(620, 9);
-        Point Meny3 = new Point(620, 340);
+        Point ActiveMeny = new Point(12, 9);
+        Point StartMeny = new Point(620, 9);
+        Point LevelMakerMeny = new Point(620, 340);
+        Point HighScoreMeny = new Point(12, 410);
+        Point MenyNamn = new Point(189, 144);
+
+        bool Special = false;
         private void Meny()
         {
             Width = 600;
             Height = 440;
-            pnlStartMeny.Location = Meny1;
+            pnlStartMeny.Location = ActiveMeny;
 
             //R
             MenyX.Add(2); MenyY.Add(2); MenyHinder.Add(1);
@@ -158,21 +178,14 @@ namespace RockyRoad
         private void Panel2_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-
-            SolidBrush BorsteBlå = new SolidBrush(Color.Blue);
-            SolidBrush BorsteLjusBlå = new SolidBrush(Color.LightBlue);
-            SolidBrush BorsteVit = new SolidBrush(Color.White);
-            SolidBrush BorsteRöd = new SolidBrush(Color.Red);
-            SolidBrush Borstegrön = new SolidBrush(Color.Green);
-            SolidBrush BorsteMål = new SolidBrush(Color.Gold);
-
+            
             // Måla Meny
             for (int i = 0; i < MenyX.Count; i++)
             {
                 //Vanliga
                 if (MenyHinder[i] == 1)
                 {
-                    g.FillRectangle(BorsteVit, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
+                    g.FillRectangle(Vit, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
                 }
 
                 //fylda
@@ -180,27 +193,27 @@ namespace RockyRoad
                 {
                     if (MenyHinder[i] == 2.1)
                     {
-                        g.FillRectangle(Borstegrön, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Grön, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
                     }
                     
                     if (MenyHinder[i] == 2.2)
                     {
-                        g.FillRectangle(BorsteRöd, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Röd, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
                     }
 
                     if (MenyHinder[i] == 2.3)
                     {
-                        g.FillRectangle(BorsteLjusBlå, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Ljusblå, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
                     }
 
                     if (MenyHinder[i] == 2.4)
                     {
-                        g.FillRectangle(BorsteBlå, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Blå, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
                     }
 
                     if (MenyHinder[i] == 2.5)
                     {
-                        g.FillRectangle(BorsteMål, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Gul, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
                     }                    
                 }
             }
@@ -210,7 +223,7 @@ namespace RockyRoad
         {
             pnlInfo.Enabled = true;
             pnlInfo.Location = InfoMeny;
-            pnlStartMeny.Location = Meny2;
+            pnlStartMeny.Location = StartMeny;
             pnlStartMeny.Enabled = false;
             pnlBana.Visible = false;
         }
@@ -218,26 +231,42 @@ namespace RockyRoad
         private void BtnStart2_Click(object sender, EventArgs e)
         {
             pnlBana.Enabled = true;            
+           
+            pnlBana.Visible = true;
+            pnlInfo.Enabled = false;
+            pnlInfo.Location = StartMeny;
+
+            BanaTyp();
+           
             pnlBana.Invalidate();
+        }
+
+        private void BtnStartSpecial_Click(object sender, EventArgs e)
+        {
+            Special = true;
+
+            pnlBana.Enabled = true;
 
             pnlBana.Visible = true;
             pnlInfo.Enabled = false;
-            pnlInfo.Location = Meny2;
+            pnlInfo.Location = StartMeny;
 
-            Bana1();
+            BanaTyp();
+
+            pnlBana.Invalidate();
         }
 
-        private void PnlInfo2_Paint(object sender, PaintEventArgs e)
+        private void BtnFelmedelande_Click(object sender, EventArgs e)
         {
-            SolidBrush Vit = new SolidBrush(Color.White);
-            SolidBrush Röd = new SolidBrush(Color.Red);
-            SolidBrush Blå = new SolidBrush(Color.Blue);
-            SolidBrush Gul = new SolidBrush(Color.Yellow);
-            SolidBrush Grön = new SolidBrush(Color.Green);
-            SolidBrush Ljusblå = new SolidBrush(Color.LightBlue);
-
-            Pen PGrön = new Pen(Color.Green);
-
+            Text = "Rocky Road";
+            pnlFelmedelande.Enabled = false;
+            pnlStartMeny.Location = ActiveMeny;
+            pnlFelmedelande.Location = HighScoreMeny;
+            pnlStartMeny.Enabled = true;          
+            pnlStartMeny.Invalidate();
+        }
+        private void PnlInfo2_Paint(object sender, PaintEventArgs e)
+        {           
             Graphics g = e.Graphics;
 
             g.FillEllipse(Blå, 19, 19, Storlek + 1, Storlek + 1);//Spelare
@@ -264,373 +293,12 @@ namespace RockyRoad
         }
         
         Point GOReset = new Point(445, 9);
-        Point GOResetS = new Point(0, 0);
+        Point GOResetS = new Point(0, 0);        
 
         List<int> BanaX = new List<int>();
         List<int> BanaY = new List<int>();
-        List<double> BanaHinder = new List<double>();
-
-        //Bana 1
-        List<int> Bana1X = new List<int>();
-        List<int> Bana1Y = new List<int>();
-        List<double> Bana1Hinder = new List<double>();
-        Point Bana1Point = new Point(210, 110);
-        Point Pause1 = new Point(12, 55);
-        Point GameOver1 = new Point(0, 55);
-        private void Bana1()
-        {
-            if (Bana == 1)
-            {
-                pnlBana.Location = Bana1Point;
-                pnlBana.Height = 140;
-                pnlBana.Width = 140;
-
-                lblPaused.Location = Pause1;
-
-                x[0] = x[1] = 0;
-                y[0] = y[1] = 6;
-            }
-
-            Bana2X.Clear(); Bana2Y.Clear(); Bana2Hinder.Clear();
-
-            //mål
-            Bana2X.Add(3); Bana2Y.Add(3); Bana2Hinder.Add(5);
-
-            //knapp
-            Bana2X.Add(1); Bana2Y.Add(1); Bana2Hinder.Add(4.12);
-            Bana2X.Add(4); Bana2Y.Add(2); Bana2Hinder.Add(4.22);
-
-            //ofylda
-            Bana2X.Add(1); Bana2Y.Add(6); Bana2Hinder.Add(3.1);
-            Bana2X.Add(4); Bana2Y.Add(1); Bana2Hinder.Add(3.1);
-            Bana2X.Add(5); Bana2Y.Add(5); Bana2Hinder.Add(3.1);
-            Bana2X.Add(2); Bana2Y.Add(2); Bana2Hinder.Add(3.3);
-
-            //vanliga
-            Bana2X.Add(0); Bana2Y.Add(1); Bana2Hinder.Add(1);
-            Bana2X.Add(5); Bana2Y.Add(0); Bana2Hinder.Add(1);
-            Bana2X.Add(6); Bana2Y.Add(6); Bana2Hinder.Add(1);
-        }
-
-        //bana 2
-        List<int> Bana2X = new List<int>();
-        List<int> Bana2Y = new List<int>();
-        List<double> Bana2Hinder = new List<double>();
-        Point Bana2Point = new Point(12, 30);
-        Point GameOver2 = new Point(203, 160);
-        Point Pause2 = new Point(220, 160);
-        private void Bana2()
-        {
-            if (Bana == 2)
-            {
-                pnlBana.Location = Bana2Point;
-                pnlBana.Height = 360;
-                pnlBana.Width = 560;
-
-                lblPaused.Location = Pause2;
-
-                x[0] = x[1] = 27;
-                y[0] = y[1] = 17;
-            }
-
-            Bana1X.Clear(); Bana1Y.Clear(); Bana1Hinder.Clear();
-
-            //döda
-            Bana1X.Add(7); Bana1Y.Add(7); Bana1Hinder.Add(2.21);
-
-            //fylda
-            Bana1X.Add(8); Bana1Y.Add(7); Bana1Hinder.Add(2.1);
-            Bana1X.Add(18); Bana1Y.Add(1); Bana1Hinder.Add(2.1);
-
-            //knapp
-            Bana1X.Add(2); Bana1Y.Add(7); Bana1Hinder.Add(4.41);
-            Bana1X.Add(2); Bana1Y.Add(7); Bana1Hinder.Add(4.11);
-
-            //Mål
-            Bana1X.Add(26); Bana1Y.Add(1); Bana1Hinder.Add(5);
-
-            //vanliga
-            Bana1X.Add(0); Bana1Y.Add(2); Bana1Hinder.Add(1);
-            Bana1X.Add(0); Bana1Y.Add(10); Bana1Hinder.Add(1);
-            Bana1X.Add(1); Bana1Y.Add(6); Bana1Hinder.Add(1);
-            Bana1X.Add(1); Bana1Y.Add(7); Bana1Hinder.Add(1);
-            Bana1X.Add(1); Bana1Y.Add(8); Bana1Hinder.Add(1);
-            Bana1X.Add(1); Bana1Y.Add(15); Bana1Hinder.Add(1);
-            Bana1X.Add(3); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(4); Bana1Y.Add(5); Bana1Hinder.Add(1);
-            Bana1X.Add(5); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(5); Bana1Y.Add(6); Bana1Hinder.Add(1);
-            Bana1X.Add(6); Bana1Y.Add(16); Bana1Hinder.Add(1);
-            Bana1X.Add(7); Bana1Y.Add(8); Bana1Hinder.Add(1);
-            Bana1X.Add(8); Bana1Y.Add(4); Bana1Hinder.Add(1);
-            Bana1X.Add(8); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(9); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(9); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(9); Bana1Y.Add(13); Bana1Hinder.Add(1);
-            Bana1X.Add(9); Bana1Y.Add(15); Bana1Hinder.Add(1);
-            Bana1X.Add(10); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(10); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(11); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(11); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(11); Bana1Y.Add(12); Bana1Hinder.Add(1);
-            Bana1X.Add(12); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(12); Bana1Y.Add(13); Bana1Hinder.Add(1);
-            Bana1X.Add(12); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(13); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(13); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(13); Bana1Y.Add(13); Bana1Hinder.Add(1);
-            Bana1X.Add(13); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(14); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(14); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(15); Bana1Y.Add(4); Bana1Hinder.Add(1);
-            Bana1X.Add(15); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(15); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(15); Bana1Y.Add(12); Bana1Hinder.Add(1);
-            Bana1X.Add(15); Bana1Y.Add(13); Bana1Hinder.Add(1);
-            Bana1X.Add(16); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(17); Bana1Y.Add(4); Bana1Hinder.Add(1);
-            Bana1X.Add(17); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(17); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(17); Bana1Y.Add(13); Bana1Hinder.Add(1);
-            Bana1X.Add(17); Bana1Y.Add(16); Bana1Hinder.Add(1);
-            Bana1X.Add(18); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(18); Bana1Y.Add(14); Bana1Hinder.Add(1);
-            Bana1X.Add(18); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(19); Bana1Y.Add(7); Bana1Hinder.Add(1);
-            Bana1X.Add(20); Bana1Y.Add(16); Bana1Hinder.Add(1);
-            Bana1X.Add(21); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(21); Bana1Y.Add(3); Bana1Hinder.Add(1);
-            Bana1X.Add(22); Bana1Y.Add(8); Bana1Hinder.Add(1);
-            Bana1X.Add(22); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(22); Bana1Y.Add(12); Bana1Hinder.Add(1);
-            Bana1X.Add(22); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(23); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(23); Bana1Y.Add(4); Bana1Hinder.Add(1);
-            Bana1X.Add(24); Bana1Y.Add(2); Bana1Hinder.Add(1);
-            Bana1X.Add(24); Bana1Y.Add(9); Bana1Hinder.Add(1);
-            Bana1X.Add(24); Bana1Y.Add(11); Bana1Hinder.Add(1);
-            Bana1X.Add(24); Bana1Y.Add(15); Bana1Hinder.Add(1);
-            Bana1X.Add(25); Bana1Y.Add(17); Bana1Hinder.Add(1);
-            Bana1X.Add(26); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(26); Bana1Y.Add(2); Bana1Hinder.Add(1);
-            Bana1X.Add(26); Bana1Y.Add(4); Bana1Hinder.Add(1);
-            Bana1X.Add(26); Bana1Y.Add(7); Bana1Hinder.Add(1);
-            Bana1X.Add(27); Bana1Y.Add(0); Bana1Hinder.Add(1);
-            Bana1X.Add(27); Bana1Y.Add(1); Bana1Hinder.Add(1);
-            Bana1X.Add(27); Bana1Y.Add(2); Bana1Hinder.Add(1);
-        }
-
-        //Bana 3
-        List<int> Bana3X = new List<int>();
-        List<int> Bana3Y = new List<int>();
-        List<double> Bana3Hinder = new List<double>();
-        Point Bana3Point = new Point(130, 110);
-        Point GameOver3 = new Point(74, 55);
-        Point Pause3 = new Point(97, 55);
-        private void Bana3()
-        {
-            if (Bana == 3)
-            {
-                pnlBana.Location = Bana3Point;
-                pnlBana.Height = 140;
-                pnlBana.Width = 300;
-
-                lblPaused.Location = Pause3;
-                
-                x[0] = x[1] = 0;
-                y[0] = y[1] = 6;
-            }
-
-            Bana3X.Clear(); Bana3Y.Clear(); Bana3Hinder.Clear();
-
-            //Mål
-            Bana3X.Add(12); Bana3Y.Add(6); Bana3Hinder.Add(5);
-
-            //teleport
-            Bana3X.Add(3); Bana3Y.Add(3);  Bana3Hinder.Add(6.1);
-            Bana3X.Add(11); Bana3Y.Add(3);  Bana3Hinder.Add(6.1);
-
-            Bana3X.Add(4); Bana3Y.Add(1); Bana3Hinder.Add(6.2);
-            Bana3X.Add(1); Bana3Y.Add(5); Bana3Hinder.Add(6.2);
-
-            Bana3X.Add(1); Bana3Y.Add(3); Bana3Hinder.Add(6.3);
-            Bana3X.Add(6); Bana3Y.Add(2); Bana3Hinder.Add(6.3);
-
-            Bana3X.Add(8); Bana3Y.Add(6); Bana3Hinder.Add(6.4);
-            Bana3X.Add(14); Bana3Y.Add(3); Bana3Hinder.Add(6.4);
-
-            //vanliga
-            Bana3X.Add(0); Bana3Y.Add(0); Bana3Hinder.Add(1);
-            Bana3X.Add(2); Bana3Y.Add(2); Bana3Hinder.Add(1);
-            Bana3X.Add(2); Bana3Y.Add(4); Bana3Hinder.Add(1);
-            Bana3X.Add(4); Bana3Y.Add(2); Bana3Hinder.Add(1);
-            Bana3X.Add(4); Bana3Y.Add(4); Bana3Hinder.Add(1);
-            Bana3X.Add(4); Bana3Y.Add(6); Bana3Hinder.Add(1);
-            Bana3X.Add(5); Bana3Y.Add(1); Bana3Hinder.Add(1);
-            Bana3X.Add(6); Bana3Y.Add(5); Bana3Hinder.Add(1);
-            Bana3X.Add(7); Bana3Y.Add(0); Bana3Hinder.Add(1);
-            Bana3X.Add(7); Bana3Y.Add(1); Bana3Hinder.Add(1);
-            Bana3X.Add(7); Bana3Y.Add(2); Bana3Hinder.Add(1);
-            Bana3X.Add(7); Bana3Y.Add(3); Bana3Hinder.Add(1);
-            Bana3X.Add(7); Bana3Y.Add(4); Bana3Hinder.Add(1);
-            Bana3X.Add(7); Bana3Y.Add(5); Bana3Hinder.Add(1);
-            Bana3X.Add(7); Bana3Y.Add(6); Bana3Hinder.Add(1);
-            Bana3X.Add(8); Bana3Y.Add(0); Bana3Hinder.Add(1);
-            Bana3X.Add(8); Bana3Y.Add(5); Bana3Hinder.Add(1);
-            Bana3X.Add(11); Bana3Y.Add(0); Bana3Hinder.Add(1);
-            Bana3X.Add(13); Bana3Y.Add(6); Bana3Hinder.Add(1);
-            Bana3X.Add(14); Bana3Y.Add(1); Bana3Hinder.Add(1);
-        }
-
-        //Bana 4
-        List<int> Bana4X = new List<int>();
-        List<int> Bana4Y = new List<int>();
-        List<double> Bana4Hinder = new List<double>();
-        Point Bana4Point = new Point(80, 80);
-        Point GameOver4 = new Point(124, 85);
-        Point Pause4 = new Point(147, 85);
-        private void Bana4()
-        {
-            if (Bana == 4)
-            {
-                pnlBana.Location = Bana4Point;
-                pnlBana.Height = 200;
-                pnlBana.Width = 400;
-
-                lblPaused.Location = Pause4;
-
-                x[0] = x[1] = 0;
-                y[0] = y[1] = 0;
-            }
-
-            Bana4X.Clear(); Bana4Y.Clear(); Bana4Hinder.Clear();
-
-            //Mål
-            Bana4X.Add(0); Bana4Y.Add(4); Bana4Hinder.Add(5);
-
-            //knapp            
-            Bana4X.Add(2); Bana4Y.Add(4); Bana4Hinder.Add(4.22);
-            Bana4X.Add(2); Bana4Y.Add(4); Bana4Hinder.Add(4.11);
-            Bana4X.Add(1); Bana4Y.Add(6); Bana4Hinder.Add(4.32);
-            Bana4X.Add(1); Bana4Y.Add(6); Bana4Hinder.Add(4.21);
-
-            //Fylda
-            Bana4X.Add(0); Bana4Y.Add(3); Bana4Hinder.Add(2.3);
-            Bana4X.Add(1); Bana4Y.Add(3); Bana4Hinder.Add(2.3);
-            Bana4X.Add(1); Bana4Y.Add(4); Bana4Hinder.Add(2.3);
-            Bana4X.Add(9); Bana4Y.Add(1); Bana4Hinder.Add(2.3);
-            Bana4X.Add(9); Bana4Y.Add(7); Bana4Hinder.Add(2.3);
-            Bana4X.Add(9); Bana4Y.Add(4); Bana4Hinder.Add(2.1);
-
-            //ofylda
-            Bana4X.Add(0); Bana4Y.Add(1); Bana4Hinder.Add(3.4);
-            Bana4X.Add(1); Bana4Y.Add(8); Bana4Hinder.Add(3.4);
-            Bana4X.Add(10); Bana4Y.Add(0); Bana4Hinder.Add(3.4);
-            Bana4X.Add(18); Bana4Y.Add(3); Bana4Hinder.Add(3.4);
-            Bana4X.Add(18); Bana4Y.Add(9); Bana4Hinder.Add(3.4);
-
-            //teleport
-            Bana4X.Add(8); Bana4Y.Add(6); Bana4Hinder.Add(6.1);
-            Bana4X.Add(10); Bana4Y.Add(9); Bana4Hinder.Add(6.1);
-
-            //vanliga
-            Bana4X.Add(0); Bana4Y.Add(5); Bana4Hinder.Add(1);
-            Bana4X.Add(0); Bana4Y.Add(6); Bana4Hinder.Add(1);
-            Bana4X.Add(0); Bana4Y.Add(8); Bana4Hinder.Add(1);
-            Bana4X.Add(1); Bana4Y.Add(5); Bana4Hinder.Add(1);
-            Bana4X.Add(2); Bana4Y.Add(5); Bana4Hinder.Add(1);
-            Bana4X.Add(3); Bana4Y.Add(5); Bana4Hinder.Add(1);
-            Bana4X.Add(4); Bana4Y.Add(5); Bana4Hinder.Add(1);
-            Bana4X.Add(5); Bana4Y.Add(5); Bana4Hinder.Add(1);
-            Bana4X.Add(6); Bana4Y.Add(5); Bana4Hinder.Add(1);
-            Bana4X.Add(7); Bana4Y.Add(5); Bana4Hinder.Add(1);
-            Bana4X.Add(8); Bana4Y.Add(5); Bana4Hinder.Add(1);
-            Bana4X.Add(8); Bana4Y.Add(9); Bana4Hinder.Add(1);
-            Bana4X.Add(9); Bana4Y.Add(0); Bana4Hinder.Add(1);
-            Bana4X.Add(9); Bana4Y.Add(2); Bana4Hinder.Add(1);
-            Bana4X.Add(9); Bana4Y.Add(3); Bana4Hinder.Add(1);
-            Bana4X.Add(9); Bana4Y.Add(5); Bana4Hinder.Add(1);
-            Bana4X.Add(9); Bana4Y.Add(6); Bana4Hinder.Add(1);
-            Bana4X.Add(9); Bana4Y.Add(8); Bana4Hinder.Add(1);
-            Bana4X.Add(9); Bana4Y.Add(9); Bana4Hinder.Add(1);
-            Bana4X.Add(18); Bana4Y.Add(0); Bana4Hinder.Add(1);
-            Bana4X.Add(19); Bana4Y.Add(4); Bana4Hinder.Add(1);
-            Bana4X.Add(19); Bana4Y.Add(7); Bana4Hinder.Add(1);
-        }
-
-        //Bana 5
-        List<int> Bana5X = new List<int>();
-        List<int> Bana5Y = new List<int>();
-        List<double> Bana5Hinder = new List<double>();
-        Point Bana5Point = new Point(130, 80);
-        Point GameOver5 = new Point(74, 85);
-        Point Pause5 = new Point(97, 85);
-        private void Bana5()
-        {
-            if (Bana == 5)
-            {
-                pnlBana.Location = Bana5Point;
-                pnlBana.Height = 200;
-                pnlBana.Width = 300;
-
-                lblPaused.Location = Pause5;
-               
-                x[0] = x[1] = 0;
-                y[0] = y[1] = 9;
-            }
-
-            Bana5X.Clear(); Bana5Y.Clear(); Bana5Hinder.Clear();
-
-            //Mål
-            Bana5X.Add(2); Bana5Y.Add(0); Bana5Hinder.Add(5);
-
-            //Döda
-            Bana5X.Add(0); Bana5Y.Add(0); Bana5Hinder.Add(2.2);
-            Bana5X.Add(5); Bana5Y.Add(1); Bana5Hinder.Add(2.21);
-            Bana5X.Add(13); Bana5Y.Add(0); Bana5Hinder.Add(2.2);
-            Bana5X.Add(14); Bana5Y.Add(2); Bana5Hinder.Add(2.2);
-            Bana5X.Add(14); Bana5Y.Add(3); Bana5Hinder.Add(2.2);
-
-            //kanpp
-            Bana5X.Add(0); Bana5Y.Add(5); Bana5Hinder.Add(4.41);
-            Bana5X.Add(0); Bana5Y.Add(5); Bana5Hinder.Add(4.11);
-            Bana5X.Add(7); Bana5Y.Add(4); Bana5Hinder.Add(4.11);
-            Bana5X.Add(13); Bana5Y.Add(6); Bana5Hinder.Add(4.42);
-            Bana5X.Add(13); Bana5Y.Add(6); Bana5Hinder.Add(4.12);
-
-            //fylda
-            Bana5X.Add(7); Bana5Y.Add(4); Bana5Hinder.Add(2.5);
-            Bana5X.Add(2); Bana5Y.Add(0); Bana5Hinder.Add(2.6);
-
-            //ofylda
-            Bana5X.Add(13); Bana5Y.Add(2); Bana5Hinder.Add(3.1);
-            Bana5X.Add(13); Bana5Y.Add(8); Bana5Hinder.Add(3.22);
-
-            //teleport
-            Bana5X.Add(7); Bana5Y.Add(5); Bana5Hinder.Add(6.1);
-            Bana5X.Add(14); Bana5Y.Add(0); Bana5Hinder.Add(6.1);
-
-            Bana5X.Add(1); Bana5Y.Add(5); Bana5Hinder.Add(6.2);
-            Bana5X.Add(14); Bana5Y.Add(1); Bana5Hinder.Add(6.2);
-
-            Bana5X.Add(1); Bana5Y.Add(8); Bana5Hinder.Add(6.3);
-            Bana5X.Add(12); Bana5Y.Add(3); Bana5Hinder.Add(6.3);
-
-            Bana5X.Add(7); Bana5Y.Add(3); Bana5Hinder.Add(6.4);
-            Bana5X.Add(11); Bana5Y.Add(2); Bana5Hinder.Add(6.4);
-
-            //Riktning
-            Bana5X.Add(0); Bana5Y.Add(1); Bana5Hinder.Add(7.4);
-            Bana5X.Add(4); Bana5Y.Add(5); Bana5Hinder.Add(7.1);
-            Bana5X.Add(4); Bana5Y.Add(8); Bana5Hinder.Add(7.4);
-            Bana5X.Add(12); Bana5Y.Add(8); Bana5Hinder.Add(7.2);
-            Bana5X.Add(11); Bana5Y.Add(0); Bana5Hinder.Add(7.3);
-
-            //vanliga 
-            Bana5X.Add(14); Bana5Y.Add(9); Bana5Hinder.Add(1);
-            Bana5X.Add(12); Bana5Y.Add(2); Bana5Hinder.Add(1);
-        }
-
+        List<double> BanaHinder = new List<double>();                 
+        
         //flytnign av pjäs relaterat
         bool Flytta = true;
         int TestX = 0;
@@ -705,6 +373,18 @@ namespace RockyRoad
 
             if (e.KeyData == Keys.R) { Reset(); }
 
+            if (e.KeyData == Keys.Q)
+            {
+                Reset();
+
+                Text = "Rocky Road";
+                pnlBana.Enabled = false;
+                pnlStartMeny.Location = ActiveMeny;                
+                pnlStartMeny.Enabled = true;
+                pnlBana.Visible = false;
+                pnlStartMeny.Invalidate();
+            }
+
             if (e.KeyData == Keys.M) Mål();
         }
 
@@ -727,7 +407,6 @@ namespace RockyRoad
                 lblPausInfo.Text = "Tryck På P För Att Pausa";
                 lblPaused.Text = "";
 
-
                 Riktning = 0;
                 Flytta = true;
                 TotalReset = false;
@@ -746,12 +425,8 @@ namespace RockyRoad
 
                 försök++;
             }
-
-            Bana1();
-            Bana2();
-            Bana3();
-            Bana4();
-            Bana5();
+                        
+            BanaTyp();
 
             pnlBana.Invalidate();
         }
@@ -761,11 +436,7 @@ namespace RockyRoad
             TotalReset = true;
             Flytta = false;
 
-            if (Bana == 1) lblPaused.Location = GameOver1;
-            if (Bana == 2) lblPaused.Location = GameOver2;
-            if (Bana == 3) lblPaused.Location = GameOver3;
-            if (Bana == 4) lblPaused.Location = GameOver4;
-            if (Bana == 5) lblPaused.Location = GameOver5;
+            lblPaused.Location = new Point((pnlBana.Width- 153)/2,(pnlBana.Height - 31)/2);
 
             TidTagning.Stop();
 
@@ -774,26 +445,12 @@ namespace RockyRoad
             GOResetS = lblPausInfo.Location;
             lblPausInfo.Location = GOReset;
 
-            lblPausInfo.Text = "Tryck På R För att börja om";
+            lblPausInfo.Text = "Tryck På R För Att Börja Om";
         }
 
         private void Panel1_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-
-            SolidBrush BorsteBlå = new SolidBrush(Color.Blue);
-            SolidBrush BorsteLjusBlå = new SolidBrush(Color.LightBlue);
-            SolidBrush BorsteVit = new SolidBrush(Color.White);
-            SolidBrush BorsteRöd = new SolidBrush(Color.Red);
-            SolidBrush Borstegrön = new SolidBrush(Color.Green);
-            SolidBrush BorsteMål = new SolidBrush(Color.Gold);
-            SolidBrush BorsteSvart = new SolidBrush(Color.Black);
-
-            Pen PennaBlå = new Pen(Color.Blue);
-            Pen PennaLjusBlå = new Pen(Color.LightBlue);
-            Pen PennaGrön = new Pen(Color.Green);
-            Pen PennaRöd = new Pen(Color.Red);
-            Pen PennaGul = new Pen(Color.Yellow);
+            Graphics g = e.Graphics;            
 
             lblLiv.Text = "Liv: " + Liv;
             lblFörsök.Text = "Försök: " + försök;
@@ -801,9 +458,7 @@ namespace RockyRoad
             if (Liv == 0 || Liv < 0)
             {
                 GameOver();
-            }
-
-            BanaTyp();
+            }            
 
             // Måla Banan
             for (int i = 0; i < BanaX.Count; i++)
@@ -811,7 +466,7 @@ namespace RockyRoad
                 //Vanliga
                 if (BanaHinder[i] == 1)
                 {
-                    g.FillRectangle(BorsteVit, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                    g.FillRectangle(Vit, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
                 }
 
                 //fylda
@@ -819,33 +474,33 @@ namespace RockyRoad
                 {
                     if (BanaHinder[i] == 2.1)
                     {
-                        g.FillRectangle(Borstegrön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Grön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
                     }// Grön
 
                     //döda
                     if (BanaHinder[i] == 2.2 || BanaHinder[i] == 2.21)
                     {
-                        g.FillRectangle(BorsteRöd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Röd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
                     }//Röd
 
                     if (BanaHinder[i] == 2.3)
                     {
-                        g.FillRectangle(BorsteLjusBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Ljusblå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
                     }//Ljusblå
 
                     if (BanaHinder[i] == 2.4)
                     {
-                        g.FillRectangle(BorsteBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Blå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
                     }//Blå
 
                     if (BanaHinder[i] == 2.5)
                     {
-                        g.FillRectangle(BorsteMål, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Gul, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
                     }//Gul/Mål
 
                     if (BanaHinder[i] == 2.6)
                     {
-                        g.FillRectangle(BorsteSvart, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Svart, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
                     }//Svart
                 }
 
@@ -854,27 +509,27 @@ namespace RockyRoad
                 {
                     if (BanaHinder[i] == 3.1)
                     {
-                        g.DrawRectangle(PennaGrön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek - 1, Storlek - 1);
+                        g.DrawRectangle(PGrön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek - 1, Storlek - 1);
                     }//Grön
 
                     if (BanaHinder[i] == 3.22 || BanaHinder[i] == 3.21)
                     {
-                        g.DrawRectangle(PennaRöd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek - 1, Storlek - 1);
+                        g.DrawRectangle(PRöd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek - 1, Storlek - 1);
                     }//Röd
 
                     if (BanaHinder[i] == 3.3)
                     {
-                        g.DrawRectangle(PennaLjusBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.DrawRectangle(PLjusblå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
                     }//Ljusblå
 
                     if (BanaHinder[i] == 3.4)
                     {
-                        g.DrawRectangle(PennaBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.DrawRectangle(PBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
                     }//Blå
 
                     if (BanaHinder[i] == 3.5)
                     {
-                        g.DrawRectangle(PennaGul, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.DrawRectangle(PGul, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
                     }//Gul
                 }
 
@@ -883,34 +538,34 @@ namespace RockyRoad
                 {
                     if (BanaHinder[i] == 4.11 /*fyld till ofyld*/ || BanaHinder[i] == 4.12 /*ofyld till fyld*/)
                     {
-                        g.FillEllipse(Borstegrön, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
+                        g.FillEllipse(Grön, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
                     }//Grön
 
                     if (BanaHinder[i] == 4.21 /*fyld till ofyld*/ || BanaHinder[i] == 4.22 /*ofyld till fyld*/)
                     {
-                        g.FillEllipse(BorsteLjusBlå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
+                        g.FillEllipse(Ljusblå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
                     }//Ljusblå
 
                     if (BanaHinder[i] == 4.31 /*fyld till ofyld*/ || BanaHinder[i] == 4.32 /*ofyld till fyld*/)
                     {
-                        g.FillEllipse(BorsteBlå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
+                        g.FillEllipse(Blå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
                     }//Blå
 
                     if (BanaHinder[i] == 4.41 /*fyld till ofyld*/ || BanaHinder[i] == 4.42 /*ofyld till fyld*/)
                     {
-                        g.FillEllipse(BorsteRöd, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
+                        g.FillEllipse(Röd, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
                     }//Röd
 
                     if (BanaHinder[i] == 4.51 /*fyld till ofyld*/ || BanaHinder[i] == 4.52 /*ofyld till fyld*/)
                     {
-                        g.FillEllipse(BorsteMål, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
+                        g.FillEllipse(Gul, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
                     }//Gul
                 }
 
                 //Mål
                 if (BanaHinder[i] == 5)
                 {
-                    g.FillRectangle(BorsteMål, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                    g.FillRectangle(Gul, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
                 }
 
                 //Teleport
@@ -918,30 +573,30 @@ namespace RockyRoad
                 {
                     if (BanaHinder[i] == 6.1)
                     {
-                        g.FillRectangle(BorsteBlå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Blå, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
 
-                        g.FillEllipse(BorsteLjusBlå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
+                        g.FillEllipse(Ljusblå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
                     }
 
                     if (BanaHinder[i] == 6.2)
                     {
-                        g.FillRectangle(Borstegrön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Grön, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
 
-                        g.FillEllipse(BorsteLjusBlå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
+                        g.FillEllipse(Ljusblå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
                     }
 
                     if (BanaHinder[i] == 6.3)
                     {
-                        g.FillRectangle(BorsteRöd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Röd, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
 
-                        g.FillEllipse(BorsteLjusBlå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
+                        g.FillEllipse(Ljusblå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
                     }
 
                     if (BanaHinder[i] == 6.4)
                     {
-                        g.FillRectangle(BorsteMål, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
+                        g.FillRectangle(Gul, BanaX[i] * Storlek, BanaY[i] * Storlek, Storlek, Storlek);
 
-                        g.FillEllipse(BorsteLjusBlå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
+                        g.FillEllipse(Ljusblå, BanaX[i] * Storlek - 1, BanaY[i] * Storlek - 1, Storlek + 1, Storlek + 1);
                     }
                 }
 
@@ -960,7 +615,7 @@ namespace RockyRoad
                         Pil3.X = (BanaX[i] * Storlek) + (Storlek / 2);
                         Pil3.Y = (BanaY[i] * Storlek) + Storlek;
 
-                        g.FillRectangle(BorsteBlå, (BanaX[i] * Storlek) + ((Storlek / 4)), BanaY[i] * Storlek, (Storlek / 2), Storlek / 2);
+                        g.FillRectangle(Blå, (BanaX[i] * Storlek) + ((Storlek / 4)), BanaY[i] * Storlek, (Storlek / 2), Storlek / 2);
                     }
 
                     //upp
@@ -975,7 +630,7 @@ namespace RockyRoad
                         Pil3.X = (BanaX[i] * Storlek) + (Storlek / 2);
                         Pil3.Y = (BanaY[i] * Storlek) - 1;
 
-                        g.FillRectangle(BorsteBlå, (BanaX[i] * Storlek) + ((Storlek / 4)), BanaY[i] * Storlek + (Storlek / 2), (Storlek / 2), Storlek / 2);
+                        g.FillRectangle(Blå, (BanaX[i] * Storlek) + ((Storlek / 4)), BanaY[i] * Storlek + (Storlek / 2), (Storlek / 2), Storlek / 2);
                     }
 
                     //vänster
@@ -990,7 +645,7 @@ namespace RockyRoad
                         Pil3.X = (BanaX[i] * Storlek) - 1;
                         Pil3.Y = (BanaY[i] * Storlek + (Storlek / 2));
 
-                        g.FillRectangle(BorsteBlå, (BanaX[i] * Storlek) + (Storlek / 2), BanaY[i] * Storlek + ((Storlek / 2) - (Storlek / 4)), Storlek / 2, Storlek / 2);
+                        g.FillRectangle(Blå, (BanaX[i] * Storlek) + (Storlek / 2), BanaY[i] * Storlek + ((Storlek / 2) - (Storlek / 4)), Storlek / 2, Storlek / 2);
                     }
 
                     //höger
@@ -1005,19 +660,21 @@ namespace RockyRoad
                         Pil3.X = ((BanaX[i] * Storlek) + Storlek);
                         Pil3.Y = (BanaY[i] * Storlek + (Storlek / 2));
 
-                        g.FillRectangle(BorsteBlå, BanaX[i] * Storlek, BanaY[i] * Storlek + ((Storlek / 2) - (Storlek / 4)), Storlek / 2, Storlek / 2);
+                        g.FillRectangle(Blå, BanaX[i] * Storlek, BanaY[i] * Storlek + ((Storlek / 2) - (Storlek / 4)), Storlek / 2, Storlek / 2);
                     }
 
-                    g.FillPolygon(BorsteBlå, new Point[] { Pil1, Pil2, Pil3 });
+                    g.FillPolygon(Blå, new Point[] { Pil1, Pil2, Pil3 });
                 }
             }
 
             // Måla pjäs
-            g.FillEllipse(BorsteBlå, x[0] * Storlek - 1, y[0] * Storlek - 1, Storlek + 1, Storlek + 1);
+            g.FillEllipse(Blå, x[0] * Storlek - 1, y[0] * Storlek - 1, Storlek + 1, Storlek + 1);
         }
 
+        int SpecialBana = 0;
+
         /// <summary>
-        /// Denna Metod Bestämer Vilken Bana Som Ska Visas/Kollas
+        /// Denna Metodem läser in Banan Som Ska Visas/Kollas
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1026,12 +683,78 @@ namespace RockyRoad
             BanaX = new List<int>();
             BanaY = new List<int>();
             BanaHinder = new List<double>();
+            
+            if (!Special)
+            {
+                if (Bana == 1) { sökväg = @"Bana1.txt"; }
+                if (Bana == 2) { sökväg = @"Bana2.txt"; }
+                if (Bana == 3) { sökväg = @"Bana3.txt"; }
+                if (Bana == 4) { sökväg = @"Bana4.txt"; }
+                if (Bana == 5) { sökväg = @"Bana5.txt"; }
+            }
+            else
+            {
+                if (Bana == 1) { sökväg = @"BanaCostum1.txt"; }
+                if (Bana == 2) { sökväg = @"BanaCostum2.txt"; }
+                if (Bana == 3) { sökväg = @"BanaCostum3.txt"; }
+            }
 
-            if (Bana == 1) { BanaX = Bana2X; BanaY = Bana2Y; BanaHinder = Bana2Hinder; }
-            if (Bana == 2) { BanaX = Bana1X; BanaY = Bana1Y; BanaHinder = Bana1Hinder; }
-            if (Bana == 3) { BanaX = Bana3X; BanaY = Bana3Y; BanaHinder = Bana3Hinder; }
-            if (Bana == 4) { BanaX = Bana4X; BanaY = Bana4Y; BanaHinder = Bana4Hinder; }
-            if (Bana == 5) { BanaX = Bana5X; BanaY = Bana5Y; BanaHinder = Bana5Hinder; }
+            if (File.Exists(sökväg))
+            {
+                StreamReader sr = new StreamReader(sökväg);
+
+                string[] enRad;
+                if (!sr.EndOfStream)
+                {
+                    enRad = sr.ReadLine().Split(',');
+                    pnlBana.Width = int.Parse(enRad[0]);
+                    pnlBana.Height = int.Parse(enRad[1]);
+
+                    enRad = sr.ReadLine().Split(',');
+                    x[0] = x[1] = int.Parse(enRad[0]);
+                    y[0] = y[1] = int.Parse(enRad[1]);
+                }
+                else
+                {
+                    SpecialBana++; 
+                }
+
+                while (!sr.EndOfStream)
+                {
+                    enRad = sr.ReadLine().Split(',');
+
+                    BanaX.Add(int.Parse(enRad[0]));
+                    BanaY.Add(int.Parse(enRad[1]));
+                    if (enRad.Length == 4)
+                    {
+                        if (double.Parse(enRad[3]) >= 0)
+                        {
+                            if (double.Parse(enRad[3]) >= 10)
+                            {
+                                BanaHinder.Add(double.Parse(enRad[2]) + ((double.Parse(enRad[3]) / 100)));
+                            }
+                            else
+                            {
+                                BanaHinder.Add(double.Parse(enRad[2]) + ((double.Parse(enRad[3]) / 10)));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        BanaHinder.Add(double.Parse(enRad[2]));
+                    }
+                }
+                
+                sr.Close();                
+            }
+
+            pnlBana.Location = new Point(((560 - pnlBana.Width) / 2) + 12, ((360 - pnlBana.Height) / 2) + 30);
+            lblPaused.Location = new Point((pnlBana.Width - 106) / 2, (pnlBana.Height - 32) / 2);
+
+            if (!BanaHinder.Contains(5))
+            {
+                Mål();
+            }
         }
 
         private void FlyttaEttSteg()
@@ -1068,9 +791,7 @@ namespace RockyRoad
             TestX = x[0];
             TestY = y[0];
 
-            FlyttaEttSteg();
-
-            BanaTyp();
+            FlyttaEttSteg();            
 
             //Händelser
             for (int i = 0; i < BanaX.Count; i++)
@@ -1170,75 +891,93 @@ namespace RockyRoad
                         Flytta = true;
                         TestX = x[0];
                         TestY = y[0];
+                        if(Bana > 5 || (Special && Bana > 3) ) { break; }
                     }
 
                     //teleport
                     if ((int)BanaHinder[i] == 6)
                     {
-                        //Blå Portal
-                        if (BanaX[BanaHinder.IndexOf(6.1)] == x[0] && BanaY[BanaHinder.IndexOf(6.1)] == y[0])
+                        if (BanaHinder.Contains(6.1))
                         {
-                            TestX = BanaX[BanaHinder.LastIndexOf(6.1)];
-                            TestY = BanaY[BanaHinder.LastIndexOf(6.1)];
+                            //Blå Portal
+                            if (BanaX[BanaHinder.IndexOf(6.1)] == x[0] && BanaY[BanaHinder.IndexOf(6.1)] == y[0])
+                            {
+                                TestX = BanaX[BanaHinder.LastIndexOf(6.1)];
+                                TestY = BanaY[BanaHinder.LastIndexOf(6.1)];
 
-                            FlyttaEttSteg();                            
+                                FlyttaEttSteg();
+                            }
+
+                            if (BanaX[BanaHinder.LastIndexOf(6.1)] == x[0] && BanaY[BanaHinder.LastIndexOf(6.1)] == y[0])
+                            {
+                                TestX = BanaX[BanaHinder.IndexOf(6.1)];
+                                TestY = BanaY[BanaHinder.IndexOf(6.1)];
+
+                                FlyttaEttSteg();
+                            }
+                        }
+                                                
+                        if (BanaHinder.Contains(6.2))
+                        {
+                            //Grön Portal
+                            if (BanaX[BanaHinder.IndexOf(6.2)] == x[0] && BanaY[BanaHinder.IndexOf(6.2)] == y[0])
+                            {
+                                TestX = BanaX[BanaHinder.LastIndexOf(6.2)];
+                                TestY = BanaY[BanaHinder.LastIndexOf(6.2)];
+
+                                FlyttaEttSteg();
+                            }
+
+                            if (BanaX[BanaHinder.LastIndexOf(6.2)] == x[0] && BanaY[BanaHinder.LastIndexOf(6.2)] == y[0])
+                            {
+                                TestX = BanaX[BanaHinder.IndexOf(6.2)];
+                                TestY = BanaY[BanaHinder.IndexOf(6.2)];
+
+                                FlyttaEttSteg();
+                            }
+
                         }
 
-                        if (BanaX[BanaHinder.LastIndexOf(6.1)] == x[0] && BanaY[BanaHinder.LastIndexOf(6.1)] == y[0])
+                        if (BanaHinder.Contains(6.3))
                         {
-                            TestX = BanaX[BanaHinder.IndexOf(6.1)];
-                            TestY = BanaY[BanaHinder.IndexOf(6.1)];
+                            //Röd Portal
+                            if (BanaX[BanaHinder.IndexOf(6.3)] == x[0] && BanaY[BanaHinder.IndexOf(6.3)] == y[0])
+                            {
+                                TestX = BanaX[BanaHinder.LastIndexOf(6.3)];
+                                TestY = BanaY[BanaHinder.LastIndexOf(6.3)];
 
-                            FlyttaEttSteg();                            
-                        }
-                        //Grön Portal
-                        if (BanaX[BanaHinder.IndexOf(6.2)] == x[0] && BanaY[BanaHinder.IndexOf(6.2)] == y[0])
-                        {
-                            TestX = BanaX[BanaHinder.LastIndexOf(6.2)];
-                            TestY = BanaY[BanaHinder.LastIndexOf(6.2)];
+                                FlyttaEttSteg();
+                            }
 
-                            FlyttaEttSteg();
-                        }
+                            if (BanaX[BanaHinder.LastIndexOf(6.3)] == x[0] && BanaY[BanaHinder.LastIndexOf(6.3)] == y[0])
+                            {
+                                TestX = BanaX[BanaHinder.IndexOf(6.3)];
+                                TestY = BanaY[BanaHinder.IndexOf(6.3)];
 
-                        if (BanaX[BanaHinder.LastIndexOf(6.2)] == x[0] && BanaY[BanaHinder.LastIndexOf(6.2)] == y[0])
-                        {
-                            TestX = BanaX[BanaHinder.IndexOf(6.2)];
-                            TestY = BanaY[BanaHinder.IndexOf(6.2)];
+                                FlyttaEttSteg();
+                            }
 
-                            FlyttaEttSteg();
-                        }
-                        //Röd Portal
-                        if (BanaX[BanaHinder.IndexOf(6.3)] == x[0] && BanaY[BanaHinder.IndexOf(6.3)] == y[0])
-                        {
-                            TestX = BanaX[BanaHinder.LastIndexOf(6.3)];
-                            TestY = BanaY[BanaHinder.LastIndexOf(6.3)];
-
-                            FlyttaEttSteg();
                         }
 
-                        if (BanaX[BanaHinder.LastIndexOf(6.3)] == x[0] && BanaY[BanaHinder.LastIndexOf(6.3)] == y[0])
+                        if (BanaHinder.Contains(6.4))
                         {
-                            TestX = BanaX[BanaHinder.IndexOf(6.3)];
-                            TestY = BanaY[BanaHinder.IndexOf(6.3)];
+                            //Gul Portal
+                            if (BanaX[BanaHinder.IndexOf(6.4)] == x[0] && BanaY[BanaHinder.IndexOf(6.4)] == y[0])
+                            {
+                                TestX = BanaX[BanaHinder.LastIndexOf(6.4)];
+                                TestY = BanaY[BanaHinder.LastIndexOf(6.4)];
 
-                            FlyttaEttSteg();
-                        }
-                        //Gul Portal
-                        if (BanaX[BanaHinder.IndexOf(6.4)] == x[0] && BanaY[BanaHinder.IndexOf(6.4)] == y[0])
-                        {
-                            TestX = BanaX[BanaHinder.LastIndexOf(6.4)];
-                            TestY = BanaY[BanaHinder.LastIndexOf(6.4)];
+                                FlyttaEttSteg();
+                            }
 
-                            FlyttaEttSteg();
-                        }
+                            if (BanaX[BanaHinder.LastIndexOf(6.4)] == x[0] && BanaY[BanaHinder.LastIndexOf(6.4)] == y[0])
+                            {
+                                TestX = BanaX[BanaHinder.IndexOf(6.4)];
+                                TestY = BanaY[BanaHinder.IndexOf(6.4)];
 
-                        if (BanaX[BanaHinder.LastIndexOf(6.4)] == x[0] && BanaY[BanaHinder.LastIndexOf(6.4)] == y[0])
-                        {
-                            TestX = BanaX[BanaHinder.IndexOf(6.4)];
-                            TestY = BanaY[BanaHinder.IndexOf(6.4)];
-
-                            FlyttaEttSteg();
-                        }
+                                FlyttaEttSteg();
+                            }
+                        }                        
                     }
                 }
 
@@ -1321,19 +1060,108 @@ namespace RockyRoad
         {
             Bana++;
 
-            Bana1();
-            Bana2();
-            Bana3();
-            Bana4();
-            Bana5();
-
-            Riktning = 0;
-
             TidTagning.Stop();
             Flytttid.Stop();
 
+            if (Bana > 5 || (Special && Bana > 3))
+            {
+                if (SpecialBana == 3)
+                {
+                    pnlFelmedelande.Enabled = true;
+                    pnlFelmedelande.Location = MenyNamn;
+                    pnlInfo.Location = StartMeny;
+                    pnlInfo.Enabled = false;
+
+                    pnlBana.Visible = false;
+
+                    Bana = 0;
+                    SpecialBana = 0;
+                }
+                else
+                {
+                    pnlNamn.Enabled = true;
+                    pnlNamn.Location = MenyNamn;
+                    pnlBana.Enabled = false;
+
+                    pnlBana.Width = 1;
+                    pnlBana.Height = 1;                    
+                }
+                return;
+            }
+
+            BanaTyp();
+
+            Riktning = 0;
+            
             pnlBana.Invalidate();
         }
+
+        private void BtnSparaHighscore_Click(object sender, EventArgs e)
+        {
+            int[] ListaTid = new int[10];
+
+            if (!Special)
+            {
+                SökvägHighscore = @"HighScore.txt";
+            }
+            else
+            {
+                SökvägHighscore = @"HighScoreCostum.txt";
+            }
+            
+            HighScoreLäsare();
+
+            string SpelarNamn = tbxNamn.Text;
+            int SpelarTid = Timme * 36000 + Minut * 600 + Secund * 10 + Tick;
+            string SpelarTidTimarMinSecTick = Timme + ":" + Minut + ":" + Secund + ":" + Tick;
+
+            for (int i = 0; i < Tid.Count && i < 10; i++)
+            {
+                string[] TidDelning = Tid.ElementAt(i).Split(':');
+
+                ListaTid[i] = ((int.Parse(TidDelning[0]) * 36000) + (int.Parse(TidDelning[1]) * 600 )+( int.Parse(TidDelning[2]) * 10) + (int.Parse(TidDelning[3])));
+            }
+
+            for(int i = 0; i < 10; i++)
+            {
+                if (SpelarTid < ListaTid[i])
+                {
+                    Namn.Insert(i, SpelarNamn); Tid.Insert(i, SpelarTidTimarMinSecTick);
+                    continue;
+                }
+
+                if( i == 9 && SpelarTid > ListaTid[i])
+                {
+                    Namn.Add(SpelarNamn); Tid.Add(SpelarTidTimarMinSecTick);
+                } 
+            }
+
+            if (File.Exists(SökvägHighscore))
+            {
+                StreamWriter sr = new StreamWriter(SökvägHighscore, false);
+                                
+                for (int i = 0; i < Namn.Count; i++)
+                {
+                    string s = Namn.ElementAt(i) + "," + Tid[i];
+                    sr.WriteLine(s);
+                }
+
+                sr.Close();                
+            }
+
+            Text = "High Score";
+            pnlHighScore.Enabled = true;
+            pnlNamn.Location = StartMeny;
+            pnlHighScore.Location = ActiveMeny;
+            pnlNamn.Enabled = false;
+            Height = 460;
+            Lista = 0;
+            Bana = 0;
+            pnlHighScore.Invalidate();
+
+            if (Special) { btnBytaHigscore.PerformClick(); }
+
+        }        
 
         private void TidTagning_Tick(object sender, EventArgs e)
         {
@@ -1361,12 +1189,124 @@ namespace RockyRoad
             lblTime.Text = "Tid: " + Timme + ":" + Minut + ":" + Secund + ":" + Tick;
         }
 
+        private void HighScoreLäsare()
+        {
+            if (File.Exists(SökvägHighscore))
+            {
+                StreamReader sr = new StreamReader(SökvägHighscore);
+
+                Namn.Clear();
+                Tid.Clear();
+
+                while (!sr.EndOfStream)
+                {
+                    string[] enRad = sr.ReadLine().Split(',');
+
+                    Namn.Add(enRad[0]);
+                    Tid.Add(enRad[1]);
+                }
+                sr.Close();
+            }
+        }
+
         private void BtnHighScore_Click(object sender, EventArgs e)
         {
+            Text = "High Score";
             pnlHighScore.Enabled = true;
-            pnlStartMeny.Location = Meny2;
-            pnlHighScore.Location = Meny1;
+            pnlStartMeny.Location = StartMeny;
+            pnlHighScore.Location = ActiveMeny;
             pnlStartMeny.Enabled = false;
+            Height = 460;
+            Lista = 0;
+            pnlHighScore.Invalidate();
+        }
+
+        List<string> Namn = new List<string>();
+        List<string> Tid = new List<string>();
+
+        int Lista = 0;
+
+        string SökvägHighscore = @"HighScore.txt";
+        /// <summary>
+        /// Denna metod Fyller Highscore efter bestämd Lista
+        /// </summary>
+        private void HighScore()
+        {
+            HighScoreLäsare();
+
+            for (int x = 0; x < Namn.Count; x++)
+            {
+                if (x == 0) { lblPlats1.Text = Namn[x]; lblTid1.Text = Tid[x]; }
+                if (x == 1) { lblPlats2.Text = Namn[x]; lblTid2.Text = Tid[x]; }
+                if (x == 2) { lblPlats3.Text = Namn[x]; lblTid3.Text = Tid[x]; }
+                if (x == 3) { lblPlats4.Text = Namn[x]; lblTid4.Text = Tid[x]; }
+                if (x == 4) { lblPlats5.Text = Namn[x]; lblTid5.Text = Tid[x]; }
+                if (x == 5) { lblPlats6.Text = Namn[x]; lblTid6.Text = Tid[x]; }
+                if (x == 6) { lblPlats7.Text = Namn[x]; lblTid7.Text = Tid[x]; }
+                if (x == 7) { lblPlats8.Text = Namn[x]; lblTid8.Text = Tid[x]; }
+                if (x == 8) { lblPlats9.Text = Namn[x]; lblTid9.Text = Tid[x]; }
+                if (x == 9) { lblPlats10.Text = Namn[x]; lblTid10.Text = Tid[x]; }
+            }
+        }
+
+        private void PnlHighScore_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;            
+            Pen PVit = new Pen(Color.White,2);
+
+            HighScore();
+
+            g.FillRectangle(Vit, 40, 40, 480, 20);
+            g.FillRectangle(Vit, 40, 60, 20, 300);
+            g.FillRectangle(Vit, 40, 340, 480, 20);
+            g.FillRectangle(Vit, 500, 40, 20, 320);
+
+            g.FillRectangle(Vit, 60, 100, 440, 20);
+            g.FillRectangle(Vit, 60, 160, 440, 20);
+            g.FillRectangle(Vit, 60, 220, 440, 20);
+            g.FillRectangle(Vit, 60, 280, 440, 20);
+
+            g.FillRectangle(Vit, 260, 60, 40, 280);
+
+            g.DrawLine(PVit, 100, 60, 100, 340);
+            g.DrawLine(PVit, 200, 60, 200, 340);
+            g.DrawLine(PVit, 260, 60, 260, 340);
+            g.DrawLine(PVit, 300, 60, 300, 340);
+            g.DrawLine(PVit, 340, 60, 340, 340);
+            g.DrawLine(PVit, 440, 60, 440, 340);
+        }
+
+        private void BtnBytaHigscore_Click(object sender, EventArgs e)
+        {          
+            lblPlats1.Text = "Plats1"; lblPlats2.Text = "Plats2"; lblPlats3.Text = "Plats3"; lblPlats4.Text = "Plats4"; lblPlats5.Text = "Plats5"; lblPlats6.Text = "Plats6"; lblPlats7.Text = "Plats7"; lblPlats8.Text = "Plats8"; lblPlats9.Text = "Plats9"; lblPlats10.Text = "Plats10";
+            lblTid1.Text = "Tid1"; lblTid2.Text = "Tid2"; lblTid3.Text = "Tid3"; lblTid4.Text = "Tid4"; lblTid5.Text = "Tid5"; lblTid6.Text = "Tid6"; lblTid7.Text = "Tid7"; lblTid8.Text = "Tid8"; lblTid9.Text = "Tid9"; lblTid10.Text = "Tid10";
+
+            if (Lista % 2 == 0)
+            {
+                btnBytaHigscore.Text = "Normal";
+                lblHighscoreTop.Text = "High Score: Special Levels";
+                SökvägHighscore = @"HighScoreCostum.txt";
+                Lista++;
+            }
+            else
+            {
+                btnBytaHigscore.Text = "Spacial";
+                lblHighscoreTop.Text = "High Score: Normal Levels";
+                SökvägHighscore = @"HighScore.txt";
+                Lista = 0;
+            }
+
+            pnlHighScore.Invalidate();
+        }
+
+        private void BtnMenyHigscore_Click(object sender, EventArgs e)
+        {
+            Text = "Rocky Road";
+            pnlHighScore.Enabled = false;
+            pnlStartMeny.Location = ActiveMeny;
+            pnlHighScore.Location = HighScoreMeny;
+            pnlStartMeny.Enabled = true;
+            Height = 440;
             pnlHighScore.Invalidate();
         }
 
@@ -1375,8 +1315,8 @@ namespace RockyRoad
             Text = "Level Maker";
 
             pnlLevelMaker.Enabled = true;
-            pnlStartMeny.Location = Meny2;
-            pnlLevelMaker.Location = Meny1;
+            pnlStartMeny.Location = StartMeny;
+            pnlLevelMaker.Location = ActiveMeny;
             pnlStartMeny.Enabled = false;
             pnlLevelMaker.Invalidate();
 
@@ -1389,9 +1329,9 @@ namespace RockyRoad
             cbxHinder.Items.Add("Teleport");
             cbxHinder.Items.Add("Riktnigs bytare");
 
-            cbxNamn.Items.Add("BanaCostum1");
-            cbxNamn.Items.Add("BanaCostum2");
-            cbxNamn.Items.Add("BanaCostum3");
+            cbxNamn.Items.Add("Bana 1");
+            cbxNamn.Items.Add("Bana 2");
+            cbxNamn.Items.Add("Bana 3");
         }
 
         List<double> Hindertyp = new List<double>();
@@ -1416,22 +1356,8 @@ namespace RockyRoad
 
         private void PnlLevelMakerPaint_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-
-            Pen PVit = new Pen(Color.White);
-
-            SolidBrush Vit = new SolidBrush(Color.White);
-            SolidBrush Blå = new SolidBrush(Color.Blue);
-            SolidBrush Röd = new SolidBrush(Color.Red);
-            SolidBrush Gul = new SolidBrush(Color.Yellow);
-            SolidBrush Grön = new SolidBrush(Color.Green);
-            SolidBrush Ljusblå = new SolidBrush(Color.LightBlue);
-
-            Pen PBlå = new Pen(Color.Blue);
-            Pen PRöd = new Pen(Color.Red);
-            Pen PGul = new Pen(Color.Yellow);
-            Pen PGrön = new Pen(Color.Green);
-            Pen PLjusblå = new Pen(Color.LightBlue);
+            Graphics g = e.Graphics;            
+            
             // Rut Nät
             for (int x = 0; x < pnlLevelMakerPaint.Width; x += StorlekX)
             {
@@ -1579,7 +1505,7 @@ namespace RockyRoad
                     g.FillPolygon(Blå, new Point[] { Pil1, Pil2, Pil3 });
                 }//Ner
             }
-
+            
             cbxHinder.Items.Clear();
 
             cbxHinder.Items.Add("Block");
@@ -1607,6 +1533,12 @@ namespace RockyRoad
             cbxHinder.Items.Add("Fylda Hinder");
 
             cbxHinder.Items.Add("Tömda Hinder");
+                       
+            if ((!Hindertyp.Contains(6.1) || !Hindertyp.Contains(6.2) || !Hindertyp.Contains(6.3) || !Hindertyp.Contains(6.4)) && Teleport != true)
+            {
+                Teleport = true;
+                pnlLevelMakerPaint.Invalidate();
+            }
 
             if (Teleport)
             {
@@ -1617,8 +1549,34 @@ namespace RockyRoad
 
             cbxHinder.Items.Add("Riktnigs bytare");
 
-            if (Hindertyp.Count != 0)
+            //Kollar om Färgen inte fins i varken Val bara eller redan utritade och lägger till den på listan om den inte fins
+            if (cbxHinder.Text.ToString() == "Teleport" && !cbxFärg.Items.Contains("Röd") && !Hindertyp.Contains(6.3))
             {
+                cbxFärg.Items.Insert(0, "Röd");
+                TRöd = true;
+                Teleport = true;
+            }
+            if (cbxHinder.Text.ToString() == "Teleport" && !cbxFärg.Items.Contains("Blå") && !Hindertyp.Contains(6.1))
+            {
+                cbxFärg.Items.Insert(0, "Blå");
+                TBlå = true;
+                Teleport = true;
+            }
+            if (cbxHinder.Text.ToString() == "Teleport" && !cbxFärg.Items.Contains("Grön") && !Hindertyp.Contains(6.2))
+            {
+                cbxFärg.Items.Insert(0, "Grön");
+                TGrön = true;
+                Teleport = true;
+            }
+            if (cbxHinder.Text.ToString() == "Teleport" && !cbxFärg.Items.Contains("Gul") && !Hindertyp.Contains(6.4))
+            {
+                cbxFärg.Items.Insert(0, "Gul");
+                TGul = true;
+                Teleport = true;
+            }
+
+            if (Hindertyp.Count != 0)
+            {                                                                                  
                 if ((Hindertyp[Hindertyp.Count - 1] == 6.3))
                 {
                     if ((Hindertyp.IndexOf(6.3) != Hindertyp.LastIndexOf(6.3)))
@@ -1664,17 +1622,9 @@ namespace RockyRoad
                             cbxFärg.Enabled = false;
                             btnSpara.Enabled = false;
                             btnLäsa.Enabled = false;
-                        }
-
-                        if (!cbxFärg.Items.Contains("Röd"))
-                        {
-                            cbxFärg.Items.Insert(0, "Röd");
-                            TRöd = true;
-                            Teleport = true;
-                        }
+                        }                       
                     }                    
-                }
-                
+                }                
                 if ((Hindertyp[Hindertyp.Count - 1] == 6.1))
                 {
                     if (Hindertyp.IndexOf(6.1) != Hindertyp.LastIndexOf(6.1))
@@ -1720,14 +1670,7 @@ namespace RockyRoad
                             cbxFärg.Enabled = false;
                             btnSpara.Enabled = false;
                             btnLäsa.Enabled = false;
-                        }
-
-                        if (!cbxFärg.Items.Contains("Blå"))
-                        {
-                            cbxFärg.Items.Insert(0, "Blå");
-                            TBlå = true;
-                            Teleport = true;
-                        }
+                        }                        
                     }
                 }
                 if ((Hindertyp[Hindertyp.Count - 1] == 6.2))
@@ -1775,14 +1718,7 @@ namespace RockyRoad
                             cbxFärg.Enabled = false;
                             btnSpara.Enabled = false;
                             btnLäsa.Enabled = false;
-                        }
-
-                        if (!cbxFärg.Items.Contains("Grön"))
-                        {
-                            cbxFärg.Items.Insert(0, "Grön");
-                            TGrön = true;
-                            Teleport = true;
-                        }
+                        }                        
                     }
                 }
                 if ((Hindertyp[Hindertyp.Count - 1] == 6.4))
@@ -1830,14 +1766,7 @@ namespace RockyRoad
                             cbxFärg.Enabled = false;
                             btnSpara.Enabled = false;
                             btnLäsa.Enabled = false;
-                        }
-
-                        if (!cbxFärg.Items.Contains("Gul"))
-                        {
-                            cbxFärg.Items.Insert(0, "Gul");
-                            TGul = true;
-                            Teleport = true;
-                        }
+                        }                       
                     }
                 }                    
             }            
@@ -2056,6 +1985,32 @@ namespace RockyRoad
                     cbxFärg.Items.Add("Gul");
                 }
 
+                //Kollar om Färgen inte fins i varken Val bara eller redan utritade och lägger till den på listan om den inte fins
+                if (!cbxFärg.Items.Contains("Röd") && !Hindertyp.Contains(6.3))
+                {
+                    cbxFärg.Items.Insert(0, "Röd");
+                    TRöd = true;
+                    Teleport = true;
+                }
+                if (!cbxFärg.Items.Contains("Blå") && !Hindertyp.Contains(6.1))
+                {
+                    cbxFärg.Items.Insert(0, "Blå");
+                    TBlå = true;
+                    Teleport = true;
+                }
+                if (!cbxFärg.Items.Contains("Grön") && !Hindertyp.Contains(6.2))
+                {
+                    cbxFärg.Items.Insert(0, "Grön");
+                    TGrön = true;
+                    Teleport = true;
+                }
+                if (!cbxFärg.Items.Contains("Gul") && !Hindertyp.Contains(6.4))
+                {
+                    cbxFärg.Items.Insert(0, "Gul");
+                    TGul = true;
+                    Teleport = true;
+                }
+
                 if (cbxFärg.Items.Contains("Grön"))
                 {
                     cbxFärg.SelectedItem = "Grön";
@@ -2089,7 +2044,7 @@ namespace RockyRoad
                 cbxFärg.Items.Add("Ner");                
                 cbxFärg.SelectedItem = "Höger";
                 lblInfo.Text = "Byter Rörelse Riktning Till Den Som Pilen Visar";
-            }
+            }            
         }
 
         private void BtnBekräfta_Click(object sender, EventArgs e)
@@ -2106,38 +2061,38 @@ namespace RockyRoad
 
         private void CbxNamn_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ("BanaCostum1" == cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum1.txt"; }
-            if ("BanaCostum2" == cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum2.txt"; }
-            if ("BanaCostum3" == cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum3.txt"; }
+            if ("Bana 1" == cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum1.txt"; }
+            if ("Bana 2" == cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum2.txt"; }
+            if ("Bana 3" == cbxNamn.SelectedItem.ToString()) { sökväg = @"BanaCostum3.txt"; }
         }
 
         private void BtnMeny_Click(object sender, EventArgs e)
         {
             Text = "Rocky Road";
             pnlLevelMaker.Enabled = false;
-            pnlStartMeny.Location = Meny1;
-            pnlLevelMaker.Location = Meny3;
+            pnlStartMeny.Location = ActiveMeny;
+            pnlLevelMaker.Location = LevelMakerMeny;
             pnlStartMeny.Enabled = true;
             pnlLevelMaker.Invalidate();
         }
 
-        private void BtnSpara_Click(object sender, EventArgs e)
+        private void BtnSpara_Click_1(object sender, EventArgs e)
         {
             if (File.Exists(sökväg))
             {
                 StreamWriter sr = new StreamWriter(sökväg, false);
                 //Banans storlek
-                string s = tbxX.Text + "," + tbxY.Text;
+                string s = (int.Parse(tbxX.Text) * 20) + "," + (int.Parse(tbxY.Text) * 20);
                 sr.WriteLine(s);
                 //Start kordinat
                 if (Hindertyp.Contains(0)) { s = xList[Hindertyp.IndexOf(0)] + "," + yList[Hindertyp.IndexOf(0)] + "," + Hindertyp[Hindertyp.IndexOf(0)]; sr.WriteLine(s); xList.RemoveAt(Hindertyp.IndexOf(0)); yList.RemoveAt(Hindertyp.IndexOf(0)); Hindertyp.RemoveAt(Hindertyp.IndexOf(0)); }
 
                 //Banans innehåll
                 for (int i = 0; i < xList.Count; i++)
-                {                    
+                {
                     s = xList[i] + "," + yList[i] + "," + Hindertyp[i];
                     sr.WriteLine(s);
-                }                               
+                }
 
                 sr.Close();
 
@@ -2161,6 +2116,9 @@ namespace RockyRoad
                     enRad = sr.ReadLine().Split(',');
                     tbxX.Text = enRad[0];
                     tbxY.Text = enRad[1];
+
+                    tbxX.Text = "" + ((int.Parse(tbxX.Text) / 20));
+                    tbxY.Text = "" + ((int.Parse(tbxY.Text) / 20));
                 }
 
                 while (!sr.EndOfStream)
@@ -2193,13 +2151,54 @@ namespace RockyRoad
             }
             else label1.Text = "Filen finns inte!";
 
+            if (Hindertyp.Contains(6.1))
+            {
+                TBlå = false;
+            }
+            if (Hindertyp.Contains(6.2))
+            {
+                TGrön = false;
+            }
+            if (Hindertyp.Contains(6.3))
+            {
+                TRöd = false;
+            }
+            if (Hindertyp.Contains(6.4))
+            {
+                TGul = false;
+            }
+
+            if (!TBlå && !TGrön && !TRöd && !TGul)
+            {
+                Teleport = false;
+            }
+
             btnBekräfta.PerformClick();
             pnlLevelMakerPaint.Invalidate();
         }
 
-        private void BtnSpara_MouseHover(object sender, EventArgs e)
+        private void BtnQuit_Click(object sender, EventArgs e)
         {
-
-        }
+            Close();
+        }        
     }
 }
+/* Program använt för att spara över banorna till sina text dockumentet
+            if (File.Exists(@"Bana5.txt"))
+            {
+                StreamWriter sr = new StreamWriter(@"Bana5.txt", false);
+                //Banans storlek
+                string s = pnlBana.Width + "," + pnlBana.Height;
+                sr.WriteLine(s);
+                //Start kordinat                
+                s = x[0] + "," + y[0] + ",0";
+                sr.WriteLine(s);
+                //Banans innehåll
+                for (int i = 0; i < Bana5X.Count; i++)
+                {
+                    s = Bana5X[i] + "," + Bana5Y[i] + "," + Bana5Hinder[i];
+                    sr.WriteLine(s);
+                }
+
+                sr.Close();
+            }*/
