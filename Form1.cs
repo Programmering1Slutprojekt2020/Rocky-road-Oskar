@@ -36,8 +36,7 @@ namespace RockyRoad
         
         //Meny
         List<int> MenyX = new List<int>();
-        List<int> MenyY = new List<int>();
-        List<double> MenyHinder = new List<double>();
+        List<int> MenyY = new List<int>();        
 
         Point InfoMeny = new Point(189,30);
         Point ActiveMeny = new Point(12, 9);
@@ -54,125 +53,124 @@ namespace RockyRoad
             pnlStartMeny.Location = ActiveMeny;
 
             //R
-            MenyX.Add(2); MenyY.Add(2); MenyHinder.Add(1);
-            MenyX.Add(2); MenyY.Add(3); MenyHinder.Add(1);
-            MenyX.Add(2); MenyY.Add(4); MenyHinder.Add(1);
-            MenyX.Add(2); MenyY.Add(5); MenyHinder.Add(1);
-            MenyX.Add(2); MenyY.Add(6); MenyHinder.Add(1);
-            MenyX.Add(2); MenyY.Add(7); MenyHinder.Add(1);
-            MenyX.Add(3); MenyY.Add(2); MenyHinder.Add(1);
-            MenyX.Add(3); MenyY.Add(4); MenyHinder.Add(1);
-            MenyX.Add(3); MenyY.Add(5); MenyHinder.Add(1);
-            MenyX.Add(4); MenyY.Add(2); MenyHinder.Add(1);
-            MenyX.Add(4); MenyY.Add(4); MenyHinder.Add(1);
-            MenyX.Add(4); MenyY.Add(6); MenyHinder.Add(1);
-            MenyX.Add(5); MenyY.Add(3); MenyHinder.Add(1);
-            MenyX.Add(5); MenyY.Add(7); MenyHinder.Add(1);
+            MenyX.Add(2); MenyY.Add(2);
+            MenyX.Add(2); MenyY.Add(3);
+            MenyX.Add(2); MenyY.Add(4);
+            MenyX.Add(2); MenyY.Add(5);
+            MenyX.Add(2); MenyY.Add(6);
+            MenyX.Add(2); MenyY.Add(7);
+            MenyX.Add(3); MenyY.Add(2);
+            MenyX.Add(3); MenyY.Add(4);
+            MenyX.Add(3); MenyY.Add(5);
+            MenyX.Add(4); MenyY.Add(2);
+            MenyX.Add(4); MenyY.Add(4);
+            MenyX.Add(4); MenyY.Add(6);
+            MenyX.Add(5); MenyY.Add(3);
+            MenyX.Add(5); MenyY.Add(7);
             //O
-            MenyX.Add(7); MenyY.Add(3); MenyHinder.Add(1);
-            MenyX.Add(7); MenyY.Add(4); MenyHinder.Add(1);
-            MenyX.Add(7); MenyY.Add(5); MenyHinder.Add(1);
-            MenyX.Add(7); MenyY.Add(6); MenyHinder.Add(1);
-            MenyX.Add(8); MenyY.Add(2); MenyHinder.Add(1);
-            MenyX.Add(8); MenyY.Add(7); MenyHinder.Add(1);
-            MenyX.Add(9); MenyY.Add(2); MenyHinder.Add(1);
-            MenyX.Add(9); MenyY.Add(7); MenyHinder.Add(1);
-            MenyX.Add(10); MenyY.Add(3); MenyHinder.Add(1);
-            MenyX.Add(10); MenyY.Add(4); MenyHinder.Add(1);
-            MenyX.Add(10); MenyY.Add(5); MenyHinder.Add(1);
-            MenyX.Add(10); MenyY.Add(6); MenyHinder.Add(1);
+            MenyX.Add(7); MenyY.Add(3);
+            MenyX.Add(7); MenyY.Add(4);
+            MenyX.Add(7); MenyY.Add(5);
+            MenyX.Add(7); MenyY.Add(6);
+            MenyX.Add(8); MenyY.Add(2);
+            MenyX.Add(8); MenyY.Add(7);
+            MenyX.Add(9); MenyY.Add(2);
+            MenyX.Add(9); MenyY.Add(7);
+            MenyX.Add(10); MenyY.Add(3);
+            MenyX.Add(10); MenyY.Add(4);
+            MenyX.Add(10); MenyY.Add(5);
+            MenyX.Add(10); MenyY.Add(6);
             //C
-            MenyX.Add(12); MenyY.Add(3); MenyHinder.Add(1);
-            MenyX.Add(12); MenyY.Add(4); MenyHinder.Add(1);
-            MenyX.Add(12); MenyY.Add(5); MenyHinder.Add(1);
-            MenyX.Add(12); MenyY.Add(6); MenyHinder.Add(1);
-            MenyX.Add(13); MenyY.Add(2); MenyHinder.Add(1);
-            MenyX.Add(13); MenyY.Add(7); MenyHinder.Add(1);
-            MenyX.Add(14); MenyY.Add(2); MenyHinder.Add(1);
-            MenyX.Add(14); MenyY.Add(7); MenyHinder.Add(1);
-            MenyX.Add(15); MenyY.Add(3); MenyHinder.Add(1);            
-            MenyX.Add(15); MenyY.Add(6); MenyHinder.Add(1);
+            MenyX.Add(12); MenyY.Add(3);
+            MenyX.Add(12); MenyY.Add(4);
+            MenyX.Add(12); MenyY.Add(5);
+            MenyX.Add(12); MenyY.Add(6);
+            MenyX.Add(13); MenyY.Add(2);
+            MenyX.Add(13); MenyY.Add(7);
+            MenyX.Add(14); MenyY.Add(2);
+            MenyX.Add(14); MenyY.Add(7);
+            MenyX.Add(15); MenyY.Add(3);            
+            MenyX.Add(15); MenyY.Add(6);
             //K
-            MenyX.Add(17); MenyY.Add(2); MenyHinder.Add(1);
-            MenyX.Add(17); MenyY.Add(3); MenyHinder.Add(1);
-            MenyX.Add(17); MenyY.Add(4); MenyHinder.Add(1);
-            MenyX.Add(17); MenyY.Add(5); MenyHinder.Add(1);
-            MenyX.Add(17); MenyY.Add(6); MenyHinder.Add(1);
-            MenyX.Add(17); MenyY.Add(7); MenyHinder.Add(1);            
-            MenyX.Add(18); MenyY.Add(4); MenyHinder.Add(1);
-            MenyX.Add(18); MenyY.Add(5); MenyHinder.Add(1);
-            MenyX.Add(19); MenyY.Add(3); MenyHinder.Add(1);
-            MenyX.Add(19); MenyY.Add(6); MenyHinder.Add(1);
-            MenyX.Add(20); MenyY.Add(2); MenyHinder.Add(1);
-            MenyX.Add(20); MenyY.Add(7); MenyHinder.Add(1);
+            MenyX.Add(17); MenyY.Add(2);
+            MenyX.Add(17); MenyY.Add(3);
+            MenyX.Add(17); MenyY.Add(4);
+            MenyX.Add(17); MenyY.Add(5);
+            MenyX.Add(17); MenyY.Add(6);
+            MenyX.Add(17); MenyY.Add(7);            
+            MenyX.Add(18); MenyY.Add(4);
+            MenyX.Add(18); MenyY.Add(5);
+            MenyX.Add(19); MenyY.Add(3);
+            MenyX.Add(19); MenyY.Add(6);
+            MenyX.Add(20); MenyY.Add(2);
+            MenyX.Add(20); MenyY.Add(7);
             //Y
-            MenyX.Add(22); MenyY.Add(2); MenyHinder.Add(1);
-            MenyX.Add(23); MenyY.Add(3); MenyHinder.Add(1);
-            MenyX.Add(24); MenyY.Add(4); MenyHinder.Add(1);
-            MenyX.Add(24); MenyY.Add(5); MenyHinder.Add(1);
-            MenyX.Add(24); MenyY.Add(6); MenyHinder.Add(1);
-            MenyX.Add(24); MenyY.Add(7); MenyHinder.Add(1);
-            MenyX.Add(25); MenyY.Add(3); MenyHinder.Add(1);
-            MenyX.Add(26); MenyY.Add(2); MenyHinder.Add(1);
-
+            MenyX.Add(22); MenyY.Add(2);
+            MenyX.Add(23); MenyY.Add(3);
+            MenyX.Add(24); MenyY.Add(4);
+            MenyX.Add(24); MenyY.Add(5);
+            MenyX.Add(24); MenyY.Add(6);
+            MenyX.Add(24); MenyY.Add(7);
+            MenyX.Add(25); MenyY.Add(3);
+            MenyX.Add(26); MenyY.Add(2);
             //R
-            MenyX.Add(2); MenyY.Add(11); MenyHinder.Add(1);
-            MenyX.Add(2); MenyY.Add(12); MenyHinder.Add(1);
-            MenyX.Add(2); MenyY.Add(13); MenyHinder.Add(1);
-            MenyX.Add(2); MenyY.Add(14); MenyHinder.Add(1);
-            MenyX.Add(2); MenyY.Add(15); MenyHinder.Add(1);
-            MenyX.Add(2); MenyY.Add(16); MenyHinder.Add(1);
-            MenyX.Add(3); MenyY.Add(11); MenyHinder.Add(1);
-            MenyX.Add(3); MenyY.Add(13); MenyHinder.Add(1);
-            MenyX.Add(3); MenyY.Add(14); MenyHinder.Add(1);
-            MenyX.Add(4); MenyY.Add(11); MenyHinder.Add(1);
-            MenyX.Add(4); MenyY.Add(13); MenyHinder.Add(1);
-            MenyX.Add(4); MenyY.Add(15); MenyHinder.Add(1);
-            MenyX.Add(5); MenyY.Add(12); MenyHinder.Add(1);
-            MenyX.Add(5); MenyY.Add(16); MenyHinder.Add(1);
+            MenyX.Add(2); MenyY.Add(11);
+            MenyX.Add(2); MenyY.Add(12);
+            MenyX.Add(2); MenyY.Add(13);
+            MenyX.Add(2); MenyY.Add(14);
+            MenyX.Add(2); MenyY.Add(15);
+            MenyX.Add(2); MenyY.Add(16);
+            MenyX.Add(3); MenyY.Add(11);
+            MenyX.Add(3); MenyY.Add(13);
+            MenyX.Add(3); MenyY.Add(14);
+            MenyX.Add(4); MenyY.Add(11);
+            MenyX.Add(4); MenyY.Add(13);
+            MenyX.Add(4); MenyY.Add(15);
+            MenyX.Add(5); MenyY.Add(12);
+            MenyX.Add(5); MenyY.Add(16);
             //O
-            MenyX.Add(7); MenyY.Add(12); MenyHinder.Add(1);
-            MenyX.Add(7); MenyY.Add(13); MenyHinder.Add(1);
-            MenyX.Add(7); MenyY.Add(14); MenyHinder.Add(1);
-            MenyX.Add(7); MenyY.Add(15); MenyHinder.Add(1);
-            MenyX.Add(8); MenyY.Add(11); MenyHinder.Add(1);
-            MenyX.Add(8); MenyY.Add(16); MenyHinder.Add(1);
-            MenyX.Add(9); MenyY.Add(11); MenyHinder.Add(1);
-            MenyX.Add(9); MenyY.Add(16); MenyHinder.Add(1);
-            MenyX.Add(10); MenyY.Add(12); MenyHinder.Add(1);
-            MenyX.Add(10); MenyY.Add(13); MenyHinder.Add(1);
-            MenyX.Add(10); MenyY.Add(14); MenyHinder.Add(1);
-            MenyX.Add(10); MenyY.Add(15); MenyHinder.Add(1);
+            MenyX.Add(7); MenyY.Add(12);
+            MenyX.Add(7); MenyY.Add(13);
+            MenyX.Add(7); MenyY.Add(14);
+            MenyX.Add(7); MenyY.Add(15);
+            MenyX.Add(8); MenyY.Add(11);
+            MenyX.Add(8); MenyY.Add(16);
+            MenyX.Add(9); MenyY.Add(11);
+            MenyX.Add(9); MenyY.Add(16);
+            MenyX.Add(10); MenyY.Add(12);
+            MenyX.Add(10); MenyY.Add(13);
+            MenyX.Add(10); MenyY.Add(14);
+            MenyX.Add(10); MenyY.Add(15);
             //A
-            MenyX.Add(17); MenyY.Add(14); MenyHinder.Add(1);
-            MenyX.Add(17); MenyY.Add(15); MenyHinder.Add(1);
-            MenyX.Add(17); MenyY.Add(16); MenyHinder.Add(1);
-            MenyX.Add(18); MenyY.Add(12); MenyHinder.Add(1);
-            MenyX.Add(18); MenyY.Add(13); MenyHinder.Add(1);
-            MenyX.Add(18); MenyY.Add(14); MenyHinder.Add(1);
-            MenyX.Add(19); MenyY.Add(11); MenyHinder.Add(1);
-            MenyX.Add(19); MenyY.Add(14); MenyHinder.Add(1);
-            MenyX.Add(20); MenyY.Add(12); MenyHinder.Add(1);
-            MenyX.Add(20); MenyY.Add(13); MenyHinder.Add(1);
-            MenyX.Add(20); MenyY.Add(14); MenyHinder.Add(1);
-            MenyX.Add(21); MenyY.Add(14); MenyHinder.Add(1);
-            MenyX.Add(21); MenyY.Add(15); MenyHinder.Add(1);
-            MenyX.Add(21); MenyY.Add(16); MenyHinder.Add(1);
+            MenyX.Add(17); MenyY.Add(14);
+            MenyX.Add(17); MenyY.Add(15);
+            MenyX.Add(17); MenyY.Add(16);
+            MenyX.Add(18); MenyY.Add(12);
+            MenyX.Add(18); MenyY.Add(13);
+            MenyX.Add(18); MenyY.Add(14);
+            MenyX.Add(19); MenyY.Add(11);
+            MenyX.Add(19); MenyY.Add(14);
+            MenyX.Add(20); MenyY.Add(12);
+            MenyX.Add(20); MenyY.Add(13);
+            MenyX.Add(20); MenyY.Add(14);
+            MenyX.Add(21); MenyY.Add(14);
+            MenyX.Add(21); MenyY.Add(15);
+            MenyX.Add(21); MenyY.Add(16);
             //O
-            MenyX.Add(23); MenyY.Add(11); MenyHinder.Add(1);
-            MenyX.Add(23); MenyY.Add(12); MenyHinder.Add(1);
-            MenyX.Add(23); MenyY.Add(13); MenyHinder.Add(1);
-            MenyX.Add(23); MenyY.Add(14); MenyHinder.Add(1);
-            MenyX.Add(23); MenyY.Add(15); MenyHinder.Add(1);
-            MenyX.Add(23); MenyY.Add(16); MenyHinder.Add(1);
-            MenyX.Add(24); MenyY.Add(11); MenyHinder.Add(1);
-            MenyX.Add(24); MenyY.Add(16); MenyHinder.Add(1);
-            MenyX.Add(25); MenyY.Add(11); MenyHinder.Add(1);
-            MenyX.Add(25); MenyY.Add(16); MenyHinder.Add(1);
-            MenyX.Add(26); MenyY.Add(12); MenyHinder.Add(1);
-            MenyX.Add(26); MenyY.Add(13); MenyHinder.Add(1);
-            MenyX.Add(26); MenyY.Add(14); MenyHinder.Add(1);
-            MenyX.Add(26); MenyY.Add(15); MenyHinder.Add(1);
+            MenyX.Add(23); MenyY.Add(11);
+            MenyX.Add(23); MenyY.Add(12);
+            MenyX.Add(23); MenyY.Add(13);
+            MenyX.Add(23); MenyY.Add(14);
+            MenyX.Add(23); MenyY.Add(15);
+            MenyX.Add(23); MenyY.Add(16);
+            MenyX.Add(24); MenyY.Add(11);
+            MenyX.Add(24); MenyY.Add(16);
+            MenyX.Add(25); MenyY.Add(11);
+            MenyX.Add(25); MenyY.Add(16);
+            MenyX.Add(26); MenyY.Add(12);
+            MenyX.Add(26); MenyY.Add(13);
+            MenyX.Add(26); MenyY.Add(14);
+            MenyX.Add(26); MenyY.Add(15);
         }
                                                               
         private void Panel2_Paint(object sender, PaintEventArgs e)
@@ -181,41 +179,8 @@ namespace RockyRoad
             
             // Måla Meny
             for (int i = 0; i < MenyX.Count; i++)
-            {
-                //Vanliga
-                if (MenyHinder[i] == 1)
-                {
-                    g.FillRectangle(Vit, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
-                }
-
-                //fylda
-                if ((int)MenyHinder[i] == 2)
-                {
-                    if (MenyHinder[i] == 2.1)
-                    {
-                        g.FillRectangle(Grön, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
-                    }
-                    
-                    if (MenyHinder[i] == 2.2)
-                    {
-                        g.FillRectangle(Röd, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
-                    }
-
-                    if (MenyHinder[i] == 2.3)
-                    {
-                        g.FillRectangle(Ljusblå, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
-                    }
-
-                    if (MenyHinder[i] == 2.4)
-                    {
-                        g.FillRectangle(Blå, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
-                    }
-
-                    if (MenyHinder[i] == 2.5)
-                    {
-                        g.FillRectangle(Gul, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);
-                    }                    
-                }
+            {                   
+                g.FillRectangle(Vit, MenyX[i] * Storlek, MenyY[i] * Storlek, Storlek, Storlek);                                                
             }
         }
 
@@ -225,6 +190,24 @@ namespace RockyRoad
             pnlInfo.Location = InfoMeny;
             pnlStartMeny.Location = StartMeny;
             pnlStartMeny.Enabled = false;
+            pnlBana.Visible = false;
+        }
+
+        private void BtnKnappInfo_Click(object sender, EventArgs e)
+        {
+            pnlInfo.Enabled = false;
+            pnlInfo.Location = StartMeny;
+            pnlKnappInfo.Location = MenyNamn;
+            pnlKnappInfo.Enabled = true;
+            pnlBana.Visible = false;
+        }
+
+        private void BtnReturn_Click(object sender, EventArgs e)
+        {
+            pnlInfo.Enabled = true;
+            pnlInfo.Location = InfoMeny;
+            pnlKnappInfo.Location = StartMeny;
+            pnlKnappInfo.Enabled = false;
             pnlBana.Visible = false;
         }
 
@@ -265,6 +248,7 @@ namespace RockyRoad
             pnlStartMeny.Enabled = true;          
             pnlStartMeny.Invalidate();
         }
+
         private void PnlInfo2_Paint(object sender, PaintEventArgs e)
         {           
             Graphics g = e.Graphics;
@@ -312,6 +296,7 @@ namespace RockyRoad
         int Secund = 0;
         int Tick = 0;
         //spel Relaterat
+        bool TotalResetText = false;
         bool PauseFT = false;
         bool TotalReset = false;
         int Liv = 3;
@@ -371,10 +356,12 @@ namespace RockyRoad
                 pnlBana.Invalidate();
             }
 
-            if (e.KeyData == Keys.R) { Reset(); }
+            if (e.KeyData == Keys.R) { Reset();}
 
             if (e.KeyData == Keys.Q)
             {
+                TotalReset = true;
+
                 Reset();
 
                 Text = "Rocky Road";
@@ -403,9 +390,17 @@ namespace RockyRoad
                 Tick = 0;
                 lblTime.Text = "Tid: " + Timme + ":" + Minut + ":" + Secund + ":" + Tick;
 
-                lblPausInfo.Location = GOResetS;
-                lblPausInfo.Text = "Tryck På P För Att Pausa";
-                lblPaused.Text = "";
+                Flytttid.Stop();
+                TidTagning.Stop();
+
+                if (TotalResetText)
+                {
+                    lblPausInfo.Location = GOResetS;
+                    lblPausInfo.Text = "Tryck På P För Att Pausa";
+                    lblPaused.Text = "";
+
+                    TotalResetText = false;
+                }
 
                 Riktning = 0;
                 Flytta = true;
@@ -435,6 +430,7 @@ namespace RockyRoad
         {
             TotalReset = true;
             Flytta = false;
+            TotalResetText = true;
 
             lblPaused.Location = new Point((pnlBana.Width- 153)/2,(pnlBana.Height - 31)/2);
 
@@ -1071,7 +1067,7 @@ namespace RockyRoad
                     pnlFelmedelande.Location = MenyNamn;
                     pnlInfo.Location = StartMeny;
                     pnlInfo.Enabled = false;
-
+                    Special = false;
                     pnlBana.Visible = false;
 
                     Bana = 0;
@@ -1337,6 +1333,7 @@ namespace RockyRoad
         List<double> Hindertyp = new List<double>();
         List<int> xList = new List<int>();
         List<int> yList = new List<int>();
+
         int[] Start = new int[2];
         int StorlekX = 20;
         int StorlekY = 20;

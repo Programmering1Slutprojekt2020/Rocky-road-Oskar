@@ -97,6 +97,7 @@
             this.btnSpara = new System.Windows.Forms.Button();
             this.pnlLevelMakerPaint = new System.Windows.Forms.Panel();
             this.pnlInfo = new System.Windows.Forms.Panel();
+            this.btnKnappInfo = new System.Windows.Forms.Button();
             this.btnStartSpecial = new System.Windows.Forms.Button();
             this.pnlInfo2 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
@@ -114,10 +115,14 @@
             this.btnSparaHighscore = new System.Windows.Forms.Button();
             this.tbxNamn = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.lblResetinfo = new System.Windows.Forms.Label();
             this.pnlFelmedelande = new System.Windows.Forms.Panel();
             this.btnFelmedelande = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
+            this.pnlKnappInfo = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.pnlBana.SuspendLayout();
             this.pnlStartMeny.SuspendLayout();
             this.pnlHighScore.SuspendLayout();
@@ -126,6 +131,7 @@
             this.pnlInfo2.SuspendLayout();
             this.pnlNamn.SuspendLayout();
             this.pnlFelmedelande.SuspendLayout();
+            this.pnlKnappInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBana
@@ -886,14 +892,25 @@
             // pnlInfo
             // 
             this.pnlInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlInfo.Controls.Add(this.btnKnappInfo);
             this.pnlInfo.Controls.Add(this.btnStartSpecial);
             this.pnlInfo.Controls.Add(this.pnlInfo2);
             this.pnlInfo.Controls.Add(this.btnStartNormal);
             this.pnlInfo.Enabled = false;
             this.pnlInfo.Location = new System.Drawing.Point(603, 42);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(200, 340);
+            this.pnlInfo.Size = new System.Drawing.Size(200, 360);
             this.pnlInfo.TabIndex = 8;
+            // 
+            // btnKnappInfo
+            // 
+            this.btnKnappInfo.Location = new System.Drawing.Point(63, 332);
+            this.btnKnappInfo.Name = "btnKnappInfo";
+            this.btnKnappInfo.Size = new System.Drawing.Size(75, 23);
+            this.btnKnappInfo.TabIndex = 3;
+            this.btnKnappInfo.Text = "Knapp Info";
+            this.btnKnappInfo.UseVisualStyleBackColor = true;
+            this.btnKnappInfo.Click += new System.EventHandler(this.BtnKnappInfo_Click);
             // 
             // btnStartSpecial
             // 
@@ -1040,7 +1057,7 @@
             this.pnlNamn.Controls.Add(this.tbxNamn);
             this.pnlNamn.Controls.Add(this.label27);
             this.pnlNamn.Enabled = false;
-            this.pnlNamn.Location = new System.Drawing.Point(603, 388);
+            this.pnlNamn.Location = new System.Drawing.Point(603, 410);
             this.pnlNamn.Name = "pnlNamn";
             this.pnlNamn.Size = new System.Drawing.Size(200, 100);
             this.pnlNamn.TabIndex = 9;
@@ -1071,15 +1088,6 @@
             this.label27.TabIndex = 0;
             this.label27.Text = "Ange Namn Och Tryck På Bekräfta";
             // 
-            // lblResetinfo
-            // 
-            this.lblResetinfo.AutoSize = true;
-            this.lblResetinfo.Location = new System.Drawing.Point(244, 9);
-            this.lblResetinfo.Name = "lblResetinfo";
-            this.lblResetinfo.Size = new System.Drawing.Size(177, 13);
-            this.lblResetinfo.TabIndex = 10;
-            this.lblResetinfo.Text = "Tryck På R För Att Starta om Banan";
-            // 
             // pnlFelmedelande
             // 
             this.pnlFelmedelande.BackColor = System.Drawing.Color.White;
@@ -1087,7 +1095,7 @@
             this.pnlFelmedelande.Controls.Add(this.btnFelmedelande);
             this.pnlFelmedelande.Controls.Add(this.label17);
             this.pnlFelmedelande.Enabled = false;
-            this.pnlFelmedelande.Location = new System.Drawing.Point(603, 494);
+            this.pnlFelmedelande.Location = new System.Drawing.Point(603, 516);
             this.pnlFelmedelande.Name = "pnlFelmedelande";
             this.pnlFelmedelande.Size = new System.Drawing.Size(200, 100);
             this.pnlFelmedelande.TabIndex = 11;
@@ -1111,12 +1119,65 @@
             this.label17.Text = "Obs! Special Banor Saknas Gör Egna i Level Maker";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pnlKnappInfo
+            // 
+            this.pnlKnappInfo.BackColor = System.Drawing.Color.White;
+            this.pnlKnappInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlKnappInfo.Controls.Add(this.label31);
+            this.pnlKnappInfo.Controls.Add(this.label30);
+            this.pnlKnappInfo.Controls.Add(this.label29);
+            this.pnlKnappInfo.Controls.Add(this.btnReturn);
+            this.pnlKnappInfo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pnlKnappInfo.Enabled = false;
+            this.pnlKnappInfo.Location = new System.Drawing.Point(603, 623);
+            this.pnlKnappInfo.Name = "pnlKnappInfo";
+            this.pnlKnappInfo.Size = new System.Drawing.Size(200, 100);
+            this.pnlKnappInfo.TabIndex = 12;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(57, 42);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(81, 13);
+            this.label31.TabIndex = 3;
+            this.label31.Text = "P För Att Pausa";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(29, 22);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(133, 13);
+            this.label30.TabIndex = 2;
+            this.label30.Text = "R För Att Starta Om Banan";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(17, 4);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(153, 13);
+            this.label29.TabIndex = 1;
+            this.label29.Text = "Q För Att Återgå Till Start Meny";
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(63, 72);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn.TabIndex = 0;
+            this.btnReturn.Text = "Tillbaka";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.BtnReturn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.pnlKnappInfo);
             this.Controls.Add(this.pnlFelmedelande);
             this.Controls.Add(this.pnlNamn);
             this.Controls.Add(this.pnlHighScore);
@@ -1128,7 +1189,6 @@
             this.Controls.Add(this.lblFörsök);
             this.Controls.Add(this.lblLiv);
             this.Controls.Add(this.pnlBana);
-            this.Controls.Add(this.lblResetinfo);
             this.Name = "Form1";
             this.Text = "Rocky Road";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -1144,6 +1204,8 @@
             this.pnlNamn.ResumeLayout(false);
             this.pnlNamn.PerformLayout();
             this.pnlFelmedelande.ResumeLayout(false);
+            this.pnlKnappInfo.ResumeLayout(false);
+            this.pnlKnappInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1234,12 +1296,17 @@
         private System.Windows.Forms.Button btnSparaHighscore;
         private System.Windows.Forms.TextBox tbxNamn;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label lblResetinfo;
         private System.Windows.Forms.Button btnStartSpecial;
         private System.Windows.Forms.Panel pnlFelmedelande;
         private System.Windows.Forms.Button btnFelmedelande;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.Button btnKnappInfo;
+        private System.Windows.Forms.Panel pnlKnappInfo;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
     }
 }
 
